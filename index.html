@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Küchenkarte — Rezeptverwaltung</title>
+<meta name="theme-color" content="#14181a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Küchenkarte">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAJ20lEQVR42u3daVSU1x3H8d8zoiIqKuCuGPdqjTWbiVYTNTExNotWQcAYjajINiiMtU1sktqctOkRkziKKIiICMKAWps2kRDRuO8bsTY2sXpcElncV7a+6DHHYxGY4d77zDzz+77KyYvL8J8P1/8z8QQNOuYzPaQKzHCVJmVoen1tjXiZkZBrRMyMhFsjZGYk2BohMyPB1giZGQm2iZiZsyTCkomYmZFQa4TMjLSCmIiZGem21pwBc4bfFr57BimkeJiuN7WmB2YCJnBZqDWVmAmZsGWj1lRgrg2yjD+mmD7Jfq9rQ+2h1zdHxMa/iat7/+/9O1nvvybrdq7umyFi3twiPNR0S2sqMBMyE23jYag1kZh5KzOVTqpDbXK2F8nca8+u68Okwzu0I7czVwym1wry4C1tUvHTx5gqLyaRtzMxs/qitnf1eNBsvW5o/pc/puqh0e4b2t7bmXszk7l62IP6frsmGS+GMb0cOQSaezNzxn36J9D8S/vM1btn2O4bmrczc+Zb2sTxMSNlF2h+TMf0yB53Dt/QXDeYqrXDrhuaD4TMSA+G3KGZe+7Q/HSD6bl21HWP5g3N3POGZoygGSNoxgiaMYJmBM0YQTNG0IwRNCNoxgiaMYJmjKAZI2hG0IwRNGMEzZi8PNzhm5w54kXMGzNe2HmPzbOg6OpVJa99aO8+WDkjCp4NGwo/+6PPNsCa9w+CZmp6rs/PkTItAo0lYP5wYy4S8jfxhmZqGtH3USRPC0cjD/Fv0fz1Niwv+JIrB1PTyH6/wPLQMDRsIP7teW9dFlZs+Yo7NFPTqP4DkPhWGDwaNBB+9jxbJlK3FfChkKlp9IDHkTB5unDMVVVVeNuWgdXbtxp+hgTtJL362JOwTp4GD5NJOOa5WenI2LnNLeZI0E7QmCcG4tNJU9FAMObKqirMyUxD1u4dbjNLgta5cU89g4UTp0jBHLsmFTl7d7nVPAlaxwKfHowFIZNh0jSh51ZUVmJW+kqs37/H7WZK0DoVPGgI/hI0CZoEzOa0FfjrwX1uOVeC1qE3fvks/hQ4UTjm8spKRK1KwmeHDrjtbAlacVOGDscfxweJx1xRgfDUJHx+5KBbz5egFRY67Hn84dcThJ9bVlGOsJRlyDt2xO1nTNCKmjF8JN4dGyD83Lvl5ZiRkoj8wqMcMkGrKeKFl/D2a+OkYA5NTkDB8UIOmaDVFP3iaMx9ZYzwc2+XlSE0aQm2njjOIRO0mmaPegVxo1+TgnnKMiu2f3uCQyZoNVlGv45Zo34l/Nxbd+9i8jIrdp78F4dM0Gr67atjETXyZeHn3rhzB28mLsKe705yyAStpndeH4fw518Sfu71O7cxaeki7Pv+3xwyQavpvbGBmD78BeHnXrt9G28s/QQHTn3PIRO0muaPC8LU50aIx3zrFoITPsHh06c4ZIKWn6Zp+GB8MCYPHSb87Cs3byI44WMcPXOagyZoNZj/PGEiJg5+VvjZl2/eQNDij1F49gwHTdDyM2kaPgqahOBBQ4SfXXrjOoIWL8Txc2c5aIJWgdmE+IlTEDBwkPCzS65fw4TFC3Hi/DkOmqDVtCD4TQzv20/4uUXXrmLC4oX49sJ5Dpmg1SUF89WrCLTG4+SPFzhggnbtfrxyGYHWhfju4g8cBkG7dhcuX0KANR7/KbrIYRC0a3fuUikCFsXjTEkRh0HQrt3Z0hIEWuNxpqSYwyBo1+5MSTECrfE4W1rCYRC0a3e6uAgB1nicv1TKYRC0a3eq6CICFi3AD1cucxiS4i8NUlgDkyb8/2HHCFq3/H1bw2a2oJOPL4dB0EZB7Qeb2YLORE3QRqmzjy9RE7Sx6uTji5yYOfD39eMwCNoYdWzlA5vZAn/f1hwGQRsHdY45Dl38iJqgDVKHVj7IMVuImqCNU/uWrZAbMwePtG7DYRC0MWrXoiVyzRZ0a9OWwyBodSVvyZd2dtsWLWGLjiNqglbXkvwv8OHGXKmoc8wWdG/TjsMmaDUl5G/CBxtypJ3fxrsFcswW9GhL1AStqMTNeZi/3ibt/Nbe3rBFW9CzbXsOm6DVtLzgS7y/Llsq6mxzHHq1I2qCVviQ+G7uWnmom3sjO9qCXu07cNgEraaUrZvx+5xMaef7NW+O7Kg49G7fkcMmaDWt/LoA79gyUFVVJQ91dCxRE7S6Vm3bIhW1b7PmsJnj0KdDJw6boNWUtn0rfpe9Rhpqn6bNkBUdi74diZqgFZW+42vMzUqXizoqjqgJWl0ZO7fhN2tXS0PdqmlTZEfHoV8nfw6boNWUuWs7LJlpqJSEuqVXU6yNmk3UBK2urN07YMlYJRV1VlQsHu1M1AStqOw9OxG7JlUa6hZeXlgbGYv+nbsQNFNTzt5dmJW+Ui7qqNno79+FoJma1u3bjZjVKaiorJRyvncTL2RFxmJAl64EzdS0fv8eqaibN2mCzIhZbomaoHVqw4G9iE5bIRd15Gw8/kg3gmZq2nhwH6JWJaNcFmpPT6yJmIUnunYjaKamvx3aj8jUJOmon+zanaCZmv5++ADCVy5HeUWFlPObNfZEekQMnurWg6CZmj4/chAzZaMOj8FAg6MmaCfqi6OHEJayTBrqpo0bY3V4DJ7u3pOgmZo2HTuMGSmJKKsol4jabFjUBO2E5R07gukr5KH2avQ/1M/06EXQTE35hUcxLXkp7pZLRD3TjME9exM0U9NX3xxDaHKCNNRNGjXCqrBoQ6EmaCev4Hgh3kpagjtlZdJQp800Y0ivnxE0U9PWf36DqRJRezZsiNSwaAzt3cflZ+UWv3gzcXMeEjfnuTbqE8fRPS6SP928oRlBM0bQjBE0YwTNGEEzgmaMoBkjaMYImjGCZgTNGEEzRtCMETRjBM0ImjGCZoygGZMOOqR42E//nOG3hZNj0rvf2f3+agRdmpShcXTMCJUmZWhcORh3aK4dTOW6IQ10XfcYxkRmjzuuHMx4K4c9D4b8tIOpXDfqejvfM8wbmvGhkLc0c6bbuVrQ9fk8mqiZaMz2dL9dh1eOB396iJqJxOzoJ2qmh0l3BDVjIrLH1YNmTSK/OG9ppsfeXCPo+v7dDqJmqrxUZ1XIx3bV7dOEzWqDLGpvrhW0I7d0dS+GqFldb2V7MT/MaI1wfaaHVOn5xMqMj9kRGzVduLXexKJQEzYhi/BQ2/Yg7bdghRQP+79vQuTTLHPtBz5Z73+ddmVHb+m67tLE7R6I6/te1+XZrs4Pf/VFzYdE966+l1ZdP6iw69MMEagJm5BlYbYbtEjUBE7AojE7BFoWasbqi9lh0ITNnA3yvUx6fWHGZJgy6f0CGBNpSShGriBM70tRyu1K2EyvP92lrguEzVSvqcr2X+ImYhVfR9cHOiInXtH9F8ocrV+bwwNdAAAAAElFTkSuQmCC">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22K%5Cu00fcchenkarte%22%2C%22short_name%22%3A%22K%5Cu00fcchenkarte%22%2C%22description%22%3A%22Rezepte%20verwalten%3A%20Portionen%20skalieren%2C%20N%5Cu00e4hrwerte%2C%20Allergene%22%2C%22display%22%3A%22standalone%22%2C%22start_url%22%3A%22.%22%2C%22scope%22%3A%22.%22%2C%22background_color%22%3A%22%23e8ebe5%22%2C%22theme_color%22%3A%22%2314181a%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAKYUlEQVR42u2daXBUVRqG39vZCOpYZVE1NTVTiAiKMBhBQJYAkU1AEWWnWRMSkhBWlcLR0WFkBotNVgkhISEhNEQQAoRMCCGEVQTEAKJlOaM1/yl%2BzCZLJz2/tChKICR9uk/nPs8viirO1/fL%2B9zvnAv0dRRmHkvzBgSu5VquzwlnfYfAg5uFcAg9uFkGh%2BCDm0VwCD64WQSH4IObRXAIPrhZBA/hh0glGNnzEH5wswQOwQc3b4k8hB/cPA0c28Lva1XDT7KZ472aZM0kcMIdfgIPJoRoqAROuMJP8MG0CA2RIDqUF9iQ0JsejxB%2B7paD238/VDm4ryHBuvvf7aIJPJjMxv2mgGM6/AQfwp2Ve0nghDr8BB/CkZu7SeAJ1UV4ryYRfmjwYfjOrJh6aOIxcff/pfADNEaEYElwt0wHfQIQfrBVggadAZpy9w/HYyxw59mgsfm68yzgsenDATR0GgRrEniCcffnb3Uh3BOhsWcBT7A/BHd/iKQzgScYe3/CD%2BGUoClToEkTgH0/RPp5wBOM8ANE4nngZwGauv3h7g%2BRthX6KfMe2ghuplECsPeH5nIWYAKAq3EedP/P3R9sPwQ/SC6ZAMAZAAABABCA/T9EJo19GsQEACYAAAIAIAAAAgAgAAACACAAAAIAIAAAAgAgAAACACAAAAIAIAAAAgAgAECkEO3Gi65c9L46/vZ3QV2z46L5%2BteP/wvpdYx7obdWeqfJ4zhG1q/95w/yblwb8utCALgvE3slavmEKXIMhf%2BLH77X5Ow1%2Bvf160wAsIspif21dKzXWPjPff93Tclep//cuN7se4kAEUZyvxe1ZMxEY%2Bt//o/vNHXTOv33xg3OAGAXqUmDtHjUOGPrn/7uW03LWa8fb97kEAx2kTFgiP742hhj65/49hslb96g67duuaqvCBABzB48TG%2BPeN3Y%2Bse%2BuaKUvI264bLwI0AEMH/oy3pr%2BEhj61d/fVmpedm66fe7sr8IYDFvDn9VC4a%2BYmz9w19d1MwtObpV53dtjxHAUt4e8bpmDx5mbP2KS7XKKMiRv67O1X1GAAt5d%2BRoZQ58ydj65bUXNKsw1/XhRwALWTxqnFKTBhlb/8CX5zWnME/%2B%2BnqajQB2sWTMBCX3G2Bs/dLzZzWvOF91hB8BbMJxHC0d69WUxP7Ganx67owWFBeoPhCg4QhgV/iXjZ8sb%2B%2B%2BxmqUnDmlhTuKCD8C2IXHcbRi4lSN79nHWA3f6RNaVFKsAOFHAJuI8nj00aTpGt29p7Ea204e0zu7fIQfAewL/9opKXrt%2BR7GahQcP6r3du%2Bg2QhgWcM9Hq2flqoRXboZq5FXU6XFez6h2QhgWbOjopQ9PU3DEroaq5FTfVhLSnfRbASwi5ioaOWkpGtI5wRjNTZWVWjp/j00GwHsIjY6WrkzMjWwU2djNdZVlmt5WSnNRgC7iIuJUX7qLPV/ppOxGqsryrSqfD/NRgC7aBETo/y0LPXr0NFYjRUH92ntoYM0GwHsIj42VoXpc9S7/dPGanx4YI8%2BPlxBsxHALh6Ki1NRxly98GR7YzX%2BUrpbm6oraTYC2MXDcS20LXOuurdtZ6zG4j2fKK%2BmimYjgF08Eh%2Bv7Znz1LVNW2M13tu9UwXHq2k2AtjFo/Hx2pSSroTWbYysHwgE9O4un4pOHqPZCGAfRZlz1f7XvzEW/kUlxfKdPkGjEcBOTIW/PhDQwh1FKjlziiYjgLuoDwT0xvat2n32M5qBAO6irr5e84sLtPf85zQDAdyFv75ec4u2aP%2BFczQDAdwX/qytuTpY%2BwXNQACXhb%2BuThkFm1Vx6UuagQDu4ladX%2Bn5Oaq8fJFmIIC7uOn3K21Lto5cuUwzQgyvSbWAQ5drCT8CuJcRXbrpnVdH0wgEcC%2BzBr1k9BVIgADWkzFgiN5/fSyNQAD3MvPFwUbfBAkIYD2pSYP0wegJNAIB3EtK/wFGX4gNCGA9yf1e1F/HeuU4Ds1AAHcyrW8SEiCAu5ma2F8fjpuEBAjgXib36adl4ycjAQLYSeGJGuM1vL37avmEKUiAAPaxrKxU6yrLjdeZ2CtRKydOlQcJEMA2lpeVak2F%2Be/pHN%2Bzj1ZNmo4ECGAfK8v3aXVFmfE6Y3v00kdIgAA2sqp8f0i%2BrnxMj15aMzlZUR5%2BjAhgGasryrTi4D7jdUZ176m1k1OQAAHsY%2B2hg1oWgre2vNath9ZNnYEECGAf6yvL9eEB8%2B/tGtm1uzZMS1U0EiCAbXx8uEJL939qvM6ILt20YVoaEiCAfWysOhSS15e%2B0uV5bZw%2BEwkQwD5yqg/rz3vNv8B6%2BHNdlZ08U9FRUTQdAewi92iV/rSnxHidYQldtSk5HQkQwD621BzRe7t3Gq8z9NnntDklQzFRfP0TAlhGwfFqvbvLp0AgYLTOkM4J2jwjHQkQwD4KT9SERILBv09QXmqmYqORAAEso%2BjkMf3hk%2B3GJRjYqTMSIICdFJ86rkUlxcYlGNCxs/LTshQXE0PTEcAufKdPaOGOIuMSJD3TCQkQwE52njmlt3YUqd6wBP07dFRBWpZaIAEC2EbJmVN6c/tW4xL069BRW9PnuF4CBLCQXWc/04LiAuMSJD7VQYXpcxQfG4sAYBefnjujedvyVVdfb7ROH5dLgAAWs/f85yGRoHf7p7UtY65axsYhANhF6RdnNadoi3EJerZ7Stsy5%2BqhuDgEALvYf%2BGcZhfmyW9YgheebK9tmfNcJQECRAgHvjyvWVs3G5egR9t2Ks6cp4fjWiAA2EV57QVlFmyWv67OaJ3ubdupeJY7JECACONvFy8ooyDHuATdnnhSvqz5eqRFCwQAu6i4VKuZ%2BZt0q85vtE7XNm3ly1qgR%2BLjEQDsovLyRaVtMS9Bl8ef0M6sBfpVfEsEALuo%2BuqSUvOyddNvVoKE1m2arQQIEOEcuXJZM/I2Gpfg2daPa%2BfsBXq0ZfOSwJX/O2LIsg%2Ba1fUc/fortX1jFncDJgAAAgAgAAACACAAAAIAIAAAAgAgAAACACAAIAAAAgAgAAACACAAAAIAIAAAAgAgAIC7BfBeTfr5175WNXQPrOH2PN6eUyYAAAIA3EWAa7k%2BhzaAG7mW63MeeAJwDoDmsv9nCwRsgRrzh5gC0Bzu/j8LwDkA3Lj/D9oWiCkA4b77h3QL1NhxA2CKxubRc%2BdI4CwAzX3vf3vWPaY%2BFIDNW59fFKCpUwAJINThb8rdP2gTgPMARNK%2B/54CNPaRKOcBsHnff7dse0wZ6WtVgwgQtOA3NfwNngBNmQKcCcC2Pf/9Mm3k3wIhAdgU/ntxzzv9Y2neQDAvgAMzhCM399rR3HerY0ICRIBQZeV%2B2/kG7fWbKgEiQDiy0ZCzbMjeFO%2B9mvSLFxqKfR5ERuDDkYMGP%2B0JxhTgYAyhCn1Dn2Q%2B0OPOYEuACGDibv8gj/Ef%2BHm/CQkQgsCHI/yNEiAUEgCEIvyNFgARINKD/xOecBUGCHf4mywAEkAkh7/JWyC2RBCpwTciACJApATfqACIALYHPyQCIALYfr4M%2BQEWGSDcoQ%2BrAAgB4Qz8nfwf05/KLF69pcYAAAAASUVORK5CYII%3D%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image/png%22%7D%2C%7B%22src%22%3A%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAf7ElEQVR42u3dZ5iV5bmw4XuGKlhRUOwNe%2B%2B9RZHYozAUAQFB%2BqhAttsdk/iZbig6Q1MUEBQQsMVYorFrNNbYuwjSe5Hevh9J9rFC3FFhmFnrfc7zb444x7rncd3X%2B6yZsSioVPU6tVpvCgD/bv6wMUWmUHkM25IHEAcCAMseQBQIACx8AEEgACx9AMSAALDwARAEAsDiB0AICABLHwAxIAAsfgCEgACw%2BAEQAgLA0gdADAgAix8AIbBZFVv%2BAJDeLinyzQKA9G4DMvNiLH4AhEBCAWDxAyAEvr%2BC/hkAyx8AOyihGwCLHwC3AYndAFj%2BANhNiQWA5Q%2BAHVUxigwVACpWIXwkkPc3AJY/AG4DEgsAyx8AEbB5FBkaAGxe%2BfiRQN7dAFj%2BALgNSCwALH8AREBiAWD5AyACEgsAyx8AEVC5igwi/4zZ4VlDADKn1dwzDCFHVf9gYJV%2B8ZSXvyUPIA6qMgKq7AuntvwtfABBkE8RUCVfNIXlb%2BEDCIJ8joBK/4JZXv6WPoAYKJQIqNQvlsXlb%2BkDiIFCjIBK%2B0JZW/4WP4AQKOQIqJQvkpXlb%2BkDiIGsRMBm/wJZWP6Vvfj9riyQRd5L8ysCNus/vNCX/%2BY%2BrBY9gPfaqoqA6o5e5RxIyx7gu78/VuR78JgdnvUeXJk3AIX69F%2BRh86BA/C%2BnK%2B3AJvlH1qIy7%2BiDpilD%2BC9uhAioML/gakuf4sfwPt2IUVAdQfI0gcoNLnvvxv7Xv7P/1%2Bq7%2BUVWhOF9PS/Kcvf4gfwvl7otwAV9g9KYflb/ADe47MSARXyDymU5W/xAwiBLLznV0QEFDsIlj9AFm3s%2B3cqf/Z9kwuiEJ7%2BN%2BabafEDpP0QmO97YFNvATbp/5zF5W/xAwiBFCKg2Dfa8gdIxfd9n8/yxwEbXQ75/PTvyh%2BAVPbExt4CFKf%2BTW019wzLHyDBm4DUbwM2KgDy9enflT8Am3MP5GMEbOxOzswNgOUPQKoRUCkBUKj/mV/LH4Cs7oWN2c1Fm/sL5NPTv8UPQJZ3yvf5gcBi3ygA%2BP77otA/CvjOAZCPT/%2BWPwAiYON2dcHeAFj%2BAIiASrgBsPwBEAHZiYDvFABZ%2BMl/AEjBd93ZBXcD4OkfALcAlXADkE9P/5Y/ACKgYm4BCuYGwPIHQARU0g1AoX32b/kDYM98tx1eEDcAWf7vMQOQPYWwt4qzMkRP/wDk0y1AvkfA/xkAhXT9b/kDYO98v12e1zcA36WeLH8A8jUC8vkWoLjQn/4BgO9/C5C3NwCe/gFwC1DJNwCFsPwBoFDk414r2P8aoKd/AOyjCgyAqv7839U/AFmMgKq8Bfim3V7s2wYA6cmrAPD0D4BbgCoIAL/%2BBwDZtOGOL6iPADz9A2BPbYYbgKrkV/8ASEG%2B7LuCuQHw9A%2BAfbUZAqAqP//39A%2BAW4DNL3fX%2BzVAAEhQQQSA638ACkkh7K0qDwDX/wCkqKr3X97fAHj6B8AtwGYKAH8ACADS8M%2BdX6U3AK7/AUhZVe7BvP4IwPU/AIUsn/eYXwMEgAQJAAAQAJXn2z73cP0PQBZ82z6rqp8DcAMAACneAPgVQABIS71Orda7AQCAFG8AquKL%2Bv1/AKjavZiXNwB%2BABCALMnHveYjAABIkAAAAAEAAAgAAEAAAAACYKP4E8AApCjf/iSwGwAAcAMAAAgAAEAAAAACAAAQAACAAAAABAAAIAAAAAEAAAgAAEAAAAACAAAQAACAAAAABAAAIAAAAAEAAAIAABAAAIAAAAAEAAAgAAAAAQAACAAAQAAAAAIAABAAAIAAAAAEAAAgAAAAAQAACAAAQAAAAAIAAAQAACAAAAABAAAIAABAAAAAAgAAEAAAgAAAAAQAACAAAAABAABsDtWNgHzy9PU3xn4Nd87ka/tg2tRo/LubfJM3Us/G58V1F1yS7OtftGxZtBw0IN75arLDgAAA0nBtkwui93kXJfv6FyxdGi0HDYj3pk5xGBAAQBr6nHdxXNPk/GRf//ylX0fz8v7x4fSpDgMCAEjD9RdeGt3PaZLs65%2B7ZEk0H9g/Pp4xzWFAAABpuOGSptHlrMbJvv45ixdHSXm/%2BHTWDIcBAQCk4cZLS6LjGWcn%2B/pnLVoYJeX94/PZMx0GBACQfUVFRXHTZS2i/WlnJjuDmYsWRrOyvjFpzmwHAgEApLH8f1NyebQ%2B%2BbRkZzB9wfxoVt4vJs%2Bd40AgAIA0lv/NLdpEyxNPSXYGU%2BfPi5LyfjFl3lwHAgEAZF9xUVH0u7xdNDvuxGRnMGXenCgp7x9T589zIBAAQPZVKy6OAZe3i0uPPSHZGXw5Z3Y0K%2B8XMxYucCAQAEAay7%2Bs7ZVx8VHHJjuDL2bPimbl/WLWooUOBAIASOCNp7g4BrXrFOcfcXSyM/hs1swoKe8XsxcvciAQAEACbzrVqsXQ9ldFk8OOTHYGn8yYHs0H9o85SxY7EAgAIPtqVKset3XoHI0PPTzZGXw0fVo0H9g/5n29xIFAAADZV7N69bijY9c466BDk53BB9OmRouB/WP%2B0q8dCAQAkH21atSI4R27xekHHpzsDN79akq0HDQgFi5b6kAgAIDs26JmzRhxVY84Zb8Dkp3BO1MmR8vBA2LRsmUOBAIAyL46NWvFXZ17xImN9k92Bm9NnhStBt8SS5YvdyAQAED21a1VK0Z1KY3j92mU7Axen/R5tBlyayxZscKBQAAA2bdV7doxuuvVccxe%2ByQ7g79%2B/mm0HVoWS1eudCAQAEACy3%2BLLWJMt2viyD32SnYGr3z2SbQdWh7LVln%2BCAAgAdvUqRNju10bh%2B2%2BR7IzeOmTj6Ld7QNj%2BapVDgQCAMi%2BbevUjXE9ro1Ddt092Rk8/9EH0WHYoFixerUDgQAAsq9e3S1jXI9ecdAuuyY7g2c/fD%2BuvGNwrLT8EQBACnbYaqu4t0ev2L/hLsnO4Kn3341Odw6JVWvWOBAIACD76m%2B9dYzv2Tsa7dgw2Rk88e7b0Xn4bbF6reWPAAASsOM228b4nr1inwY7JTuDx95%2BM7qOHBZr1q51IBAAQPY13Ha7mNCzd%2BxZv0GyM/jjW29Ej7uGxZp16xwIBACQfbtsVy8mlPaO3bevn%2BwMHnzj1bh69PBYa/kjAIAU7FZv%2Bxhf2id2q7d9sjO4/7VX4tp7Rlr%2BCAAgDbtvXz8mlPaOXbarl%2BwMJrz6cvS%2BZ2SsW7/egUAAANm3V/0GMb5n72i47XbJzmDsyy/GdeNGW/4IACAN%2BzTYKcb37BU7brNtsjO45y/Px3/fe0%2Bst/wRAEAK9tupYdzbo3fU33rrZGdw1wvPxg0Tx1r%2BCAAgDfs33CXu7dErdthqq2RnMPy5p%2BNn941zGBAAQBoO2mXXGNejV9Sru2WyM7j9mSfjpgcmOAwIACANh%2By6e4zrcW1sW6dusjMY/Oc/xa//cJ/DgAAA0nD47nvGmG7XxDZ16iQ7g/InHo3f/fFBhwEBAKThyD32ijHdromtttgi2Rnc8vgj0ffRhxwGBACQhmP33jdGdy2NLWvVTnYGfR99KG55/BGHAQEApOH4fRrFqC6lUbdWrWRn8NuHH4iBTz7mMCAAgDSc2Gj/uKtzj6hTM93l/6uH7oshT/3JYUAAAGk4df8DY8RVPaJ2jRrJzuD/PTA%2Bhj3zZ4cBAQCk4fQDD47hHbtFrYSX/8/uGxfDn3vaYUAAAGk466BD446OXaNm9TT/9V%2B/fn3cMHFs3PXCsw4DAgBIQ%2BNDD4/bOnSOGtXSXf7/fe89cc9fnncYEABGAGloctiRMbT9VVG9WrUkX/%2B69evjunGjY%2BzLLzoMIAAgDRcceXQMvKJTVC8uTnb5975nZEx49WWHAQQApOGSo4%2BLW9t0iGqJLv%2B169bFNXePiAde/6vDAAIA0nDpsSfEgMvbJb38S0fdGQ%2B9%2BZrDAAIA0lBy/EnRt9UVUVxUlOTrX7NuXfS4a1j88a03HAYQAJCGlieeEje3aBNFqS7/tWuj68hh8djbbzoMIAAgDW1OOT1%2B3axVsst/9do10Xn4bfHEu287DCAAIA3tTzszftG0ZbKvf9WaNdHpziHx1PvvOgwgACANHc84O268tCTZ179y9eq48o7B8eyH7zsMIAAgDV3Oahw3XNI02de/YvXq6DBsUDz/0QcOAwgASEP3c5rE9RdemuzrX75qVbS7fWC89MlHDgMIAEjDNU3Ojz7nXZzs61%2B2amW0HVoer3z2icMAAgDS0Pu8i%2BLaJhck%2B/q/Xrki2g4pi1e/%2BMxhAAEAabjugkuiZ%2BPzkn39S1asiNZDbok3Jn3hMIAAgDT85OLLousPzk13%2BS9fHq0G3xJvTZ7kMIAAgDT8/Ecl0enMs5N9/YuWLYuWgwfEO1MmOwwgACANv2jaItqfdlayr3/hsqXRYuCAeG/qFIcBBABkX1FRUfyqWatoe8rpyc5g/tKvo8XA/vHBtKkOBAgASGP5/65562h10qnJzmDukiXRYlD/%2BGj6NAcCBABkX3FRUfy%2BZdtofsLJyc5gzpLF0by8X3wyc4YDAQIA0lj%2BA1q3j8uOPSHZGcxevChKyvvFZ7NmOhAgACD7qhUXx61tOsQlRx%2BX7AxmLloYJeX94ovZsxwIEACQwL%2BQxcVRfkXHuPDIY5KdwfQF86NZeb%2BYPHeOAwECABL4l7FatRjSrlP88PCjkp3B1PnzoqS8X0yZN9eBAAEA2VejWvUY2uGqOPfQI5KdwZR5c6OkvF9MnT/PgQABANlXs3r1GHZl1/jBwYcmO4PJc%2BdEs/J%2BMX3BfAcCBABkX60aNeLOjt3ijAMPTnYGk%2BbMjmZlfWPmooUOBAgAyL7aNWrE8E7d47QDDkp2Bp/Pnhkl5f1jluUPAgBSsEXNmnFX555xUqP9k53BJzNnRPOB/WLO4sUOBAgAyL66tWrFqC6lcfw%2BjZKdwcczpkXzgf1j7pIlDgQIAMi%2BLWvVjtFdS%2BPYvfdNdgYfTp8azcv7x/ylXzsQIAAg%2B%2BrUrBljul8TR%2B25d7IzeG/qlGg5aEAsWLrUgQABAGnYs36D2LN%2Bg2Rf/ztfTY6WgwbEomXLHAYQAEAK/jZ5UrQafGssXm75gwAAkvDGpC%2Bi9ZBbYsmKFYYBAgBIwatffBZth5TF1ystfxAAQBL%2B%2Bvmn0XZoWSxdudIwQAAAKXjpk4%2Bi3e0DY/mqVYYBAgBIwfMffRAdhg2KFatXGwYIACAFz334fnS4Y3CstPxBAABpeOr9d6PTnUNi1Zo1hgECAEjBE%2B%2B%2BHZ2H3xar11r%2BIACAJDz%2BzlvRZcTtsWbtWsMAAQCk4JG/vRHdRw6LNevWGQYIACAFf3jztSgddaflDwIASMUDr/81rrl7RKy1/EEAAGmY%2BOrL0euekbFu/XrDgAJWbATAdzXulZcsf3ADAKRkzF9eiOvuvTvWW/7gBgBIw6gXn7P8wQ0AkJIRzz8dP504ziBAAACpuOPZP8eN9483CBAAQCqGPv1E/PLBiQYBAgBIxaAnH4/fPHy/QYAAAFJx658eid8/8pBBQMb5LQDgfy1YujRGvvCMQYAAAFKyXd26MbG0TzTYehvDAAEApGSfBjvFxNI%2BseM22xoGCAAgJXs32DEmlvaJnUQACAAgLXvVbxATS/tEw223MwwQAEBK9vxHBOy8XT3DAAEApGSPHerHxNLesYsIAAEApGX37evHhNI%2BsWu97Q0DBACQVgTsEBNK%2B8RuIgAEAJCW3eptHxNK%2B8Tu2%2B9gGCAAgJTs%2Br8RUN8wQAAAKdllu3oxsbR37LGDCAABACRl5%2B3qxcTSPrFn/QaGAQIASEnDbbeLiaV9Yi8RAAIASMtO22wbE0v7xN4NdjQMEABASnb8RwTs02AnwwABAKSkwdbbxMTSPrHvjiIABACQlPpbbx0TSvtEox0bGgYIACCpCNjq7xGwX8OdDQMEAJCSHbbaKsb36B37N9zFMEAAAMlFQM9eccDOIgAEAJCU7bfcKsb37B0H7ryrYYAAAFJSr%2B6WMb5n7zhoFxEAAgBIynZ168b4nr3jkF13NwwQAEBKtq1TN8b1uDYO3U0EgAAA0ouA7r3isN32MAwQAEBKtqlTJ8b1uDYO210EgAAAkrL1FnXi3u694og99jIMEABASrbaYosY2%2B2aOFIEgACALPto%2BrQY98pLBrFBBIzpfm0ctefehgECALJp3fr18eOxo2Lsyy8aRm4E1K4dY7pfE8fstY9hgACAbFq/fn3817jRcfdLzxtGji1r1Y67u10dx%2B69r2GAAIDsRsD14%2B%2BJUS8%2BZxgbRkDXq%2BM4EQACALIcAT%2BZMCZGvvCMYeSoW6tWjO56dRy/TyPDAAEA2Y2AGyaMjRHPP20Y/xYBpXHCvvsZBggAyK6fThwXdz77lEHkqFOzVozuUhonNdrfMEAAQHb9/P574/ZnnjSIHFvUrBl3de4ZJ%2B93gGGAAIDsuumBCTH06ScM4hsi4BQRAAIAsuyXD06MwX/%2Bk0HkqF2jRozs3DNOO%2BAgwwABANn16z/cFwOffMwgNoiAEZ26x%2BkiAAQAZNlvH34gyp541CBy1KpRI4Z36h5nHHiwYYAAgOy6%2BY8Pxi2PP2IQ3xABZx50iGGAAIDs6vvoQ9H/sYcNIkfN6tXjzo7d4gcHH2oYIAAgu/o/9nD0ffQhg9ggAu7o2DXOPuQwwwABANl1y%2BOPxM1/fNAgctSoVj2GXdklGh96uGGAAIDsKnvi0fjtww8YxAYRcHuHLtHksCMMAwQAZNfAJx%2BLX//hPoPIUb1atRjavnM0OexIwwABANk1%2BM9/il8%2BONEgNoyADp3jvCOOMgwQAJBdQ59%2BIm56YIJB5EZAcXEMbndVnH/E0YYBAgCy6/Znnoyf33%2BvQWwQAYPadYoLjzzGMEAAQHbd%2BexT8dOJ4wxigwgYeEXHuPioYw0DBABk14jnn44bJoyN9evXG8Y/VCsujrK2V8YlRx9nGCAAILtGvvBM/GTCGBGwQQTc2qZD/OiY4w0DBABk16gXn4vrx98jAr4hAi499gTDAAEA2XX3S8/Hf40bLQJy3%2BSKiuKW1u2j6XEnGgYIAMiusS%2B/GD8eO0oEbBAB/S9vFyXHn2QYIAAgu8a98lL0GTsq1omAf4mAvq2uiOYnnGwYIAAgu%2B595aXodc9IEbBhBLRsGy1PPMUw8O%2BDEUB2TXz15bjm7hGxdt06w/iHoqKiuLlFm2h10qmGgQAAsuv%2B116Jq%2B8eLgI2iIDfNW8drU8%2BzTAQAEB2Pfj6q1E66k4RsEEE/Kbk8mh7yumGgQAAsuuhN1%2BLHnfdEWtEwL9EwK%2BatYorTj3DMBAAQHY9/Nbr0X3kMBHwDRHQ/rQzDQMBAGTXI397I7qOuD3WrF1rGDl%2B0bRldDj9LINAAADZ9djbb0aXEbeJgA3cdFmL6HjG2QaBAACy6/F3/hZXDR8aq9euMYwcN15aEledeY5BIACA7Hri3bfjqjtvEwEb%2BNmPmkWXsxobBAIAyK4n33s7Ot4xJFatEQG5brikaXQ7%2B1yDQAAA2fXU%2B%2B/GlXcMFgEb%2BJ%2BLLovu5zQxCAQAkF3PfPBetB82KFauXm0YOa6/8NLo2fg8g0AAANn13IfvR/thg2KFCPgX111wSVx97vkGgQAAsuv5jz6I9rcPFAEb%2BPH5F8e1TS4wCAQAkF0vfPxhXHFbeSxftcowcvQ%2B76Lo9cMLDQIBAGTXS598FG1vK49lq1YaRo5eP7wwep93kUEgAIDsevnTj6PNkDIRsIFrm1wQPz7/YoNAAADZ9dfPP402Q8pi6UoRkOvqc8%2BP6y64xCAQAEC2I6D1kFvj65UrDCNHz8bnxfUXXmoQCAAgu1774rNoPVgEbKj7OU3ify66zCAQAEB2vT7p82g16JZYskIE5Op29rlxwyVNDQIBAGTXm19%2BES0HDYgly5cbRo4uZzWOn/2omUEgAIDs%2BtvkSdFi0IBYvHyZYeS46sxz4sZLSwwCAQBk19tTvowWAwfEomUiIFfHM86Omy5rYRAIACC73vlqcrQY1D8WLltqGDk6nH5W/KJpS4NAAADZ9e5XU6J5ef9YsFQE5Gp/2pnxq2atoqioyDAQAEA2vT/tq2g%2BsF/MX/q1YeS44tQzRAACAMi2D6ZNjebl/UXABtqecnr8puRyEYAAALLrw%2BlTo1lZv5i7ZIlh5Gh98mnxu%2BatRQACAMiuj2dMi5KBImBDrU46NW5u0UYEIACA7PpkxvRoVtY35ixebBg5Wp54SvRt2TaKRQACAMiqT2fNiGblfWP24kWGkaP5CSdH31ZXiAAEAJBdn82aGc3K%2BsWsRQsNI0fJ8SdF/8vbiQAEAJBdn8%2BeGU3L%2BsZMEfAvmh53YtzSur0IQAAA2TVpzuxoWtY3ZixcYBg5Lj32hLi1TYeoVuytGAEAZNSX/4iA6QvmG0aOHx1zvAhAAADZNnnunGha1jemiYB/ccnRx0V52ytFAAIAyK4p8%2BZG01t/H1PnzzOMHBcddWwMvKJjVBcBCAAgq76aPy%2BalvWNKfPmGkaOC488Jga16yQCEABAdk2dPy%2BalfWNKfPmGEaO8484Ooa0vyqqV6tmGAgAIJumLZgfTcv6xeS5IiDXDw8/KoaKAAQAkGXTF8yPy279fXw5Z7Zh5Ghy2JFxW4fOIgABAGTXzEUL47KyvvHF7FmGkePcQ4%2BI2zt0iRrVqhsGAgDIplmLFkaz8n7x%2BeyZhpGj8aGHx7ArRQACAMh4BDQt6xufzRIBuc4%2B5LC4o2PXqFldBCAAgIyas3hxNCvrG5/MnGEYOX5w8KFxZ8duIgABAGQ4ApYsjpLyvvHJjOmGkePMgw6JEZ26R60aNQwDAQBk09wlS6JZeb/4eMY0w8hx%2BoEHx3ARgAAAsmze10uiWVm/%2BHD6VMPIjYADDooRnbpHbRGAAACyav7Sr6OkvF98ME0E5DrtgINiZOeeIgABAGTXgqVLo6S8X7w3dYph5DhlvwPirs49Y4uaNQ0DAQBk08JlS6PFwAHx7lciINfJ%2Bx0Qo0QAAgDIfAQM6h/vTJlsGDlObLR/jO5SGnVq1jIMBACQTYuWLYsWgwbE21O%2BNIwcJ%2By7X4zuWhp1a4kABACQUYuX/z0C3po8yTByHL9Poxjd9WoRgAAAsmvJ8uXRatCAeGPSF4aR47i99427u14dW9aqbRj8R/6mJHnlrN/caAh89whYsSIuHvBbgwA3AACAAAAABAAAIAAAQAAAAAIAABAAAIAAAAAEAAAgAAAAAQAACAAAQAAAAAIAABAAAIAAAAAEAAAgAAAAAQAACAAAQAAAgAAAAAQAACAAAAABAAAIAABAAAAAAgAAEAAAgAAAAAQAACAAAAABAAAIAABAAAAAAgAAEAAAgAAAAAEAAAgAAEAAAAACAAAQAACAAAAABAAAIAAAAAEAACQTAK3mnvEf//cxOzzruwJA5nzbfvu2/egGAAAQAACAAAAABAAAIAAAgPwNAL8JAECW5ONeq5IAqOxfdQCAfFYVe7F4/rAxRUYPAOmYP2xMkZ8BAIAECQAAEACVx58EBiAF%2BfYngN0AAIAbAABAAOQJHwMAUMjyeY8VR/z91wGq4ov7ewAApKwq9uA/d76PAAAgQXkfAD4GAKAQ5fv%2BqvIA8DEAACmq6v1XEB8BuAUAwNP/ZgoA/00AAMi23F2fFzcAPgYAICX5sPcK5rcAfAwAgH2VwQBwCwCAp/8qCoB8/zkAtwAA2FMbZ8Md7w8BAUCC8ioAvsu1iFsAAAr16T%2BfPu7%2BtwDw64AAkC3ftNvz7iMAtwAAePqvghuALA0bAOyjAgoAvxIIQJbk4177xgDIh58D8FEAAFl4%2Bq/q5f9/7XS/BggACSr%2BvsXgFgAACvvpPzM3ACIAAHungm4A8sV3rScRAEA%2BLf98/4H2/xgA%2BfJHgfxWAACFJB/21rft8Ez9EKBbAADsmQq4ASjEWwARAEBVLv9CePovuBsAEQCA5V9JNwD5dAsgAgCw/CtmZ/tDQACQoIIMALcAAHj6r6QAyKePAUQAAJb/pu3qgv4IQAQAYPlv5huAfLwFEAEAWP4bt6M3aqHX69RqfaF%2Bwwq92ACwRyriAb3YNxkAyz%2B9vbBRAVDIHwWIAAA2ZR9k4ek/czcAIgCAlJb/ptikJ/l8/FmAjV3sfi4AwOIvtD2xKTfymfwZgFZzz3AbAECFPfVn8SFxkwIgH38WYFNqTQQAWP75/tRfUTu4QhZ4vn4UsCmL3UcCAOku/qwv/02%2BASgUG/NNHLPDs24EADKw%2BD0EbsYAyPePAjblmykCANJ56i%2BE5V9RO7dCF3e%2BfxSQ9UMBQLbf4yvygbvCn9yzHgFCAMD7eqEv/4hE/xTwpn6z/XwAQH4tfg91eXADUEi3ABVRjW4FALxvF9rT/2YLgFQjQAgAeK8uhOW/WQOgECOgIg%2BXGADwvpyvyz8iorqj9c2HoyIOXO4/QwwAVM3S9x5cBTcAhXoLsLkOoAMJ4L02H57%2BKyUACj0CKuNwCgPAovdeWpnLv9ICIAsRUBWHF4D0HqIq66/rVuqf8M1CBIgBAEu/0Jd/pQdA1iJACABY/IW4/KskALIYAWIAwNIvpOVfZQGQ5QgQAwCWfr4v/yoNgBQiQBAAWPj5uPyrPABSiwBBAJD2ws%2BX5Z8XAZByBIgDwJJPU1Uv/7wJABEAgOVfuYoNBADS23XFBgMA6e24YgMCgPR2W14vWz8XAIDFn8gNgNsAACz/xANABABg%2BW8eBbVcfSQAgMWfyA2A2wAA7KjEA0AEAGA3VYyCXqY%2BEgDA4k/kBsBtAAB2UOI3AG4DALD4Ew8AIQCAxZ9wAAgBACz%2Bb1fsGwYA6e2SJJak2wAALP4EA0AMAGDpJx4AQgCAlBd/8gEgBAAs/pRfvx%2BUEwMAlr4AQAgAWPwCAEEAYOELAMQAgKUvABAEABa%2BAEAUAFj2AgBxAGDJ563/D8YkaceU3LeXAAAAAElFTkSuQmCC%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image/png%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<style>
+:root{
+  --tinte:#14181a;
+  --emaille:#e8ebe5;
+  --karte:#f6f7f4;
+  --stahl:#9aa3a0;
+  --linie:#c9cfc9;
+  --kachel:#12655a;
+  --kachel-hell:#e0efeb;
+  --signal:#b8791a;
+  --signal-hell:#f7ecd8;
+  --rot:#9e2c1f;
+  --sp:clamp(14px,2.2vw,22px);
+  --display:"Bricolage Grotesque",Futura,"Trebuchet MS",sans-serif;
+  --body:"Public Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--emaille);
+  color:var(--tinte);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+button,input,select,textarea{font:inherit;color:inherit}
+button{touch-action:manipulation}
+h1,h2,h3{font-family:var(--display);font-weight:800;margin:0;letter-spacing:-.02em;line-height:1.05}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---------- Gerüst ---------- */
+.rahmen{display:grid;grid-template-columns:320px minmax(0,1fr);min-height:100vh}
+.rail{
+  background:var(--tinte);color:var(--emaille);
+  padding:var(--sp);display:flex;flex-direction:column;gap:14px;
+  position:sticky;top:0;height:100vh;overflow:hidden;
+}
+.marke{display:flex;align-items:baseline;gap:8px}
+.marke h1{font-size:23px;color:#fff}
+.marke span{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--stahl);text-transform:uppercase}
+.suche{position:relative}
+.suche input{
+  width:100%;background:#22282a;border:1px solid #333c3e;border-radius:2px;
+  padding:9px 11px;color:#fff;font-size:14px;
+}
+.suche input::placeholder{color:#79837f}
+.suche input:focus{outline:2px solid var(--kachel);outline-offset:1px;border-color:transparent}
+.filter{display:flex;flex-wrap:wrap;gap:4px}
+.filter button{
+  background:#22282a;border:1px solid #333c3e;color:var(--stahl);border-radius:2px;cursor:pointer;
+  padding:4px 8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+}
+.filter button:hover{color:var(--emaille);border-color:var(--stahl)}
+.filter button[aria-pressed="true"]{background:var(--kachel);border-color:var(--kachel);color:#fff;font-weight:700}
+.filter button i{font-style:normal;opacity:.65;margin-left:5px}
+.liste{list-style:none;margin:0;padding:0;overflow-y:auto;flex:1;margin-right:-6px;padding-right:6px}
+.liste li{margin-bottom:2px}
+.liste li.gruppe{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--stahl);
+  padding:15px 10px 6px;margin-bottom:3px;border-bottom:1px solid #2c3335;display:flex;justify-content:space-between;
+}
+.liste li.gruppe:first-child{padding-top:3px}
+.eintrag{
+  width:100%;text-align:left;background:none;border:0;cursor:pointer;
+  padding:9px 10px;border-radius:2px;display:block;color:var(--emaille);
+  border-left:2px solid transparent;
+}
+.eintrag:hover{background:#22282a}
+.eintrag[aria-current="true"]{background:var(--kachel);border-left-color:var(--signal)}
+.eintrag b{display:block;font-weight:600;font-size:14.5px;line-height:1.25}
+.eintrag small{font-family:var(--mono);font-size:10.5px;color:var(--stahl);letter-spacing:.06em}
+.eintrag[aria-current="true"] small{color:#a9d3ca}
+.leer-rail{color:var(--stahl);font-size:13px;padding:10px 2px}
+.rail-fuss{border-top:1px solid #2c3335;padding-top:12px;display:flex;gap:8px}
+.rail-daten{font-family:var(--mono);font-size:10.5px;color:var(--stahl);letter-spacing:.06em;padding-top:8px}
+.rail-daten button{background:none;border:0;padding:0;cursor:pointer;color:#a9d3ca;
+  font:inherit;letter-spacing:inherit;text-decoration:underline;text-underline-offset:2px}
+.rail-daten button:hover{color:#fff}
+
+/* ---------- Knöpfe ---------- */
+.knopf{
+  border:1px solid var(--tinte);background:var(--tinte);color:#fff;
+  padding:8px 13px;border-radius:2px;cursor:pointer;font-size:13.5px;font-weight:600;
+  letter-spacing:.01em;transition:transform .08s ease,background .12s ease;
+}
+.knopf:hover{background:#2c3335}
+.knopf:active{transform:translateY(1px)}
+.knopf.haupt{background:var(--kachel);border-color:var(--kachel)}
+.knopf.haupt:hover{background:#0e544b}
+.knopf.leise{background:transparent;color:var(--tinte);border-color:var(--linie)}
+.knopf.leise:hover{background:#00000009;border-color:var(--stahl)}
+.knopf.gefahr{background:transparent;color:var(--rot);border-color:#d9b8b3}
+.knopf.gefahr:hover{background:#9e2c1f;color:#fff;border-color:#9e2c1f}
+.knopf.klein{padding:5px 9px;font-size:12px}
+:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+
+/* ---------- Bühne ---------- */
+.buehne{padding:var(--sp);display:flex;justify-content:center}
+.karte{width:100%;max-width:860px}
+.zurueck{display:none}
+
+.kopf{border-bottom:2px solid var(--tinte);padding-bottom:14px;margin-bottom:22px}
+.kopf .kat{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--kachel);font-weight:700}
+.kopf h2{font-size:clamp(30px,5vw,46px);margin:6px 0 10px}
+.werkzeuge{display:flex;gap:7px;flex-wrap:wrap}
+
+/* ---------- Portionsregler (Signatur) ---------- */
+.regler{
+  background:var(--tinte);color:#fff;border-radius:3px;
+  display:flex;align-items:center;gap:var(--sp);padding:16px 20px;margin-bottom:24px;flex-wrap:wrap;
+}
+.regler-text{flex:1;min-width:150px}
+.regler-text .titel{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--stahl)}
+.regler-text .faktor{font-family:var(--display);font-size:19px;font-weight:600;margin-top:3px}
+.regler-text .faktor em{font-style:normal;color:var(--signal)}
+.stepper{display:flex;align-items:center;gap:4px;background:#22282a;border-radius:3px;padding:5px}
+.stepper button{
+  width:42px;height:42px;border:0;border-radius:2px;background:#333c3e;color:#fff;
+  font-size:22px;line-height:1;cursor:pointer;font-family:var(--mono);
+}
+.stepper button:hover{background:var(--kachel)}
+.stepper button:disabled{opacity:.3;cursor:not-allowed}
+.stepper input{
+  width:78px;height:42px;text-align:center;background:transparent;border:0;color:#fff;
+  font-family:var(--mono);font-size:26px;font-weight:700;
+}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.stepper input[type=number]{-moz-appearance:textfield}
+.stepper .einheit{font-family:var(--mono);font-size:11px;color:var(--stahl);padding-right:10px;letter-spacing:.1em}
+
+/* ---------- Spalten ---------- */
+.spalten{display:grid;grid-template-columns:minmax(0,1fr) 268px;gap:var(--sp);align-items:start}
+.block{background:var(--karte);border:1px solid var(--linie);border-radius:3px;padding:18px 20px;margin-bottom:var(--sp)}
+.block h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-family:var(--mono);font-weight:700;margin-bottom:14px;color:var(--tinte)}
+.block h3 .zusatz{float:right;font-size:10px;color:var(--stahl);font-weight:400;letter-spacing:.06em;text-transform:none}
+
+/* Zutaten */
+.zutaten{list-style:none;margin:0;padding:0}
+.zutaten li{display:flex;gap:12px;padding:7px 0;border-bottom:1px dotted var(--linie);align-items:baseline}
+.zutaten li:last-child{border-bottom:0}
+.menge{
+  font-family:var(--mono);font-weight:700;font-size:15px;min-width:96px;text-align:right;
+  flex-shrink:0;transition:color .15s ease,background .15s ease;padding:1px 3px;border-radius:2px;
+}
+.menge.wechsel{background:var(--signal-hell);color:var(--signal)}
+.zut-name{flex:1}
+.zut-name .hinweis{color:var(--stahl);font-size:13px}
+.alg-marke{
+  font-family:var(--mono);font-size:10.5px;font-weight:700;color:var(--signal);
+  border:1px solid #e2c894;background:var(--signal-hell);border-radius:2px;padding:1px 4px;margin-left:4px;
+}
+.unbekannt{border:1px solid var(--linie);border-radius:50%;width:15px;height:15px;display:inline-flex;
+  align-items:center;justify-content:center;font-size:10px;color:var(--stahl);flex-shrink:0}
+
+/* Schritte */
+.schritte{list-style:none;counter-reset:s;margin:0;padding:0}
+.schritte li{counter-increment:s;display:flex;gap:14px;padding:9px 0}
+.schritte li::before{
+  content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:12px;font-weight:700;
+  color:var(--kachel);padding-top:3px;flex-shrink:0;
+}
+
+/* Nährwerte */
+.nw-kopf{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:12px}
+.nw-gross{font-family:var(--mono);font-size:34px;font-weight:700;line-height:1}
+.nw-gross span{font-size:13px;color:var(--stahl);font-weight:400}
+.nw-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stahl)}
+table.nw{width:100%;border-collapse:collapse;font-size:13.5px}
+table.nw th{text-align:left;font-weight:400;color:var(--stahl);font-size:10.5px;font-family:var(--mono);
+  letter-spacing:.1em;text-transform:uppercase;padding-bottom:5px}
+table.nw td{padding:5px 0;border-top:1px solid var(--linie);font-family:var(--mono);text-align:right}
+table.nw td:first-child{text-align:left;font-family:var(--body)}
+.balken{height:5px;background:var(--linie);border-radius:3px;display:flex;overflow:hidden;margin:14px 0 6px}
+.balken i{display:block;height:100%}
+.legende{display:flex;gap:12px;font-size:10.5px;font-family:var(--mono);color:var(--stahl);flex-wrap:wrap}
+.legende span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px}
+.legende .e::before{background:var(--kachel)}
+.legende .f::before{background:var(--signal)}
+.legende .k::before{background:#6f8a86}
+.warnung{font-size:12px;color:var(--signal);background:var(--signal-hell);border-left:2px solid var(--signal);
+  padding:8px 10px;margin-top:12px;border-radius:0 2px 2px 0}
+
+/* Allergene */
+.alg-liste{list-style:none;margin:0;padding:0}
+.alg-liste li{display:flex;gap:9px;align-items:center;padding:6px 0;border-bottom:1px dotted var(--linie);font-size:13.5px}
+.alg-liste li:last-child{border-bottom:0}
+.nr{
+  font-family:var(--mono);font-size:12px;font-weight:700;width:24px;height:24px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;border:1.5px solid var(--tinte);border-radius:50%;
+}
+.alg-liste li.manuell .nr{border-style:dashed}
+.alg-quelle{font-size:11px;color:var(--stahl);font-family:var(--mono)}
+.frei{display:flex;gap:9px;align-items:center;color:var(--kachel);font-size:13.5px;font-weight:600}
+.rechtsfuss{font-size:11px;color:var(--stahl);line-height:1.45;margin-top:14px;border-top:1px solid var(--linie);padding-top:10px}
+
+/* ---------- Leerzustand ---------- */
+.leer{max-width:520px;margin:14vh auto;text-align:center}
+.leer h2{font-size:30px;margin-bottom:10px}
+.leer p{color:#4c5654;margin:0 0 22px}
+
+/* ---------- Editor ---------- */
+dialog{
+  border:0;padding:0;border-radius:4px;background:var(--karte);color:var(--tinte);
+  width:min(760px,94vw);box-shadow:0 24px 70px #0000004d;
+}
+dialog::backdrop{background:#14181ad0}
+.dlg-kopf{padding:18px var(--sp);border-bottom:1px solid var(--linie);display:flex;justify-content:space-between;align-items:center}
+.dlg-kopf h2{font-size:21px}
+.dlg-koerper{padding:var(--sp);max-height:66vh;overflow-y:auto}
+.dlg-fuss{padding:14px var(--sp);border-top:1px solid var(--linie);display:flex;justify-content:flex-end;gap:8px;background:#eceee9}
+label.feld{display:block;margin-bottom:14px}
+label.feld > span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--stahl);margin-bottom:5px}
+input[type=text],input[type=number],select,textarea{
+  width:100%;padding:8px 10px;border:1px solid var(--linie);border-radius:2px;background:#fff;
+}
+textarea{resize:vertical;min-height:130px;line-height:1.6}
+.zeile{display:grid;grid-template-columns:86px 100px minmax(0,1fr) 34px;gap:7px;margin-bottom:6px;align-items:center}
+.zeile .weg{border:1px solid var(--linie);background:#fff;border-radius:2px;height:36px;cursor:pointer;color:var(--stahl)}
+.zeile .weg:hover{color:#fff;background:var(--rot);border-color:var(--rot)}
+.zeile-kopf{display:grid;grid-template-columns:86px 100px minmax(0,1fr) 34px;gap:7px;margin-bottom:5px}
+.zeile-kopf span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stahl)}
+.alg-gitter{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:5px}
+.alg-gitter label{display:flex;gap:7px;align-items:center;font-size:13px;padding:6px 8px;border:1px solid var(--linie);border-radius:2px;background:#fff;cursor:pointer}
+.alg-gitter label:has(input:checked){border-color:var(--signal);background:var(--signal-hell)}
+.alg-gitter label.auto{background:var(--kachel-hell);border-color:#a9cdc5;color:#0e544b}
+.alg-gitter input{accent-color:var(--signal)}
+.hinweis-klein{font-size:12px;color:var(--stahl);margin:-8px 0 16px}
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* ---------- Import ---------- */
+.rail-fuss{gap:6px}
+.rail .knopf.leise{color:var(--emaille);border-color:#3a4345;background:transparent}
+.rail .knopf.leise:hover{background:#22282a;border-color:var(--stahl)}
+.ablage{
+  border:2px dashed var(--linie);border-radius:3px;background:#fff;
+  padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .12s ease,background .12s ease;
+}
+.ablage:hover,.ablage.drueber{border-color:var(--kachel);background:var(--kachel-hell)}
+.ablage .gross{font-family:var(--display);font-weight:600;font-size:17px;display:block;margin-bottom:5px}
+.ablage .klein{font-size:12.5px;color:var(--stahl)}
+.formate{display:flex;gap:5px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.formate span{font-family:var(--mono);font-size:10px;letter-spacing:.1em;border:1px solid var(--linie);
+  border-radius:2px;padding:2px 6px;color:var(--stahl)}
+.trenner{display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--stahl);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase}
+.trenner::before,.trenner::after{content:"";flex:1;height:1px;background:var(--linie)}
+.dateien{list-style:none;margin:14px 0 0;padding:0}
+.dateien li{display:flex;gap:9px;align-items:center;font-size:13px;padding:6px 9px;background:#fff;
+  border:1px solid var(--linie);border-radius:2px;margin-bottom:4px}
+.dateien .typ{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--kachel);
+  border:1px solid #a9cdc5;background:var(--kachel-hell);border-radius:2px;padding:1px 5px;flex-shrink:0}
+.dateien .weg2{margin-left:auto;background:none;border:0;color:var(--stahl);cursor:pointer;font-size:15px;line-height:1}
+.dateien .weg2:hover{color:var(--rot)}
+.status{display:flex;gap:10px;align-items:center;font-size:13.5px;margin-top:16px;
+  background:var(--kachel-hell);border-left:2px solid var(--kachel);padding:11px 13px;border-radius:0 2px 2px 0;color:#0e544b}
+.status.fehler{background:#f7e7e4;border-left-color:var(--rot);color:var(--rot)}
+.spinner{width:14px;height:14px;border:2px solid #a9cdc5;border-top-color:var(--kachel);
+  border-radius:50%;animation:dreh .7s linear infinite;flex-shrink:0}
+@keyframes dreh{to{transform:rotate(360deg)}}
+.import-fuss{font-size:11.5px;color:var(--stahl);line-height:1.5;margin-top:18px;
+  border-top:1px solid var(--linie);padding-top:11px}
+.balkenlauf{height:6px;background:var(--linie);border-radius:3px;overflow:hidden;margin:10px 0 6px}
+.balkenlauf i{display:block;height:100%;background:var(--kachel);transition:width .2s ease}
+.laufzeile{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--stahl)}
+.fundkopf{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.fundkopf h3{font-family:var(--display);font-size:18px;font-weight:800}
+.fund{list-style:none;margin:0;padding:0;max-height:46vh;overflow-y:auto}
+.fund li{display:flex;gap:11px;align-items:flex-start;padding:10px 12px;border:1px solid var(--linie);
+  border-radius:2px;background:#fff;margin-bottom:5px}
+.fund li:has(input:checked){border-color:var(--kachel);background:var(--kachel-hell)}
+.fund input{margin-top:3px;accent-color:var(--kachel);flex-shrink:0}
+.fund .txt{flex:1;min-width:0}
+.fund b{display:block;font-size:14.5px;font-weight:600}
+.fund small{font-family:var(--mono);font-size:10.5px;color:var(--stahl);letter-spacing:.05em}
+.fund .warn{color:var(--signal)}
+.pruef-banner{display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:var(--signal-hell);
+  border-left:3px solid var(--signal);border-radius:0 3px 3px 0;padding:11px 15px;margin-bottom:18px;font-size:13.5px}
+.pruef-banner .txt{flex:1;min-width:190px}
+
+/* ---------- Responsiv ---------- */
+@media (max-width:900px){
+  .spalten{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+  .rahmen{grid-template-columns:minmax(0,1fr)}
+  .rail{position:static;height:auto;max-height:none;
+    padding-top:calc(var(--sp) + env(safe-area-inset-top,0px));
+    padding-left:calc(var(--sp) + env(safe-area-inset-left,0px));
+    padding-right:calc(var(--sp) + env(safe-area-inset-right,0px))}
+  .buehne{padding-bottom:calc(var(--sp) + env(safe-area-inset-bottom,0px))}
+  input[type=text],input[type=search],input[type=number],select,textarea{font-size:16px}
+  .liste{max-height:44vh}
+  .rahmen.detail .rail{display:none}
+  .rahmen:not(.detail) .buehne{display:none}
+  .zurueck{display:inline-block;margin-bottom:14px}
+  .zeile,.zeile-kopf{grid-template-columns:64px 78px minmax(0,1fr) 32px}
+  .zwei{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+@media print{
+  .rail,.werkzeuge,.zurueck,.stepper button{display:none!important}
+  .rahmen{grid-template-columns:1fr}
+  body{background:#fff}
+  .regler{background:#fff;color:#000;border:1px solid #000;padding:8px 0}
+  .stepper{background:none}
+  .stepper input{color:#000;font-size:22px}
+  .block{border-color:#999;background:#fff;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="rahmen" id="rahmen">
+  <aside class="rail">
+    <div class="marke">
+      <h1>Küchenkarte</h1>
+      <span>Rezepte</span>
+    </div>
+    <div class="suche">
+      <input type="search" id="suche" placeholder="Rezept oder Zutat suchen" aria-label="Rezepte durchsuchen">
+    </div>
+    <div class="filter" id="filter"></div>
+    <ul class="liste" id="liste"></ul>
+    <div class="rail-fuss">
+      <button class="knopf haupt" id="btn-neu" style="flex:1">Rezept anlegen</button>
+      <button class="knopf leise" id="btn-import" style="flex:1">Importieren</button>
+    </div>
+    <div class="rail-daten">
+      Daten:
+      <button type="button" id="btn-export">exportieren</button> ·
+      <button type="button" id="btn-einlesen">einlesen</button>
+      <input type="file" id="sicherungswahl" accept=".json,application/json" hidden>
+    </div>
+  </aside>
+
+  <main class="buehne">
+    <div class="karte" id="karte"></div>
+  </main>
+</div>
+
+<dialog id="editor">
+  <form method="dialog" id="form">
+    <div class="dlg-kopf">
+      <h2 id="dlg-titel">Rezept anlegen</h2>
+      <button type="button" class="knopf leise klein" id="btn-abbruch">Schließen</button>
+    </div>
+    <div class="dlg-koerper">
+      <div class="zwei">
+        <label class="feld"><span>Name</span><input type="text" id="f-name" required placeholder="z. B. Linsendal"></label>
+        <div class="zwei" style="gap:10px">
+          <label class="feld"><span>Kategorie</span>
+            <select id="f-kat"></select>
+            <input type="text" id="f-kat-eigen" placeholder="Eigene Kategorie" style="margin-top:5px;display:none" aria-label="Eigene Kategorie">
+          </label>
+          <label class="feld"><span>Portionen</span><input type="number" id="f-port" min="1" max="500" step="1" value="4" required></label>
+        </div>
+      </div>
+
+      <label class="feld"><span>Zutaten</span></label>
+      <div class="zeile-kopf"><span>Menge</span><span>Einheit</span><span>Zutat</span><span></span></div>
+      <div id="zeilen"></div>
+      <button type="button" class="knopf leise klein" id="btn-zeile" style="margin:8px 0 18px">+ Zutat</button>
+
+      <label class="feld"><span>Zubereitung — ein Schritt pro Zeile</span>
+        <textarea id="f-schritte" placeholder="Zwiebeln würfeln und in Öl glasig dünsten.&#10;Linsen zugeben, mit Brühe aufgießen."></textarea>
+      </label>
+
+      <label class="feld"><span>Allergene</span></label>
+      <p class="hinweis-klein">Grün markierte Allergene erkennt die App selbst aus den Zutaten. Häkchen setzen, um weitere zu deklarieren.</p>
+      <div class="alg-gitter" id="alg-gitter"></div>
+    </div>
+    <div class="dlg-fuss">
+      <button type="button" class="knopf leise" id="btn-abbruch2">Abbrechen</button>
+      <button type="submit" class="knopf haupt" id="btn-speichern">Rezept speichern</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="import">
+  <div class="dlg-kopf">
+    <h2>Rezept importieren</h2>
+    <button type="button" class="knopf leise klein" id="imp-schliessen">Schließen</button>
+  </div>
+  <div class="dlg-koerper">
+    <div id="imp-eingabe">
+      <div class="ablage" id="ablage" tabindex="0" role="button" aria-label="Dateien auswählen">
+        <span class="gross">Dateien hierher ziehen</span>
+        <span class="klein">oder klicken — auch ganze Sammlungen mit vielen Rezepten</span>
+        <div class="formate"><span>JPG</span><span>PNG</span><span>PDF</span><span>DOCX</span><span>TXT</span></div>
+      </div>
+      <input type="file" id="dateiwahl" multiple accept="image/*,.pdf,.docx,.txt,.md" hidden>
+      <ul class="dateien" id="dateien"></ul>
+
+      <div class="trenner">oder Text einfügen</div>
+      <textarea id="imp-text" placeholder="Rezept aus einer Website oder Notiz hier einfügen — Zutatenliste und Zubereitung reichen." style="min-height:110px"></textarea>
+    </div>
+
+    <div id="imp-funde" hidden></div>
+    <div id="imp-status"></div>
+    <p class="import-fuss" id="imp-fuss">Enthält eine Datei mehrere Rezepte, werden sie einzeln erkannt und einzeln zur Übernahme angeboten. Word-, Text- und PDF-Dateien mit Textebene liest die App im Browser, auch ohne Verbindung. Fotos und eingescannte PDFs schickt sie zum Auslesen an Claude; das setzt voraus, dass sie im Claude-Fenster läuft.</p>
+  </div>
+  <div class="dlg-fuss">
+    <button type="button" class="knopf leise" id="imp-abbruch">Abbrechen</button>
+    <button type="button" class="knopf haupt" id="imp-start">Rezepte auslesen</button>
+  </div>
+</dialog>
+
+<datalist id="zutat-vorschlaege"></datalist>
+
+<script>
+"use strict";
+
+/* ====================================================================
+   1. ALLERGENE — Reihenfolge nach Anhang II der EU-LMIV (VO 1169/2011)
+   ==================================================================== */
+const ALLERGENE = [
+  {nr:1,  name:"Glutenhaltiges Getreide"},
+  {nr:2,  name:"Krebstiere"},
+  {nr:3,  name:"Eier"},
+  {nr:4,  name:"Fische"},
+  {nr:5,  name:"Erdnüsse"},
+  {nr:6,  name:"Sojabohnen"},
+  {nr:7,  name:"Milch / Laktose"},
+  {nr:8,  name:"Schalenfrüchte (Nüsse)"},
+  {nr:9,  name:"Sellerie"},
+  {nr:10, name:"Senf"},
+  {nr:11, name:"Sesamsamen"},
+  {nr:12, name:"Schwefeldioxid / Sulfite"},
+  {nr:13, name:"Lupinen"},
+  {nr:14, name:"Weichtiere"}
+];
+
+/* ====================================================================
+   2. ZUTATENDATENBANK — Werte je 100 g bzw. 100 ml
+   [name, kcal, eiweiß, fett, kohlenhydrate, allergene, synonyme, gramm-je-einheit]
+   ==================================================================== */
+const D = (name,kcal,ew,fe,kh,alg,syn,g) => ({name,kcal,ew,fe,kh,alg:alg||[],syn:syn||[],g:g||{}});
+const DB = [
+  // Getreide, Mehle, Beilagen
+  D("Weizenmehl",348,10,1,72,[1],["weizenmehl","mehl","type 405","dinkelmehl"],{EL:10,TL:3}),
+  D("Vollkornmehl",320,12,2,60,[1],["vollkornmehl"],{EL:10,TL:3}),
+  D("Hartweizengrieß",350,12,1,71,[1],["grieß","hartweizengrieß"],{EL:12,TL:4}),
+  D("Haferflocken",370,13,7,59,[1],["haferflocken","hafer"],{EL:9,TL:3}),
+  D("Semmelbrösel",370,11,2,72,[1],["semmelbrösel","paniermehl"],{EL:8,TL:3}),
+  D("Nudeln, trocken",350,12,1.5,71,[1],["nudeln","spaghetti","penne","fusilli","tagliatelle","makkaroni"],{}),
+  D("Eiernudeln, trocken",360,13,3,68,[1,3],["eiernudeln","bandnudeln"],{}),
+  D("Couscous",350,12,1,70,[1],["couscous","bulgur"],{}),
+  D("Reis, trocken",350,7,1,78,[],["reis","basmati","risottoreis","jasminreis"],{}),
+  D("Quinoa",350,14,6,58,[],["quinoa"],{}),
+  D("Polenta",350,8,1,73,[],["polenta","maisgrieß"],{}),
+  D("Brot",250,8,1,48,[1],["brot","baguette","toast","brötchen","ciabatta"],{Stk:50}),
+  D("Blätterteig",380,6,25,32,[1,7],["blätterteig"],{}),
+  D("Kartoffeln",70,2,0.1,15,[],["kartoffel","kartoffeln","salzkartoffeln"],{Stk:90}),
+  D("Süßkartoffel",86,1.6,0.1,20,[],["süßkartoffel"],{Stk:200}),
+  D("Gnocchi",160,4,1,33,[1],["gnocchi"],{}),
+
+  // Milchprodukte & Eier
+  D("Butter",740,0.7,83,0.6,[7],["butter"],{EL:15,TL:5}),
+  D("Margarine",720,0.2,80,0.4,[],["margarine"],{EL:15,TL:5}),
+  D("Milch 3,5 %",65,3.4,3.5,4.8,[7],["milch","vollmilch"],{EL:15,TL:5}),
+  D("Sahne",300,2.4,32,3.3,[7],["sahne","schlagsahne","kochsahne"],{EL:15,TL:5}),
+  D("Crème fraîche",300,2.4,30,3,[7],["crème fraîche","creme fraiche","schmand","saure sahne"],{EL:15,TL:5}),
+  D("Joghurt",65,3.5,3.5,4.5,[7],["joghurt","naturjoghurt","skyr"],{EL:18,TL:6}),
+  D("Quark 20 %",110,12,5,3,[7],["quark","speisequark"],{EL:20,TL:7}),
+  D("Frischkäse",250,6,24,3.5,[7],["frischkäse"],{EL:18,TL:6}),
+  D("Mozzarella",250,18,18,1,[7],["mozzarella"],{Stk:125}),
+  D("Parmesan",400,33,29,0,[7],["parmesan","grana","pecorino"],{EL:6,TL:2}),
+  D("Gouda / Bergkäse",360,25,29,0,[7],["gouda","käse","emmentaler","bergkäse","cheddar"],{}),
+  D("Feta",260,14,21,1,[7],["feta","schafskäse","hirtenkäse"],{}),
+  D("Ei",140,13,10,1,[3],["ei","eier","hühnerei"],{Stk:55}),
+  D("Eigelb",320,16,28,1,[3],["eigelb","eidotter"],{Stk:18}),
+  D("Eiweiß",50,11,0,1,[3],["eiweiß","eiklar"],{Stk:35}),
+
+  // Fleisch, Fisch, Meeresfrüchte
+  D("Hähnchenbrust",105,23,1,0,[],["hähnchen","hühnchen","hähnchenbrust","poulet","pute","putenbrust"],{}),
+  D("Rinderhackfleisch",250,19,19,0,[],["hackfleisch","rinderhack","gehacktes","hack"],{}),
+  D("Schweinefleisch",150,21,7,0,[],["schwein","schweinefleisch","schnitzel","kotelett"],{}),
+  D("Rindfleisch",160,21,8,0,[],["rindfleisch","rind","gulasch","steak"],{}),
+  D("Speck / Bacon",500,17,47,0,[],["speck","bacon","pancetta","schinkenwürfel"],{}),
+  D("Kochschinken",110,20,3,0,[],["schinken","kochschinken"],{}),
+  D("Lachs",200,20,13,0,[4],["lachs","lachsfilet"],{}),
+  D("Weißfisch",90,19,1,0,[4],["kabeljau","dorsch","seelachs","zander","fischfilet"],{}),
+  D("Thunfisch, Dose",110,25,1,0,[4],["thunfisch"],{Dose:150}),
+  D("Garnelen",85,20,0.5,0,[2],["garnelen","shrimps","scampi","krabben"],{}),
+  D("Miesmuscheln",85,12,2,3,[14],["muscheln","miesmuscheln","calamari","tintenfisch"],{}),
+  D("Sardellen",190,25,10,0,[4],["sardellen","anchovis"],{Stk:4}),
+
+  // Hülsenfrüchte, pflanzliche Proteine
+  D("Linsen, trocken",320,24,1.5,45,[],["linsen","belugalinsen","berglinsen","rote linsen"],{EL:12}),
+  D("Kichererbsen, trocken",350,19,6,45,[],["kichererbsen, trocken"],{}),
+  D("Kichererbsen, Dose",120,7,3,15,[],["kichererbsen"],{Dose:240}),
+  D("Bohnen, Dose",90,7,0.5,12,[],["kidneybohnen","weiße bohnen","bohnen"],{Dose:240}),
+  D("Tofu",130,14,8,1,[6],["tofu"],{}),
+  D("Sojasauce",60,6,0,5,[1,6],["sojasauce","sojasoße"],{EL:15,TL:5}),
+  D("Lupinenmehl",370,40,7,10,[13],["lupine","lupinenmehl"],{EL:10}),
+
+  // Gemüse
+  D("Zwiebel",40,1.2,0.1,7,[],["zwiebel","zwiebeln","schalotte","schalotten"],{Stk:90}),
+  D("Knoblauch",140,6,0.5,28,[],["knoblauch","knoblauchzehe"],{Stk:4,Zehe:4}),
+  D("Karotte",40,0.9,0.2,7,[],["karotte","möhre","möhren","karotten"],{Stk:80}),
+  D("Tomaten",18,0.9,0.2,3,[],["tomate","tomaten","cherrytomaten"],{Stk:100}),
+  D("Passierte Tomaten",30,1.5,0.2,5,[],["passierte tomaten","tomatenpassata","gehackte tomaten","dosentomaten"],{Dose:400}),
+  D("Tomatenmark",80,4,0.5,13,[],["tomatenmark"],{EL:16,TL:5}),
+  D("Paprika",30,1,0.3,5,[],["paprika","paprikaschote"],{Stk:150}),
+  D("Zucchini",20,1.6,0.3,2,[],["zucchini"],{Stk:250}),
+  D("Aubergine",25,1,0.2,3,[],["aubergine"],{Stk:300}),
+  D("Brokkoli",35,3,0.4,3,[],["brokkoli"],{}),
+  D("Blumenkohl",25,2.5,0.3,2.5,[],["blumenkohl"],{}),
+  D("Spinat",25,3,0.4,1,[],["spinat","babyspinat"],{}),
+  D("Champignons",22,3,0.3,0.5,[],["champignons","pilze","kräuterseitlinge"],{}),
+  D("Lauch",30,2,0.3,3,[],["lauch","porree"],{Stk:200}),
+  D("Knollensellerie",25,1.5,0.3,2,[9],["sellerie","knollensellerie","staudensellerie"],{}),
+  D("Erbsen",80,5,0.5,12,[],["erbsen","zuckerschoten"],{}),
+  D("Mais, Dose",90,3,1,16,[],["mais"],{Dose:280}),
+  D("Gurke",12,0.6,0.1,2,[],["gurke","salatgurke"],{Stk:400}),
+  D("Blattsalat",15,1.3,0.2,1,[],["salat","rucola","feldsalat","eisbergsalat"],{}),
+  D("Kürbis",30,1,0.1,6,[],["kürbis","hokkaido"],{}),
+  D("Weißkohl / Rotkohl",28,1.4,0.2,4,[],["kohl","weißkohl","rotkohl","spitzkohl","wirsing"],{}),
+  D("Ingwer",70,1.8,0.8,13,[],["ingwer"],{EL:8,TL:3}),
+  D("Chilischote",40,2,0.4,7,[],["chili","chilischote","peperoni"],{Stk:8}),
+
+  // Obst
+  D("Apfel",55,0.3,0.1,12,[],["apfel","äpfel"],{Stk:150}),
+  D("Banane",90,1,0.2,20,[],["banane"],{Stk:120}),
+  D("Zitrone",30,0.7,0.6,3,[],["zitrone","zitronensaft","limette"],{Stk:100,EL:15,TL:5}),
+  D("Orange",45,1,0.2,9,[],["orange","orangensaft"],{Stk:180}),
+  D("Beeren",45,1,0.4,7,[],["beeren","himbeeren","erdbeeren","heidelbeeren","blaubeeren"],{}),
+  D("Rosinen",300,2.5,0.5,68,[],["rosinen","sultaninen"],{EL:12}),
+  D("Datteln",280,2,0.5,65,[],["datteln"],{Stk:8}),
+
+  // Nüsse, Kerne, Saaten
+  D("Mandeln",600,21,53,5,[8],["mandel","mandeln","mandelblättchen","gemahlene mandeln"],{EL:10}),
+  D("Haselnüsse",640,14,62,7,[8],["haselnüsse","haselnuss"],{EL:10}),
+  D("Walnüsse",690,15,68,7,[8],["walnüsse","walnuss"],{EL:10}),
+  D("Cashewkerne",570,18,44,30,[8],["cashew","cashewkerne"],{EL:10}),
+  D("Pistazien",580,20,45,28,[8],["pistazien"],{EL:10}),
+  D("Erdnüsse",570,25,48,8,[5],["erdnuss","erdnüsse","erdnussbutter","erdnussmus"],{EL:16}),
+  D("Sesam",570,17,50,10,[11],["sesam","sesamsamen","tahini","sesammus"],{EL:9,TL:3}),
+  D("Sonnenblumenkerne",580,20,49,12,[],["sonnenblumenkerne","kürbiskerne"],{EL:10}),
+  D("Kokosraspeln",620,6,62,7,[],["kokosraspeln","kokosflocken"],{EL:6}),
+
+  // Fette, Süßungsmittel
+  D("Olivenöl",900,0,100,0,[],["olivenöl","öl","rapsöl","sonnenblumenöl","sesamöl","bratöl"],{EL:10,TL:4}),
+  D("Zucker",400,0,0,100,[],["zucker","rohrzucker","puderzucker","vanillezucker"],{EL:15,TL:5}),
+  D("Honig",300,0.4,0,82,[],["honig"],{EL:21,TL:7}),
+  D("Ahornsirup",260,0,0,67,[],["ahornsirup","agavendicksaft","sirup"],{EL:20,TL:7}),
+
+  // Sonstiges, Würze, Flüssiges
+  D("Gemüsebrühe, zubereitet",4,0.2,0.1,0.5,[9],["brühe","gemüsebrühe","hühnerbrühe","fond","suppengrün"],{}),
+  D("Kokosmilch",190,2,19,3,[],["kokosmilch"],{Dose:400}),
+  D("Hafermilch",45,0.8,1.5,6.6,[1],["hafermilch","haferdrink"],{}),
+  D("Sojadrink",40,3.3,1.8,2.5,[6],["sojamilch","sojadrink"],{}),
+  D("Mandeldrink",25,0.5,1.6,2.4,[8],["mandelmilch","mandeldrink"],{}),
+  D("Senf",100,5,6,5,[10],["senf","dijonsenf"],{EL:15,TL:5}),
+  D("Mayonnaise",700,1,78,2,[3,10],["mayonnaise","majo","remoulade"],{EL:14,TL:5}),
+  D("Ketchup",110,1,0.2,25,[],["ketchup"],{EL:15,TL:5}),
+  D("Weißwein",70,0.1,0,2.6,[12],["weißwein","rotwein","wein","sherry","marsala"],{}),
+  D("Balsamico",90,0.5,0,17,[12],["balsamico","balsamessig"],{EL:15,TL:5}),
+  D("Essig",20,0.1,0,0.6,[12],["essig","weinessig","apfelessig"],{EL:15,TL:5}),
+  D("Zartbitterschokolade",550,7,35,45,[6,7],["zartbitterschokolade","schokolade","kuvertüre"],{}),
+  D("Vollmilchschokolade",540,7,31,57,[6,7],["vollmilchschokolade"],{}),
+  D("Kakaopulver",350,20,20,15,[],["kakao","kakaopulver"],{EL:8,TL:3}),
+  D("Backpulver",90,0,0,50,[],["backpulver","natron","hefe","trockenhefe"],{TL:4,EL:12,Stk:7}),
+  D("Salz",0,0,0,0,[],["salz","meersalz"],{TL:6,EL:18,Prise:0.4}),
+  D("Pfeffer",250,10,3,50,[],["pfeffer"],{TL:2.5,EL:8,Prise:0.2}),
+  D("Gewürze, gemahlen",300,12,10,35,[],["paprikapulver","kreuzkümmel","kurkuma","curry","zimt","muskat","koriander","garam masala","currypulver","chilipulver"],{TL:2.5,EL:8,Prise:0.2}),
+  D("Kräuter, frisch",30,3,0.5,2,[],["petersilie","basilikum","koriandergrün","schnittlauch","dill","minze","thymian","rosmarin","oregano","kräuter"],{Bund:25,EL:4,TL:1.5}),
+  D("Fischsauce",50,5,0,7,[4],["fischsauce","worcestersauce","worcestershire"],{EL:15,TL:5})
+];
+
+const EINHEITEN = ["g","ml","Stk","EL","TL","Prise","Zehe","Bund","Dose","Msp.","nach Bedarf"];
+const STANDARD_G = {g:1, ml:1, EL:15, TL:5, Prise:0.5, Zehe:4, Bund:30, Dose:400, Stk:100, "Msp.":0.3};
+
+/* Kategorien — Reihenfolge wie auf einer Speisekarte */
+const KATEGORIEN = ["Frühstück","Vorspeise","Suppe","Salat","Hauptgericht","Beilage","Soße & Dip",
+                    "Snack","Dessert","Kuchen & Torten","Gebäck & Brot","Getränk","Vorrat","Sonstiges"];
+
+const KAT_KARTE = {
+  "frühstück":"Frühstück","fruehstueck":"Frühstück","brunch":"Frühstück","müsli":"Frühstück",
+  "vorspeise":"Vorspeise","vorspeisen":"Vorspeise","antipasti":"Vorspeise","appetizer":"Vorspeise","fingerfood":"Snack",
+  "suppe":"Suppe","suppen":"Suppe","eintopf":"Suppe","brühe":"Suppe",
+  "salat":"Salat","salate":"Salat",
+  "hauptgericht":"Hauptgericht","hauptgerichte":"Hauptgericht","hauptspeise":"Hauptgericht","main":"Hauptgericht",
+  "beilage":"Beilage","beilagen":"Beilage","sättigungsbeilage":"Beilage",
+  "soße":"Soße & Dip","sauce":"Soße & Dip","saucen":"Soße & Dip","dip":"Soße & Dip","dressing":"Soße & Dip",
+  "pesto":"Soße & Dip","soße & dip":"Soße & Dip",
+  "snack":"Snack","snacks":"Snack","imbiss":"Snack",
+  "dessert":"Dessert","desserts":"Dessert","nachtisch":"Dessert","süßspeise":"Dessert","eis":"Dessert",
+  "kuchen":"Kuchen & Torten","torte":"Kuchen & Torten","torten":"Kuchen & Torten","backen":"Kuchen & Torten",
+  "kuchen & torten":"Kuchen & Torten","gebäck":"Gebäck & Brot","plätzchen":"Gebäck & Brot","kekse":"Gebäck & Brot",
+  "brot":"Gebäck & Brot","brötchen":"Gebäck & Brot","gebäck & brot":"Gebäck & Brot",
+  "getränk":"Getränk","getränke":"Getränk","drink":"Getränk","cocktail":"Getränk","smoothie":"Getränk",
+  "vorrat":"Vorrat","eingemachtes":"Vorrat","marmelade":"Vorrat","konserve":"Vorrat","einmachen":"Vorrat",
+  "sonstiges":"Sonstiges","rezept":"Sonstiges"
+};
+
+// Bekannte Bezeichnung zuordnen, eigene Kategorien bleiben erhalten
+function normKategorie(s){
+  const roh = String(s || "").trim();
+  if(!roh) return "Sonstiges";
+  return KAT_KARTE[roh.toLowerCase()] || roh;
+}
+
+// Alle Kategorien für die Auswahlliste: feste Liste plus eigene aus dem Bestand
+function alleKategorien(){
+  const eigene = [...new Set(rezepte.map(r => normKategorie(r.kategorie)))]
+    .filter(k => !KATEGORIEN.includes(k)).sort((a,b) => a.localeCompare(b,"de"));
+  return [...KATEGORIEN, ...eigene];
+}
+
+function katRang(k){
+  const i = KATEGORIEN.indexOf(k);
+  return i < 0 ? KATEGORIEN.length : i;
+}
+
+/* ====================================================================
+   3. Zutatenerkennung
+   ==================================================================== */
+function normal(s){return (s||"").toLowerCase().replace(/[.,()]/g," ").replace(/\s+/g," ").trim();}
+
+function finde(name){
+  const n = normal(name);
+  if(!n) return null;
+  let treffer = null, laenge = 0;
+  for(const e of DB){
+    for(const s of e.syn){
+      if(n.includes(s) && s.length > laenge){ treffer = e; laenge = s.length; }
+    }
+  }
+  return treffer;
+}
+
+function grammFuer(z){
+  const e = finde(z.name);
+  const einheit = z.einheit;
+  if(einheit === "nach Bedarf" || !isFinite(z.menge)) return null;
+  if(einheit === "g" || einheit === "ml") return z.menge;
+  if(e && e.g && e.g[einheit] != null) return z.menge * e.g[einheit];
+  if(STANDARD_G[einheit] != null) return z.menge * STANDARD_G[einheit];
+  return null;
+}
+
+function naehrwerte(zutaten, faktor){
+  let kcal=0, ew=0, fe=0, kh=0, erkannt=0, offen=[];
+  for(const z of zutaten){
+    const e = finde(z.name);
+    const g = grammFuer(z);
+    if(e && g != null){
+      const a = (g*faktor)/100;
+      kcal += e.kcal*a; ew += e.ew*a; fe += e.fe*a; kh += e.kh*a;
+      erkannt++;
+    } else if(normal(z.name)){
+      offen.push(z.name);
+    }
+  }
+  return {kcal, ew, fe, kh, erkannt, offen};
+}
+
+function allergeneAus(rezept){
+  const auto = new Map();
+  for(const z of rezept.zutaten){
+    const e = finde(z.name);
+    if(e) for(const nr of e.alg){
+      if(!auto.has(nr)) auto.set(nr, z.name);
+    }
+  }
+  const manuell = new Set(rezept.allergene || []);
+  const alle = [];
+  for(const a of ALLERGENE){
+    if(auto.has(a.nr)) alle.push({...a, quelle:auto.get(a.nr), auto:true});
+    else if(manuell.has(a.nr)) alle.push({...a, quelle:"manuell deklariert", auto:false});
+  }
+  return {alle, autoNummern:[...auto.keys()]};
+}
+
+/* ====================================================================
+   4. Mengen runden und setzen
+   ==================================================================== */
+const BRUCH = {0.25:"¼", 0.5:"½", 0.75:"¾", 0.33:"⅓", 0.67:"⅔"};
+
+function mengeText(z, faktor){
+  if(z.einheit === "nach Bedarf" || !isFinite(z.menge)) return "";
+  let w = z.menge * faktor;
+  const grob = ["g","ml"].includes(z.einheit);
+  if(grob){
+    if(w >= 250) w = Math.round(w/10)*10;
+    else if(w >= 50) w = Math.round(w/5)*5;
+    else if(w >= 10) w = Math.round(w);
+    else w = Math.round(w*10)/10;
+    return trimZahl(w);
+  }
+  w = Math.round(w*4)/4;
+  const ganz = Math.floor(w), rest = Math.round((w-ganz)*100)/100;
+  if(rest === 0) return String(ganz);
+  const b = BRUCH[rest] || trimZahl(rest);
+  return ganz === 0 ? b : ganz + b;
+}
+function trimZahl(w){
+  return (Math.round(w*10)/10).toString().replace(".", ",");
+}
+function zahl(w, stellen){
+  return w.toLocaleString("de-DE", {minimumFractionDigits:stellen||0, maximumFractionDigits:stellen||0});
+}
+
+/* ====================================================================
+   5. Speicher
+   ==================================================================== */
+const SCHLUESSEL = "kuechenkarte:rezepte:v1";
+let rezepte = [];
+let aktivId = null;
+let portionen = 4;
+let katFilter = null;
+let speicherOk = true;
+
+function hatClaudeSpeicher(){
+  return typeof window.storage !== "undefined" && window.storage && typeof window.storage.get === "function";
+}
+
+async function laden(){
+  try{
+    if(hatClaudeSpeicher()){
+      const r = await window.storage.get(SCHLUESSEL);
+      if(r && r.value) rezepte = JSON.parse(r.value);
+    } else {
+      const v = localStorage.getItem(SCHLUESSEL);
+      if(v) rezepte = JSON.parse(v);
+    }
+  }catch(e){ rezepte = []; }
+  if(!Array.isArray(rezepte) || rezepte.length === 0) rezepte = beispiele();
+}
+
+async function sichern(){
+  try{
+    const daten = JSON.stringify(rezepte);
+    if(hatClaudeSpeicher()) await window.storage.set(SCHLUESSEL, daten);
+    else localStorage.setItem(SCHLUESSEL, daten);
+  }catch(e){ speicherOk = false; }
+}
+
+function beispiele(){
+  return [
+    {id:"b1", name:"Linsendal mit Kokosmilch", kategorie:"Hauptgericht", portionen:4, allergene:[],
+     zutaten:[
+       {menge:250,einheit:"g",name:"rote Linsen"},
+       {menge:1,einheit:"Stk",name:"Zwiebel"},
+       {menge:3,einheit:"Zehe",name:"Knoblauch"},
+       {menge:20,einheit:"g",name:"Ingwer"},
+       {menge:2,einheit:"EL",name:"Öl"},
+       {menge:2,einheit:"TL",name:"Currypulver"},
+       {menge:1,einheit:"TL",name:"Kreuzkümmel"},
+       {menge:400,einheit:"ml",name:"Kokosmilch"},
+       {menge:500,einheit:"ml",name:"Gemüsebrühe"},
+       {menge:1,einheit:"Stk",name:"Zitrone, Saft"},
+       {menge:1,einheit:"Bund",name:"Koriandergrün"},
+       {menge:1,einheit:"TL",name:"Salz"}
+     ],
+     schritte:["Zwiebel, Knoblauch und Ingwer fein würfeln und im Öl 5 Minuten anschwitzen.",
+               "Gewürze zugeben und 30 Sekunden mitrösten, bis es duftet.",
+               "Linsen, Kokosmilch und Brühe angießen, aufkochen und 20 Minuten sanft köcheln lassen.",
+               "Mit Zitronensaft und Salz abschmecken, mit Koriander bestreuen."]},
+    {id:"b2", name:"Spaghetti Carbonara", kategorie:"Hauptgericht", portionen:2, allergene:[],
+     zutaten:[
+       {menge:200,einheit:"g",name:"Spaghetti"},
+       {menge:100,einheit:"g",name:"Pancetta"},
+       {menge:2,einheit:"Stk",name:"Ei"},
+       {menge:1,einheit:"Stk",name:"Eigelb"},
+       {menge:50,einheit:"g",name:"Pecorino, gerieben"},
+       {menge:1,einheit:"TL",name:"Pfeffer"},
+       {menge:1,einheit:"TL",name:"Salz"}
+     ],
+     schritte:["Spaghetti in reichlich Salzwasser al dente kochen, eine Tasse Kochwasser aufheben.",
+               "Pancetta in der Pfanne bei mittlerer Hitze knusprig auslassen.",
+               "Eier, Eigelb, Käse und viel Pfeffer verrühren.",
+               "Pfanne vom Herd ziehen, Nudeln zugeben, Eimasse unterrühren und mit Kochwasser cremig ziehen lassen."]},
+    {id:"b3", name:"Schokoladenkuchen", kategorie:"Kuchen & Torten", portionen:12, allergene:[],
+     zutaten:[
+       {menge:200,einheit:"g",name:"Zartbitterschokolade"},
+       {menge:200,einheit:"g",name:"Butter"},
+       {menge:180,einheit:"g",name:"Zucker"},
+       {menge:4,einheit:"Stk",name:"Ei"},
+       {menge:150,einheit:"g",name:"Weizenmehl"},
+       {menge:50,einheit:"g",name:"gemahlene Mandeln"},
+       {menge:1,einheit:"TL",name:"Backpulver"},
+       {menge:1,einheit:"Prise",name:"Salz"}
+     ],
+     schritte:["Ofen auf 175 °C Ober-/Unterhitze vorheizen, Springform fetten.",
+               "Schokolade mit Butter über dem Wasserbad schmelzen und leicht abkühlen lassen.",
+               "Eier mit Zucker 5 Minuten schaumig schlagen, Schokoladenmasse unterrühren.",
+               "Mehl, Mandeln, Backpulver und Salz unterheben und 35 Minuten backen."]}
+  ];
+}
+
+/* ====================================================================
+   6. Oberfläche
+   ==================================================================== */
+const $ = s => document.querySelector(s);
+const el = (t,k,txt) => {const n=document.createElement(t); if(k)n.className=k; if(txt!=null)n.textContent=txt; return n;};
+
+function zeichneFilter(){
+  const w = $("#filter");
+  w.innerHTML = "";
+  const zaehler = new Map();
+  for(const r of rezepte){
+    const k = normKategorie(r.kategorie);
+    zaehler.set(k, (zaehler.get(k) || 0) + 1);
+  }
+  if(rezepte.length === 0) return;
+
+  const chip = (beschriftung, wert, anzahl) => {
+    const b = el("button");
+    b.append(document.createTextNode(beschriftung));
+    b.append(el("i",null,String(anzahl)));
+    b.setAttribute("aria-pressed", katFilter === wert ? "true" : "false");
+    b.onclick = () => {katFilter = (katFilter === wert) ? null : wert; zeichneFilter(); zeichneListe();};
+    return b;
+  };
+  w.append(chip("Alle", null, rezepte.length));
+  [...zaehler.keys()]
+    .sort((a,b) => katRang(a) - katRang(b) || a.localeCompare(b,"de"))
+    .forEach(k => w.append(chip(k, k, zaehler.get(k))));
+}
+
+function zeichneListe(){
+  const q = normal($("#suche").value);
+  const treffer = rezepte.filter(r => {
+    if(katFilter && normKategorie(r.kategorie) !== katFilter) return false;
+    if(!q) return true;
+    return normal(r.name).includes(q) || normal(r.kategorie).includes(q)
+        || r.zutaten.some(z => normal(z.name).includes(q));
+  });
+  const ul = $("#liste");
+  ul.innerHTML = "";
+  if(treffer.length === 0){
+    const grund = q ? "Kein Rezept passt zur Suche."
+                 : katFilter ? `Nichts unter ${katFilter}.`
+                 : "Noch keine Rezepte.";
+    ul.append(el("li","leer-rail", grund));
+    return;
+  }
+
+  const eintrag = r => {
+    const li = el("li");
+    const b = el("button","eintrag");
+    b.setAttribute("aria-current", r.id === aktivId ? "true" : "false");
+    b.append(el("b",null,r.name));
+    b.append(el("small",null, `${r.portionen} P · ${r.zutaten.length} ZUT.`));
+    b.onclick = () => oeffne(r.id);
+    li.append(b);
+    return li;
+  };
+
+  // Bei aktivem Filter reicht die flache Liste, sonst nach Kategorie gruppieren
+  if(katFilter){
+    treffer.forEach(r => ul.append(eintrag(r)));
+    return;
+  }
+  const gruppen = new Map();
+  for(const r of treffer){
+    const k = normKategorie(r.kategorie);
+    if(!gruppen.has(k)) gruppen.set(k, []);
+    gruppen.get(k).push(r);
+  }
+  [...gruppen.keys()]
+    .sort((a,b) => katRang(a) - katRang(b) || a.localeCompare(b,"de"))
+    .forEach(k => {
+      const kopf = el("li","gruppe");
+      kopf.append(el("span",null,k), el("span",null,String(gruppen.get(k).length)));
+      ul.append(kopf);
+      gruppen.get(k).forEach(r => ul.append(eintrag(r)));
+    });
+}
+
+function oeffne(id){
+  aktivId = id;
+  const r = rezepte.find(x => x.id === id);
+  portionen = r ? r.portionen : 4;
+  document.getElementById("rahmen").classList.add("detail");
+  zeichneListe(); zeichneKarte();
+}
+
+function zeichneKarte(){
+  const k = $("#karte");
+  k.innerHTML = "";
+  const r = rezepte.find(x => x.id === aktivId);
+
+  if(!r){
+    const w = el("div","leer");
+    w.append(el("h2",null,"Noch kein Rezept geöffnet"));
+    w.append(el("p",null,"Wähle links ein Rezept aus, oder lege ein neues an. Mengen, Nährwerte und Allergene rechnet die App danach für jede Portionszahl neu."));
+    const b = el("button","knopf haupt","Rezept anlegen"); b.onclick = () => editor(null);
+    w.append(b); k.append(w);
+    return;
+  }
+
+  const faktor = portionen / r.portionen;
+
+  // Zurück (mobil)
+  const zurueck = el("button","knopf leise klein zurueck","← Alle Rezepte");
+  zurueck.onclick = () => {document.getElementById("rahmen").classList.remove("detail");};
+  k.append(zurueck);
+
+  // Kopf
+  const kopf = el("header","kopf");
+  kopf.append(el("div","kat", normKategorie(r.kategorie)));
+  kopf.append(el("h2",null,r.name));
+  const wz = el("div","werkzeuge");
+  const mk = (t,cls,fn) => {const b = el("button","knopf "+cls,t); b.onclick = fn; return b;};
+  wz.append(mk("Bearbeiten","leise klein", () => editor(r)));
+  wz.append(mk("Duplizieren","leise klein", async () => {
+    const kopie = JSON.parse(JSON.stringify(r));
+    kopie.id = "r"+Date.now(); kopie.name = r.name + " (Kopie)";
+    rezepte.unshift(kopie); await sichern(); zeichneFilter(); oeffne(kopie.id);
+  }));
+  wz.append(mk("Drucken","leise klein", () => window.print()));
+  wz.append(mk("Löschen","gefahr klein", async () => {
+    if(!confirm(`„${r.name}“ wirklich löschen?`)) return;
+    rezepte = rezepte.filter(x => x.id !== r.id);
+    aktivId = null; await sichern(); zeichneFilter(); zeichneListe(); zeichneKarte();
+  }));
+  kopf.append(wz);
+  k.append(kopf);
+
+  // Hinweis auf ungeprüfte Importe
+  if(r.importiert && !r.geprueft){
+    const band = el("div","pruef-banner");
+    const t = el("div","txt");
+    t.append(el("b",null,"Aus einer Datei übernommen. "));
+    t.append(document.createTextNode("Mengen und Zubereitung wurden automatisch erkannt und sind noch nicht geprüft."));
+    const ok = el("button","knopf klein","Durchsehen");
+    ok.onclick = () => editor(r, "Import prüfen");
+    const weg = el("button","knopf leise klein","Passt so");
+    weg.onclick = async () => {r.geprueft = true; await sichern(); zeichneKarte();};
+    band.append(t, ok, weg);
+    k.append(band);
+  }
+
+  // Portionsregler
+  const reg = el("div","regler");
+  const txt = el("div","regler-text");
+  txt.append(el("div","titel","Portionen"));
+  const f = el("div","faktor");
+  f.innerHTML = faktor === 1
+    ? "Grundrezept, unverändert"
+    : `Alle Mengen × <em>${trimZahl(faktor)}</em> — Grundrezept ${r.portionen} Portionen`;
+  txt.append(f);
+  const st = el("div","stepper");
+  const minus = el("button",null,"−"); minus.setAttribute("aria-label","Eine Portion weniger");
+  const inp = document.createElement("input");
+  inp.type = "number"; inp.min = "1"; inp.max = "500"; inp.value = portionen;
+  inp.setAttribute("aria-label","Portionszahl");
+  const plus = el("button",null,"+"); plus.setAttribute("aria-label","Eine Portion mehr");
+  minus.disabled = portionen <= 1;
+  const setze = v => {
+    portionen = Math.min(500, Math.max(1, Math.round(v) || 1));
+    inp.value = portionen; zeichneKarte(); flash();
+  };
+  minus.onclick = () => setze(portionen-1);
+  plus.onclick  = () => setze(portionen+1);
+  inp.onchange  = () => setze(+inp.value);
+  st.append(minus, inp, plus, el("span","einheit","PORT."));
+  reg.append(txt, st);
+  k.append(reg);
+
+  // Spalten
+  const sp = el("div","spalten");
+  const links = el("div"), rechts = el("div");
+
+  // Zutaten
+  const bz = el("section","block");
+  const hz = el("h3",null,"Zutaten");
+  hz.append(el("span","zusatz", `für ${portionen} ${portionen===1?"Portion":"Portionen"}`));
+  bz.append(hz);
+  const ul = el("ul","zutaten");
+  for(const z of r.zutaten){
+    const li = el("li");
+    const e = finde(z.name);
+    const m = mengeText(z, faktor);
+    const mspan = el("span","menge mono", m ? `${m} ${z.einheit === "nach Bedarf" ? "" : z.einheit}`.trim() : "n. B.");
+    const nm = el("span","zut-name");
+    nm.append(document.createTextNode(z.name));
+    if(e && e.alg.length){
+      for(const nr of e.alg) nm.append(el("span","alg-marke", String(nr)));
+    }
+    li.append(mspan, nm);
+    if(!e){
+      const q = el("span","unbekannt","?");
+      q.title = "Für diese Zutat sind keine Nährwerte hinterlegt";
+      li.append(q);
+    }
+    ul.append(li);
+  }
+  bz.append(ul);
+  links.append(bz);
+
+  // Zubereitung
+  if(r.schritte && r.schritte.length){
+    const bs = el("section","block");
+    bs.append(el("h3",null,"Zubereitung"));
+    const ol = el("ol","schritte");
+    for(const s of r.schritte) ol.append(el("li",null,s));
+    bs.append(ol);
+    links.append(bs);
+  }
+
+  // Nährwerte
+  const nw = naehrwerte(r.zutaten, faktor);
+  const proP = portionen > 0 ? 1/portionen : 0;
+  const bn = el("section","block");
+  bn.append(el("h3",null,"Nährwerte"));
+  const kopfn = el("div","nw-kopf");
+  const li1 = el("div");
+  const g1 = el("div","nw-gross"); g1.innerHTML = `${zahl(nw.kcal*proP)} <span>kcal</span>`;
+  li1.append(g1, el("div","nw-label","je Portion"));
+  const li2 = el("div", null);
+  li2.style.textAlign = "right";
+  const g2 = el("div","nw-gross"); g2.style.fontSize = "17px";
+  g2.innerHTML = `${zahl(nw.kcal)} <span>kcal</span>`;
+  li2.append(g2, el("div","nw-label","gesamt"));
+  kopfn.append(li1, li2);
+  bn.append(kopfn);
+
+  const tab = el("table","nw");
+  tab.innerHTML = `<thead><tr><th>Je Portion</th><th style="text-align:right">Menge</th></tr></thead>
+    <tbody>
+      <tr><td>Eiweiß</td><td>${zahl(nw.ew*proP,1)} g</td></tr>
+      <tr><td>Fett</td><td>${zahl(nw.fe*proP,1)} g</td></tr>
+      <tr><td>Kohlenhydrate</td><td>${zahl(nw.kh*proP,1)} g</td></tr>
+    </tbody>`;
+  bn.append(tab);
+
+  const summe = nw.ew*4 + nw.fe*9 + nw.kh*4;
+  if(summe > 0){
+    const bal = el("div","balken");
+    const a = el("i"); a.style.width = (nw.ew*4/summe*100)+"%"; a.style.background = "var(--kachel)";
+    const b = el("i"); b.style.width = (nw.fe*9/summe*100)+"%"; b.style.background = "var(--signal)";
+    const c = el("i"); c.style.width = (nw.kh*4/summe*100)+"%"; c.style.background = "#6f8a86";
+    bal.append(a,b,c);
+    const leg = el("div","legende");
+    leg.innerHTML = `<span class="e">Eiweiß</span><span class="f">Fett</span><span class="k">KH</span>`;
+    bn.append(bal, leg);
+  }
+  if(nw.offen.length){
+    bn.append(el("div","warnung", `Ohne Nährwerte gerechnet: ${nw.offen.join(", ")}. Die Werte sind Schätzungen aus Standardtabellen.`));
+  }
+  rechts.append(bn);
+
+  // Allergene
+  const alg = allergeneAus(r);
+  const ba = el("section","block");
+  ba.append(el("h3",null,"Allergene"));
+  if(alg.alle.length === 0){
+    const fr = el("div","frei");
+    fr.append(el("span","nr","–"), document.createTextNode("Keines der 14 Hauptallergene erkannt"));
+    ba.append(fr);
+  } else {
+    const ula = el("ul","alg-liste");
+    for(const a of alg.alle){
+      const li = el("li"); if(!a.auto) li.className = "manuell";
+      li.append(el("span","nr", String(a.nr)));
+      const w = el("span"); w.style.flex = "1";
+      w.append(el("div",null,a.name));
+      w.append(el("div","alg-quelle", a.quelle));
+      li.append(w);
+      ula.append(li);
+    }
+    ba.append(ula);
+  }
+  ba.append(el("div","rechtsfuss","Nummerierung nach Anhang II der EU-Lebensmittelinformationsverordnung. Für die Abgabe an Gäste zusätzlich die Etiketten der verwendeten Produkte prüfen — Fertigprodukte enthalten oft weitere Allergene."));
+  rechts.append(ba);
+
+  sp.append(links, rechts);
+  k.append(sp);
+}
+
+function flash(){
+  document.querySelectorAll(".menge").forEach(n => {
+    n.classList.add("wechsel");
+    setTimeout(() => n.classList.remove("wechsel"), 420);
+  });
+}
+
+/* ====================================================================
+   7. Editor
+   ==================================================================== */
+let bearbeitetId = null;
+
+function zutatZeile(z){
+  const w = el("div","zeile");
+  const m = document.createElement("input");
+  m.type = "number"; m.step = "any"; m.min = "0"; m.className = "z-menge";
+  m.value = (z && isFinite(z.menge)) ? z.menge : "";
+  m.setAttribute("aria-label","Menge");
+  const s = document.createElement("select"); s.className = "z-einheit"; s.setAttribute("aria-label","Einheit");
+  for(const e of EINHEITEN){
+    const o = document.createElement("option"); o.value = e; o.textContent = e;
+    if(z && z.einheit === e) o.selected = true;
+    s.append(o);
+  }
+  const n = document.createElement("input");
+  n.type = "text"; n.className = "z-name"; n.placeholder = "Zutat";
+  n.setAttribute("list","zutat-vorschlaege"); n.setAttribute("aria-label","Zutat");
+  n.value = z ? z.name : "";
+  n.oninput = markiereAuto;
+  const x = el("button","weg","✕"); x.type = "button"; x.title = "Zeile entfernen";
+  x.onclick = () => {w.remove(); markiereAuto();};
+  w.append(m,s,n,x);
+  return w;
+}
+
+function leseZutaten(){
+  return [...document.querySelectorAll("#zeilen .zeile")].map(w => ({
+    menge: parseFloat(w.querySelector(".z-menge").value),
+    einheit: w.querySelector(".z-einheit").value,
+    name: w.querySelector(".z-name").value.trim()
+  })).filter(z => z.name);
+}
+
+function markiereAuto(){
+  const auto = new Set();
+  for(const z of leseZutaten()){
+    const e = finde(z.name);
+    if(e) e.alg.forEach(nr => auto.add(nr));
+  }
+  document.querySelectorAll("#alg-gitter label").forEach(l => {
+    const nr = +l.dataset.nr;
+    const ist = auto.has(nr);
+    l.classList.toggle("auto", ist);
+    const cb = l.querySelector("input");
+    cb.disabled = ist;
+    if(ist) cb.checked = true;
+    l.querySelector(".txt").textContent = ALLERGENE.find(a => a.nr === nr).name + (ist ? " · erkannt" : "");
+  });
+}
+
+// Auswahlliste mit festen und eigenen Kategorien bestücken
+function fuelleKategorien(gewaehlt){
+  const sel = $("#f-kat"), eigen = $("#f-kat-eigen");
+  sel.innerHTML = "";
+  const k = normKategorie(gewaehlt);
+  const werte = alleKategorien();
+  if(gewaehlt && !werte.includes(k)) werte.push(k);
+  for(const w of werte){
+    const o = document.createElement("option");
+    o.value = w; o.textContent = w;
+    if(w === k) o.selected = true;
+    sel.append(o);
+  }
+  const neu = document.createElement("option");
+  neu.value = "__eigen"; neu.textContent = "Eigene Kategorie …";
+  sel.append(neu);
+  if(!gewaehlt) sel.value = "Hauptgericht";
+  eigen.value = ""; eigen.style.display = "none";
+  sel.onchange = () => {
+    const ist = sel.value === "__eigen";
+    eigen.style.display = ist ? "block" : "none";
+    if(ist) eigen.focus();
+  };
+}
+
+function editor(r, titel){
+  bearbeitetId = (r && r.id) ? r.id : null;
+  $("#dlg-titel").textContent = titel || (bearbeitetId ? "Rezept bearbeiten" : "Rezept anlegen");
+  $("#f-name").value = r ? r.name : "";
+  fuelleKategorien(r ? r.kategorie : "");
+  $("#f-port").value = r ? r.portionen : 4;
+  $("#f-schritte").value = r ? (r.schritte||[]).join("\n") : "";
+  const z = $("#zeilen"); z.innerHTML = "";
+  const liste = r && r.zutaten.length ? r.zutaten : [null,null,null,null];
+  for(const zz of liste) z.append(zutatZeile(zz));
+  document.querySelectorAll("#alg-gitter input").forEach(cb => {
+    cb.checked = r ? (r.allergene||[]).includes(+cb.value) : false;
+  });
+  markiereAuto();
+  $("#editor").showModal();
+  $("#f-name").focus();
+}
+
+function leseKategorie(){
+  const sel = $("#f-kat").value;
+  if(sel !== "__eigen") return sel;
+  return normKategorie($("#f-kat-eigen").value) || "Sonstiges";
+}
+
+async function speichere(ev){
+  ev.preventDefault();
+  const name = $("#f-name").value.trim();
+  if(!name){ $("#f-name").focus(); return; }
+  const zutaten = leseZutaten();
+  const manuell = [...document.querySelectorAll("#alg-gitter input")]
+    .filter(cb => cb.checked && !cb.disabled).map(cb => +cb.value);
+  const daten = {
+    id: bearbeitetId || ("r"+Date.now()),
+    name,
+    kategorie: leseKategorie(),
+    portionen: Math.max(1, parseInt($("#f-port").value) || 1),
+    zutaten,
+    schritte: $("#f-schritte").value.split("\n").map(s => s.trim()).filter(Boolean),
+    allergene: manuell,
+    geprueft: true
+  };
+  const i = rezepte.findIndex(x => x.id === daten.id);
+  if(i >= 0) rezepte[i] = daten; else rezepte.unshift(daten);
+  if(katFilter && normKategorie(daten.kategorie) !== katFilter) katFilter = null;
+  await sichern();
+  $("#editor").close();
+  zeichneFilter();
+  oeffne(daten.id);
+}
+
+/* ====================================================================
+   8. Import aus Bild, PDF, Word oder Text
+   ==================================================================== */
+let importDateien = [];
+
+const MAX_BYTES = 4.5 * 1024 * 1024;
+
+function dateiTyp(f){
+  const n = f.name.toLowerCase();
+  if(f.type.startsWith("image/")) return "bild";
+  if(f.type === "application/pdf" || n.endsWith(".pdf")) return "pdf";
+  if(n.endsWith(".docx")) return "word";
+  if(n.endsWith(".doc")) return "altword";
+  if(n.endsWith(".txt") || n.endsWith(".md")) return "text";
+  return null;
+}
+
+const KUERZEL = {bild:"BILD", pdf:"PDF", word:"DOCX", text:"TXT"};
+
+function base64(f){
+  return new Promise((res,rej) => {
+    const r = new FileReader();
+    r.onload = () => res(String(r.result).split(",")[1]);
+    r.onerror = () => rej(new Error("Datei konnte nicht gelesen werden."));
+    r.readAsDataURL(f);
+  });
+}
+
+// Große Fotos verkleinern — schneller Versand, bessere Erkennung
+async function bildBlock(f){
+  try{
+    const bmp = await createImageBitmap(f);
+    const kante = Math.max(bmp.width, bmp.height);
+    if(kante <= 1600 && f.size <= MAX_BYTES){
+      return {type:"image", source:{type:"base64", media_type:f.type, data:await base64(f)}};
+    }
+    const s = Math.min(1, 1600/kante);
+    const c = document.createElement("canvas");
+    c.width = Math.round(bmp.width*s); c.height = Math.round(bmp.height*s);
+    c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+    const daten = c.toDataURL("image/jpeg", 0.85).split(",")[1];
+    return {type:"image", source:{type:"base64", media_type:"image/jpeg", data:daten}};
+  }catch(e){
+    if(f.size > MAX_BYTES) throw new Error(`„${f.name}“ ist zu groß. Bitte kleiner fotografieren oder speichern.`);
+    return {type:"image", source:{type:"base64", media_type:f.type || "image/jpeg", data:await base64(f)}};
+  }
+}
+
+// Skripte erst laden, wenn sie gebraucht werden
+function ladeSkript(src){
+  return new Promise((res,rej) => {
+    const s = document.createElement("script");
+    s.src = src; s.onload = () => res(); s.onerror = () => rej(new Error("Bibliothek nicht erreichbar."));
+    document.head.append(s);
+  });
+}
+
+// pdf.js einmal laden und das Dokument öffnen
+async function pdfOeffnen(f){
+  if(!window.pdfjsLib){
+    await ladeSkript("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js");
+    if(window.pdfjsLib){
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    }
+  }
+  if(!window.pdfjsLib) throw new Error("Die PDF-Bibliothek ist nicht erreichbar.");
+  return await window.pdfjsLib.getDocument({data: await f.arrayBuffer()}).promise;
+}
+
+// Text aus PDFs mit Textebene holen — läuft komplett im Browser
+async function pdfText(doc){
+  const seiten = [];
+  for(let i = 1; i <= doc.numPages; i++){
+    const seite = await doc.getPage(i);
+    const vp = seite.getViewport({scale:1});
+    const inhalt = await seite.getTextContent();
+    const items = inhalt.items.filter(t => t.str && t.str.trim());
+    seiten.push(spaltenText(items, vp.width));
+  }
+  return seiten;
+}
+
+// Zweispaltige Seiten an der freien senkrechten Gasse teilen,
+// sonst vermischen sich zwei Rezepte in jeder Zeile
+function spaltenText(items, breite){
+  if(items.length === 0) return "";
+  const bins = 64, deck = new Array(bins).fill(0);
+  for(const it of items){
+    const x0 = Math.max(0, Math.floor(it.transform[4]/breite*bins));
+    const x1 = Math.min(bins-1, Math.ceil((it.transform[4]+(it.width||0))/breite*bins));
+    for(let k = x0; k <= x1; k++) deck[k] += it.str.length;
+  }
+  // längste leere Gasse im mittleren Bereich suchen
+  let bestA = -1, bestL = 0, lauf = -1;
+  const von = Math.floor(bins*0.2), bis = Math.ceil(bins*0.8);
+  for(let k = von; k <= bis; k++){
+    if(k < bis && deck[k] === 0){ if(lauf < 0) lauf = k; }
+    else if(lauf >= 0){ if(k-lauf > bestL){ bestL = k-lauf; bestA = lauf; } lauf = -1; }
+  }
+  if(bestL >= 3){
+    const grenze = (bestA + bestL/2)/bins*breite;
+    const links  = items.filter(it => it.transform[4] + (it.width||0)/2 <  grenze);
+    const rechts = items.filter(it => it.transform[4] + (it.width||0)/2 >= grenze);
+    if(links.length > items.length*0.2 && rechts.length > items.length*0.2){
+      return zeilenText(links) + "\n" + zeilenText(rechts);
+    }
+  }
+  return zeilenText(items);
+}
+
+// Zeilen über y-Nähe bündeln statt exakt zu runden —
+// PDF-Koordinaten schwanken um Bruchteile
+function zeilenText(items){
+  const sortiert = [...items].sort((p,q) => q.transform[5]-p.transform[5] || p.transform[4]-q.transform[4]);
+  const zeilen = [];
+  let akt = null, aktY = null;
+  for(const it of sortiert){
+    const y = it.transform[5], h = Math.abs(it.height || 10);
+    if(akt && Math.abs(y - aktY) <= Math.max(3, h*0.45)){
+      akt.push(it);
+    } else {
+      akt = [it]; aktY = y; zeilen.push(akt);
+    }
+  }
+  return zeilen
+    .map(z => z.sort((p,q) => p.transform[4]-q.transform[4])
+      .map(t => t.str).join(" ").replace(/\s+/g," ").trim())
+    .filter(Boolean).join("\n");
+}
+
+// Seite als Bild rendern — für eingescannte PDFs ohne Textebene
+async function pdfSeiteBild(doc, nr){
+  const seite = await doc.getPage(nr);
+  const roh = seite.getViewport({scale:1});
+  const skala = Math.min(2, 1500/Math.max(roh.width, roh.height));
+  const vp = seite.getViewport({scale:skala});
+  const c = document.createElement("canvas");
+  c.width = Math.round(vp.width); c.height = Math.round(vp.height);
+  await seite.render({canvasContext:c.getContext("2d"), viewport:vp}).promise;
+  return {type:"image", source:{type:"base64", media_type:"image/jpeg",
+          data: c.toDataURL("image/jpeg", 0.8).split(",")[1]}};
+}
+
+async function wordText(f){
+  if(!window.mammoth) throw new Error("Word-Dateien brauchen die Umwandlungs-Bibliothek — ohne Internetverbindung geht das nicht. Füge den Text solange unten ein.");
+  const puffer = await f.arrayBuffer();
+  const erg = await window.mammoth.extractRawText({arrayBuffer:puffer});
+  const t = (erg.value || "").trim();
+  if(!t) throw new Error(`In „${f.name}“ steht kein lesbarer Text.`);
+  return t;
+}
+
+const ANWEISUNG = `Lies alle vollständigen Kochrezepte aus dem beigefügten Material und gib sie als JSON zurück.
+
+Antworte ausschließlich mit dem JSON-Objekt, ohne Vorwort und ohne Markdown-Backticks:
+{"rezepte":[{"name":"","kategorie":"","portionen":4,"zutaten":[{"menge":200,"einheit":"g","name":"Weizenmehl"}],"schritte":[""]}]}
+
+Regeln:
+- Alles auf Deutsch, auch wenn die Vorlage anderssprachig ist.
+- "einheit" nur aus: g, ml, Stk, EL, TL, Prise, Zehe, Bund, Dose, Msp., nach Bedarf. Rechne kg in g und l in ml um.
+- "menge" ist immer eine Zahl mit Punkt als Dezimaltrennzeichen. Brüche umrechnen: ½ wird 0.5. Ohne Mengenangabe: "einheit":"nach Bedarf" und "menge":0.
+- "name" ist nur die Zutat, ohne Menge. Zubereitungshinweise wie "fein gehackt" dürfen dranbleiben.
+- "portionen" ist die Portionszahl der Vorlage, im Zweifel 4.
+- "kategorie" genau eine aus dieser Liste: Frühstück, Vorspeise, Suppe, Salat, Hauptgericht, Beilage, Soße & Dip, Snack, Dessert, Kuchen & Torten, Gebäck & Brot, Getränk, Vorrat. Passt nichts: Sonstiges.
+- "schritte" sind knappe, vollständige Sätze, ein Arbeitsschritt je Eintrag.
+- Erfasse ALLE Rezepte im Material, nicht nur das erste.
+- Antworte mit kompaktem JSON in einer Zeile, ohne unnötige Leerzeichen.
+- Nimm nur Rezepte auf, deren Zutatenliste im Material steht. Angefangene Rezepte, deren Zutaten erst auf der nächsten Seite kommen, lässt du weg — sie stecken vollständig in einem anderen Abschnitt.
+- Ist gar kein Rezept erkennbar: {"rezepte":[]}`;
+
+async function auslesen(bloecke){
+  const antwort = await fetch("https://api.anthropic.com/v1/messages", {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({
+      model:"claude-sonnet-4-6",
+      max_tokens:1000,
+      messages:[{role:"user", content:bloecke}]
+    })
+  });
+  if(!antwort.ok) throw new Error("Die Auswertung ist fehlgeschlagen. Versuch es gleich noch einmal.");
+  const daten = await antwort.json();
+  const roh = (daten.content || []).map(t => t.type === "text" ? t.text : "").join("").trim();
+  const sauber = roh.replace(/^```(?:json)?/i,"").replace(/```$/,"").trim();
+  let liste;
+  try{
+    const obj = JSON.parse(sauber);
+    if(obj.fehler) throw new Error(obj.fehler);
+    liste = Array.isArray(obj.rezepte) ? obj.rezepte : (obj.name || obj.zutaten ? [obj] : []);
+  }catch(e){
+    // Antwort am Tokenlimit abgeschnitten: vollständige Rezeptobjekte retten
+    liste = retteRezepte(sauber);
+    if(liste.length === 0) throw new Error("Die Antwort war nicht lesbar.");
+  }
+  return liste.map(normalisiere).filter(r => r.zutaten.length > 0);
+}
+
+// Aus kaputtem JSON alle in sich geschlossenen {...}-Objekte herausschneiden
+function retteRezepte(text){
+  const erg = [];
+  let i = text.indexOf("[");
+  if(i < 0) i = 0;
+  for(;;){
+    const a = text.indexOf("{", i);
+    if(a < 0) break;
+    let tiefe = 0, inStr = false, esc = false, b = -1;
+    for(let j = a; j < text.length; j++){
+      const c = text[j];
+      if(inStr){
+        if(esc) esc = false;
+        else if(c === "\\") esc = true;
+        else if(c === '"') inStr = false;
+      } else {
+        if(c === '"') inStr = true;
+        else if(c === "{") tiefe++;
+        else if(c === "}"){ tiefe--; if(tiefe === 0){ b = j; break; } }
+      }
+    }
+    if(b < 0) break;
+    try{
+      const o = JSON.parse(text.slice(a, b+1));
+      if(o && (o.name || o.zutaten)) erg.push(o);
+    }catch(e){}
+    i = b + 1;
+  }
+  return erg;
+}
+
+// Mengen und Einheiten auf das eigene Raster bringen
+const EINHEIT_KARTE = {
+  "stück":"Stk","stueck":"Stk","st":"Stk","stk":"Stk","päckchen":"Stk","packung":"Stk",
+  "zehen":"Zehe","zehe":"Zehe","bund":"Bund","dose":"Dose","dosen":"Dose",
+  "prise":"Prise","prisen":"Prise","msp":"Msp.","messerspitze":"Msp.",
+  "el":"EL","esslöffel":"EL","tl":"TL","teelöffel":"TL",
+  "pck":"Stk","pk":"Stk","btl":"Stk","beutel":"Stk","scheibe":"Stk","scheiben":"Stk",
+  "stange":"Stk","stangen":"Stk","kopf":"Stk","knolle":"Stk","blatt":"Stk","blätter":"Stk",
+  "g":"g","gramm":"g","ml":"ml","milliliter":"ml"
+};
+const BRUCH_ZEICHEN = {"½":0.5,"¼":0.25,"¾":0.75,"⅓":1/3,"⅔":2/3,"⅛":0.125};
+
+function leseMenge(v){
+  if(typeof v === "number" && isFinite(v)) return v;
+  let s = String(v || "").trim();
+  if(!s) return NaN;
+  for(const z in BRUCH_ZEICHEN) s = s.replace(z, " "+BRUCH_ZEICHEN[z]);
+  s = s.replace(",", ".");
+  const bruch = s.match(/^(\d+)?\s*(\d+)\s*\/\s*(\d+)/);
+  if(bruch) return (+(bruch[1]||0)) + (+bruch[2])/(+bruch[3]);
+  const teile = s.split(/\s+/).map(parseFloat).filter(n => isFinite(n));
+  return teile.length ? teile.reduce((a,b) => a+b, 0) : NaN;
+}
+
+function normalisiere(obj){
+  const zutaten = (obj.zutaten || []).map(z => {
+    let menge = leseMenge(z.menge);
+    let einheit = String(z.einheit || "").trim();
+    const kurz = einheit.toLowerCase().replace(/\./g,"");
+    if(kurz === "kg"){ menge *= 1000; einheit = "g"; }
+    else if(kurz === "l" || kurz === "liter"){ menge *= 1000; einheit = "ml"; }
+    else if(kurz === "tasse" || kurz === "tassen"){ menge *= 200; einheit = "ml"; }
+    else einheit = EINHEIT_KARTE[kurz] || (EINHEITEN.includes(einheit) ? einheit : "nach Bedarf");
+    if(!isFinite(menge) || menge <= 0) einheit = "nach Bedarf";
+    return {menge: isFinite(menge) ? Math.round(menge*100)/100 : 0, einheit, name: String(z.name || "").trim()};
+  }).filter(z => z.name);
+
+  return {
+    name: String(obj.name || "").trim() || "Importiertes Rezept",
+    kategorie: normKategorie(obj.kategorie),
+    portionen: Math.max(1, parseInt(obj.portionen) || 4),
+    zutaten,
+    schritte: (obj.schritte || []).map(s => String(s).trim()).filter(Boolean),
+    allergene: []
+  };
+}
+
+/* Notlösung ohne Netz: Rezepttext mit Regeln zerlegen.
+   Weniger treffsicher als das Auslesen über Claude, aber offline und sofort. */
+const ZEILEN_MENGE = /^([0-9]+(?:[.,][0-9]+)?(?:\s*[-–]\s*[0-9]+(?:[.,][0-9]+)?)?|[½¼¾⅓⅔⅛]|[0-9]+\s*[½¼¾⅓⅔⅛]|[0-9]+\s*\/\s*[0-9]+)\s*([A-Za-zÄÖÜäöüß.]{1,13})?\s+(.{2,})$/;
+const OHNE_MENGE = /^(etwas|eine prise|prise|nach belieben|nach bedarf|salz|pfeffer)\b/i;
+
+function lokalLesen(text){
+  const roh = text.split(/\r?\n/).map(z => z.replace(/^[-–•*·]\s*/, "").trim());
+  const zeilen = roh.filter(Boolean);
+  if(zeilen.length === 0) throw new Error("In der Datei steht kein lesbarer Text.");
+
+  const pm = text.match(/(\d{1,3})\s*(?:portion|portionen|personen|person|stück|gläser)/i);
+  const portionen = pm ? Math.min(500, Math.max(1, parseInt(pm[1]))) : 4;
+
+  const iZut = zeilen.findIndex(z => /^zutaten\b/i.test(z));
+  const iZub = zeilen.findIndex(z => /^(zubereitung|anleitung|arbeitsschritte|schritte|so gehts|so geht.s)\b/i.test(z));
+
+  let name = "";
+  for(const z of zeilen){
+    if(/^(zutaten|zubereitung|rezept|anleitung)\b/i.test(z)) continue;
+    if(ZEILEN_MENGE.test(z)) continue;
+    if(z.length <= 70){ name = z.replace(/[:.]$/,""); break; }
+  }
+
+  const zutaten = [], schritte = [];
+  zeilen.forEach((z, i) => {
+    if(/^(zutaten|zubereitung|anleitung|arbeitsschritte|schritte)\b/i.test(z)) return;
+    if(z === name) return;
+    const imZubTeil = iZub >= 0 && i > iZub;
+    const imZutTeil = iZut >= 0 && i > iZut && (iZub < 0 || i < iZub);
+    const treffer = z.match(ZEILEN_MENGE);
+
+    if(treffer && !imZubTeil){
+      let menge = leseMenge(treffer[1]);
+      let wort = (treffer[2] || "").toLowerCase().replace(/\./g,"");
+      let rest = treffer[3].trim();
+      let einheit = EINHEIT_KARTE[wort];
+      if(wort === "kg"){ menge *= 1000; einheit = "g"; }
+      else if(wort === "l" || wort === "liter"){ menge *= 1000; einheit = "ml"; }
+      else if(!einheit){ rest = ((treffer[2] || "") + " " + rest).trim(); einheit = "Stk"; }
+      zutaten.push({menge: Math.round(menge*100)/100, einheit, name: rest});
+      return;
+    }
+    if(imZutTeil && z.length < 45 && !/[.!?]$/.test(z)){
+      zutaten.push({menge:0, einheit:"nach Bedarf", name:z});
+      return;
+    }
+    if(OHNE_MENGE.test(z) && z.length < 45 && !imZubTeil){
+      zutaten.push({menge:0, einheit:"nach Bedarf", name:z});
+      return;
+    }
+    if(imZubTeil || z.length > 45){
+      schritte.push(z.replace(/^\d+[.)]\s*/, ""));
+    }
+  });
+
+  if(zutaten.length === 0) throw new Error("Aus dem Text ließ sich keine Zutatenliste herauslesen. Trage das Rezept bitte von Hand ein.");
+  return {name: name || "Importiertes Rezept", kategorie:"Sonstiges", portionen, zutaten, schritte, allergene:[]};
+}
+
+function melde(text, art){
+  const w = $("#imp-status");
+  w.innerHTML = "";
+  if(!text) return;
+  const d = el("div","status" + (art === "fehler" ? " fehler" : ""));
+  if(art === "laeuft") d.append(el("div","spinner"));
+  d.append(el("span",null,text));
+  w.append(d);
+}
+
+function zeigeFortschritt(fertig, gesamt, was){
+  const w = $("#imp-status");
+  w.innerHTML = "";
+  const d = el("div","status");
+  const innen = el("div"); innen.style.flex = "1";
+  innen.append(el("div",null,was));
+  const bal = el("div","balkenlauf");
+  const i = el("i"); i.style.width = Math.round(fertig/Math.max(1,gesamt)*100)+"%";
+  bal.append(i);
+  const z = el("div","laufzeile");
+  z.append(el("span",null,`${fertig} von ${gesamt}`),
+           el("span",null,`${funde.length} Rezepte gefunden`));
+  innen.append(bal, z);
+  d.append(el("div","spinner"), innen);
+  w.append(d);
+}
+
+function zeichneDateien(){
+  const ul = $("#dateien");
+  ul.innerHTML = "";
+  importDateien.forEach((f, i) => {
+    const li = el("li");
+    li.append(el("span","typ", KUERZEL[dateiTyp(f)] || "DATEI"));
+    const n = el("span",null,f.name); n.style.overflow = "hidden"; n.style.textOverflow = "ellipsis";
+    n.style.whiteSpace = "nowrap";
+    li.append(n);
+    const x = el("button","weg2","✕"); x.type = "button"; x.title = "Entfernen";
+    x.onclick = () => {importDateien.splice(i,1); zeichneDateien();};
+    li.append(x);
+    ul.append(li);
+  });
+}
+
+function nimmDateien(liste){
+  const abgelehnt = [];
+  for(const f of liste){
+    const t = dateiTyp(f);
+    if(t === "altword"){ abgelehnt.push(`${f.name} — bitte als .docx speichern`); continue; }
+    if(!t){ abgelehnt.push(`${f.name} — Format wird nicht gelesen`); continue; }
+    importDateien.push(f);
+  }
+  zeichneDateien();
+  melde(abgelehnt.length ? abgelehnt.join(" · ") : "", "fehler");
+}
+
+/* --------------------------------------------------------------------
+   Sammlungen zerlegen: aus einem langen Text einzelne Rezepte schneiden
+   -------------------------------------------------------------------- */
+function titelZeileVor(zeilen, ab){
+  let t = ab - 1, gesehen = 0;
+  while(t >= 0 && gesehen < 6){
+    const z = zeilen[t].trim();
+    if(z){
+      gesehen++;
+      if(z.length <= 70 && !ZEILEN_MENGE.test(z) && !/portion|person|zutaten/i.test(z)) return t;
+    }
+    t--;
+  }
+  return ab;
+}
+
+function teileText(text){
+  const zeilen = text.split(/\r?\n/).map(z => z.replace(/\f/g,"").trimEnd());
+
+  // Erster Versuch: das Wort „Zutaten“ trennt die Rezepte
+  let starts = [];
+  zeilen.forEach((z,i) => {
+    const t = z.trim();
+    if(t.length <= 45 && /(^|[\s:•·])zutaten([\s:]|$)/i.test(t)) starts.push(titelZeileVor(zeilen, i));
+  });
+
+  // Zweiter Versuch: kurze Überschrift, gefolgt von mehreren Mengenzeilen
+  if(starts.length < 2){
+    starts = [];
+    for(let i = 0; i < zeilen.length; i++){
+      const z = zeilen[i].trim();
+      if(!z || z.length > 70 || ZEILEN_MENGE.test(z) || /[.!?:]$/.test(z)) continue;
+      // Eine Überschrift steht am Anfang, nach einer Leerzeile
+      // oder nach dem Schlusssatz des vorigen Rezepts
+      const vor = i > 0 ? zeilen[i-1].trim() : "";
+      if(vor && !/[.!?]$/.test(vor)) continue;
+      let treffer = 0;
+      for(let j = i+1; j < Math.min(zeilen.length, i+15); j++){
+        if(ZEILEN_MENGE.test(zeilen[j].trim())) treffer++;
+      }
+      if(treffer >= 3 && (starts.length === 0 || i - starts[starts.length-1] > 3)) starts.push(i);
+    }
+  }
+
+  starts = [...new Set(starts)].sort((a,b) => a-b);
+  if(starts.length < 2) return [text.trim()].filter(Boolean);
+
+  const stuecke = [];
+  for(let k = 0; k < starts.length; k++){
+    const bis = k+1 < starts.length ? starts[k+1] : zeilen.length;
+    const st = zeilen.slice(starts[k], bis).join("\n").trim();
+    if(st.length > 40) stuecke.push(st);
+  }
+  return stuecke.length ? stuecke : [text.trim()];
+}
+
+/* --------------------------------------------------------------------
+   Stapelimport
+   -------------------------------------------------------------------- */
+let importAbbruch = false, funde = [], fundIndex = new Map();
+
+// Fenster über langen Text legen, an Zeilengrenzen geschnitten, mit Überlappung
+function fenster(text, breite, ueberlappung){
+  breite = breite || 4200; ueberlappung = ueberlappung || 1400;
+  text = text.trim();
+  if(text.length <= breite*1.25) return text ? [text] : [];
+  const st = [];
+  let a = 0;
+  for(;;){
+    let b = Math.min(text.length, a + breite);
+    if(b < text.length){
+      const nl = text.lastIndexOf("\n", b);
+      if(nl > a + breite*0.5) b = nl;
+    }
+    st.push(text.slice(a, b));
+    if(b >= text.length) break;
+    a = Math.max(a + 1, b - ueberlappung);
+  }
+  return st;
+}
+
+// Dubletten aus überlappenden Fenstern zusammenführen; die vollständigere Fassung gewinnt
+function merkeFund(r){
+  const k = normal(r.name).replace(/\s+/g," ");
+  if(!k || k === "importiertes rezept" && r.zutaten.length === 0) return;
+  const gewicht = r.zutaten.length*2 + r.schritte.length;
+  const alt = fundIndex.get(k);
+  if(alt == null){
+    fundIndex.set(k, funde.length);
+    funde.push(r);
+  } else if(gewicht > funde[alt].zutaten.length*2 + funde[alt].schritte.length){
+    funde[alt] = r;
+  }
+}
+
+function importZustand(z){
+  const start = $("#imp-start"), abbruch = $("#imp-abbruch");
+  $("#imp-eingabe").hidden = (z !== "eingabe");
+  $("#imp-funde").hidden   = (z !== "funde");
+  $("#imp-fuss").hidden    = (z !== "eingabe");
+  $("#imp-schliessen").hidden = (z === "laeuft");
+  if(z === "eingabe"){
+    start.hidden = false; start.disabled = false; start.textContent = "Rezepte auslesen";
+    start.onclick = starteImport;
+    abbruch.textContent = "Abbrechen";
+    abbruch.onclick = () => $("#import").close();
+  } else if(z === "laeuft"){
+    start.hidden = true;
+    abbruch.textContent = "Auslesen abbrechen";
+    abbruch.onclick = () => {importAbbruch = true;};
+  } else {
+    start.hidden = false; start.disabled = false;
+    start.onclick = uebernimmFunde;
+    abbruch.textContent = "Verwerfen";
+    abbruch.onclick = () => {funde = []; melde(""); importZustand("eingabe");};
+  }
+}
+
+async function starteImport(){
+  const eingefuegt = $("#imp-text").value.trim();
+  if(importDateien.length === 0 && !eingefuegt){
+    melde("Wähle eine Datei aus oder füge Text ein.", "fehler");
+    return;
+  }
+  importAbbruch = false; funde = []; fundIndex = new Map();
+  importZustand("laeuft");
+
+  try{
+    melde("Dateien werden vorbereitet …", "laeuft");
+
+    const textJobs = [];   // Textfenster, notfalls im Browser lesbar
+    const bildJobs = [];   // Seitenbündel für das Auslesen über Claude
+
+    for(const f of importDateien){
+      const t = dateiTyp(f);
+      if(t === "bild"){
+        bildJobs.push({bloecke:[await bildBlock(f)], quelle:f.name});
+      } else if(t === "pdf"){
+        const doc = await pdfOeffnen(f);
+        const seiten = await pdfText(doc);
+        const zeichen = seiten.join("").replace(/\s/g,"").length;
+        if(zeichen > 60 * doc.numPages){
+          // Textebene vorhanden: Fenster aus je 2 Seiten, um 1 Seite versetzt.
+          // So steht jedes Rezept, das auf eine Seite passt, komplett in einem Fenster.
+          if(doc.numPages === 1){
+            textJobs.push(seiten[0]);
+          } else {
+            for(let i = 0; i < doc.numPages - 1; i++){
+              if(seiten[i].length + seiten[i+1].length < 20) continue;
+              textJobs.push(seiten[i] + "\n\n" + seiten[i+1]);
+            }
+          }
+        } else {
+          // Eingescannt: Seiten rendern, Bündel aus je 2 Seiten, um 1 versetzt
+          melde(`„${f.name}“ ist ein Scan — ${doc.numPages} Seiten werden aufbereitet.`, "laeuft");
+          for(let i = 1; i <= Math.max(1, doc.numPages - 1); i++){
+            if(importAbbruch) break;
+            const bl = [await pdfSeiteBild(doc, i)];
+            if(i + 1 <= doc.numPages) bl.push(await pdfSeiteBild(doc, i + 1));
+            bildJobs.push({bloecke:bl, quelle:`${f.name}, Seite ${i}–${Math.min(i+1, doc.numPages)}`});
+          }
+        }
+      } else if(t === "word"){
+        textJobs.push(...fenster(await wordText(f)));
+      } else if(t === "text"){
+        textJobs.push(...fenster(await f.text()));
+      }
+    }
+    if(eingefuegt) textJobs.push(...fenster(eingefuegt));
+
+    const jobs = [
+      ...textJobs.map(t => ({bloecke:[{type:"text", text:t}], text:t})),
+      ...bildJobs
+    ];
+    if(jobs.length === 0) throw new Error("Aus dem Material ließ sich nichts herauslesen.");
+    if(jobs.length > 300) throw new Error(`Das wären ${jobs.length} Abschnitte auf einmal. Teile die Sammlung bitte auf.`);
+
+    let ohneNetz = false, fehler = 0;
+
+    for(let i = 0; i < jobs.length; i++){
+      if(importAbbruch) break;
+      zeigeFortschritt(i, jobs.length, ohneNetz ? "Wird im Browser gelesen …" : "Rezepte werden ausgelesen …");
+      const job = jobs[i];
+      let ergebnis = [];
+
+      if(!ohneNetz){
+        try{
+          ergebnis = await auslesen([...job.bloecke, {type:"text", text:ANWEISUNG}]);
+        }catch(e){
+          if(/failed to fetch|networkerror|load failed/i.test(String(e.message))) ohneNetz = true;
+          else fehler++;
+        }
+      }
+      if(ohneNetz){
+        if(job.text){
+          for(const st of teileText(job.text)){
+            try{ ergebnis.push(lokalLesen(st)); }catch(e){}
+          }
+          if(ergebnis.length === 0) fehler++;
+        } else fehler++;
+      }
+
+      ergebnis.forEach(merkeFund);
+    }
+
+    if(funde.length === 0){
+      throw new Error(ohneNetz
+        ? fehlertext({message:"failed to fetch"})
+        : "Es waren keine vollständigen Rezepte erkennbar. Bei Fotos hilft mehr Licht und ein gerader Blick auf die Seite.");
+    }
+    melde("");
+    zeigeFunde({abgebrochen:importAbbruch, fehler, ohneNetz});
+  }catch(e){
+    melde(e.message || "Der Import hat nicht geklappt.", "fehler");
+    importZustand("eingabe");
+  }
+}
+
+function zeigeFunde(info){
+  const w = $("#imp-funde");
+  w.innerHTML = "";
+
+  const kopf = el("div","fundkopf");
+  kopf.append(el("h3",null, funde.length === 1 ? "1 Rezept gefunden" : `${funde.length} Rezepte gefunden`));
+  const schalter = el("div"); schalter.style.display = "flex"; schalter.style.gap = "6px";
+  const alle  = el("button","knopf leise klein","Alle");  alle.type = "button";
+  const keins = el("button","knopf leise klein","Keins"); keins.type = "button";
+  alle.onclick  = () => {w.querySelectorAll(".fund input").forEach(c => c.checked = true);  zaehleAuswahl();};
+  keins.onclick = () => {w.querySelectorAll(".fund input").forEach(c => c.checked = false); zaehleAuswahl();};
+  schalter.append(alle, keins);
+  kopf.append(schalter);
+  w.append(kopf);
+
+  const ul = el("ul","fund");
+  funde.forEach((r, i) => {
+    const li = el("li");
+    const cb = document.createElement("input");
+    cb.type = "checkbox"; cb.checked = true; cb.dataset.i = i;
+    cb.setAttribute("aria-label", "Übernehmen: " + r.name);
+    cb.onchange = zaehleAuswahl;
+    const txt = el("div","txt");
+    txt.append(el("b",null,r.name));
+    const duenn = r.zutaten.length < 3 || r.schritte.length === 0;
+    const s = el("small", duenn ? "warn" : null);
+    s.textContent = `${normKategorie(r.kategorie)} · ${r.portionen} P · ${r.zutaten.length} Zutaten · `
+      + (r.schritte.length ? `${r.schritte.length} Schritte` : "keine Zubereitung erkannt");
+    txt.append(s);
+    li.append(cb, txt);
+    ul.append(li);
+  });
+  w.append(ul);
+
+  const notizen = [];
+  if(info.abgebrochen) notizen.push("Der Durchlauf wurde abgebrochen, es fehlen also womöglich Rezepte.");
+  if(info.ohneNetz)    notizen.push("Ohne Verbindung im Browser gelesen — Mengen bitte besonders genau prüfen.");
+  if(info.fehler)      notizen.push(`${info.fehler} Abschnitte ließen sich nicht lesen.`);
+  notizen.push("Übernommene Rezepte tragen einen Prüfhinweis, bis du sie einmal gespeichert hast.");
+  w.append(el("p","import-fuss", notizen.join(" ")));
+
+  importZustand("funde");
+  zaehleAuswahl();
+}
+
+function zaehleAuswahl(){
+  const n = $("#imp-funde").querySelectorAll(".fund input:checked").length;
+  const b = $("#imp-start");
+  b.textContent = n === 1 ? "1 Rezept übernehmen" : `${n} Rezepte übernehmen`;
+  b.disabled = n === 0;
+}
+
+async function uebernimmFunde(){
+  const gewaehlt = [...$("#imp-funde").querySelectorAll(".fund input:checked")].map(c => funde[+c.dataset.i]);
+  if(gewaehlt.length === 0) return;
+  const zeit = Date.now();
+  const neue = gewaehlt.map((r, i) => ({...r, id:"r"+(zeit+i), importiert:true, geprueft:false}));
+  rezepte.unshift(...neue);
+  await sichern();
+
+  $("#import").close();
+  funde = []; importDateien = []; zeichneDateien(); $("#imp-text").value = "";
+  melde(""); importZustand("eingabe");
+  katFilter = null; zeichneFilter();
+  oeffne(neue[0].id);
+}
+
+// Netzfehler in eine Erklärung übersetzen, mit der man etwas anfangen kann
+function fehlertext(e){
+  const m = String(e && e.message || "");
+  if(/failed to fetch|networkerror|load failed|fetch/i.test(m)){
+    return "Das Auslesen von Bildern läuft über Claude und ist gerade nicht erreichbar. "
+         + "Das klappt nur, wenn die App im Claude-Fenster läuft und Internet da ist — "
+         + "eine heruntergeladene Kopie kommt nicht heran. Word-, Text- und PDF-Dateien mit Textebene "
+         + "liest die App auch ohne Verbindung, ebenso eingefügten Text.";
+  }
+  return m || "Der Import hat nicht geklappt.";
+}
+
+/* ====================================================================
+   9. Start
+   ==================================================================== */
+(function init(){
+  // Allergen-Gitter
+  const gitter = $("#alg-gitter");
+  for(const a of ALLERGENE){
+    const l = document.createElement("label"); l.dataset.nr = a.nr;
+    const cb = document.createElement("input"); cb.type = "checkbox"; cb.value = a.nr;
+    const nr = el("b","mono", String(a.nr).padStart(2,"0"));
+    const t = el("span","txt", a.name);
+    l.append(cb, nr, t);
+    gitter.append(l);
+  }
+  // Vorschläge
+  const dl = $("#zutat-vorschlaege");
+  for(const e of DB){ const o = document.createElement("option"); o.value = e.name; dl.append(o); }
+
+  $("#btn-neu").onclick = () => editor(null);
+
+  // Import
+  $("#btn-import").onclick = () => {melde(""); importZustand("eingabe"); $("#import").showModal();};
+  $("#imp-schliessen").onclick = () => $("#import").close();
+  importZustand("eingabe");
+  const ablage = $("#ablage"), wahl = $("#dateiwahl");
+  ablage.onclick = () => wahl.click();
+  ablage.onkeydown = e => {if(e.key === "Enter" || e.key === " "){e.preventDefault(); wahl.click();}};
+  wahl.onchange = () => {nimmDateien([...wahl.files]); wahl.value = "";};
+  ablage.addEventListener("dragover", e => {e.preventDefault(); ablage.classList.add("drueber");});
+  ablage.addEventListener("dragleave", () => ablage.classList.remove("drueber"));
+  ablage.addEventListener("drop", e => {
+    e.preventDefault(); ablage.classList.remove("drueber");
+    nimmDateien([...e.dataTransfer.files]);
+  });
+  $("#btn-zeile").onclick = () => $("#zeilen").append(zutatZeile(null));
+  $("#btn-abbruch").onclick = $("#btn-abbruch2").onclick = () => $("#editor").close();
+  $("#form").addEventListener("submit", speichere);
+  $("#suche").addEventListener("input", zeichneListe);
+
+  // Datensicherung
+  $("#btn-export").onclick = () => {
+    const blob = new Blob(
+      [JSON.stringify({format:"kuechenkarte", stand:1, exportiert:new Date().toISOString(), rezepte}, null, 1)],
+      {type:"application/json"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "kuechenkarte-rezepte.json";
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+  };
+  const sichWahl = $("#sicherungswahl");
+  $("#btn-einlesen").onclick = () => sichWahl.click();
+  sichWahl.onchange = async () => {
+    const f = sichWahl.files[0]; sichWahl.value = "";
+    if(!f) return;
+    try{
+      const obj = JSON.parse(await f.text());
+      const rein = Array.isArray(obj) ? obj : obj.rezepte;
+      if(!Array.isArray(rein)) throw new Error("kein Rezeptformat");
+      let neu = 0, ersetzt = 0;
+      for(const r of rein){
+        if(!r || !r.name || !Array.isArray(r.zutaten)) continue;
+        const i = rezepte.findIndex(x => x.id === r.id);
+        if(i >= 0){ rezepte[i] = r; ersetzt++; }
+        else { rezepte.push(r); neu++; }
+      }
+      await sichern();
+      katFilter = null; zeichneFilter(); zeichneListe(); zeichneKarte();
+      alert(`Sicherung eingelesen: ${neu} neu, ${ersetzt} aktualisiert.`);
+    }catch(e){
+      alert("Die Datei ließ sich nicht als Rezeptsicherung lesen.");
+    }
+  };
+
+  laden().then(() => { zeichneFilter(); zeichneListe(); zeichneKarte(); });
+})();
+</script>
+</body>
+</html>
