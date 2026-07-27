@@ -351,7 +351,8 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
     <div class="rail-daten">
       Daten:
       <button type="button" id="btn-export">exportieren</button> ·
-      <button type="button" id="btn-einlesen">einlesen</button>
+      <button type="button" id="btn-einlesen">einlesen</button> ·
+      <button type="button" id="btn-leeren">alles löschen</button>
       <input type="file" id="sicherungswahl" accept=".json,application/json" hidden>
     </div>
   </aside>
@@ -750,6 +751,14 @@ async function laden(){
     }
   }catch(e){ rezepte = []; }
   if(!Array.isArray(rezepte) || rezepte.length === 0) rezepte = beispiele();
+  rezepte = rezepte.map(roh => {
+    const r = normalisiere(roh);
+    r.id = roh.id || ("r" + Date.now() + Math.floor(Math.random()*1e4));
+    r.allergene = Array.isArray(roh.allergene) ? roh.allergene.filter(n => Number.isInteger(n)) : [];
+    if(roh.importiert) r.importiert = true;
+    if(roh.geprueft !== undefined) r.geprueft = !!roh.geprueft;
+    return r;
+  });
 }
 
 async function sichern(){
@@ -1344,21 +1353,59 @@ function spaltenText(items, breite){
 // Zeilen über y-Nähe bündeln statt exakt zu runden —
 // PDF-Koordinaten schwanken um Bruchteile
 function zeilenText(items){
-  const sortiert = [...items].sort((p,q) => q.transform[5]-p.transform[5] || p.transform[4]-q.transform[4]);
-  const zeilen = [];
+  // Doppelt gezeichneten Text entfernen (Füllung + Kontur an gleicher Stelle)
+  const gesehen = new Set();
+  const einmalig = items.filter(it => {
+    const k = it.str + "|" + Math.round(it.transform[4]*2) + "|" + Math.round(it.transform[5]*2);
+    if(gesehen.has(k)) return false;
+    gesehen.add(k); return true;
+  });
+
+  const sortiert = [...einmalig].sort((p,q) => q.transform[5]-p.transform[5] || p.transform[4]-q.transform[4]);
+  const buendel = [];
   let akt = null, aktY = null;
   for(const it of sortiert){
     const y = it.transform[5], h = Math.abs(it.height || 10);
     if(akt && Math.abs(y - aktY) <= Math.max(3, h*0.45)){
       akt.push(it);
     } else {
-      akt = [it]; aktY = y; zeilen.push(akt);
+      akt = [it]; aktY = y; buendel.push(akt);
     }
   }
-  return zeilen
-    .map(z => z.sort((p,q) => p.transform[4]-q.transform[4])
-      .map(t => t.str).join(" ").replace(/\s+/g," ").trim())
-    .filter(Boolean).join("\n");
+
+  // Schriftgrößen: was deutlich größer als der Fließtext ist, wird als Überschrift markiert
+  const gewichte = [];
+  for(const it of einmalig){
+    const h = Math.abs(it.height || 0);
+    if(h > 0) gewichte.push([h, it.str.length]);
+  }
+  gewichte.sort((a,b) => a[0]-b[0]);
+  const summe = gewichte.reduce((a,g) => a+g[1], 0);
+  let lauf = 0, mitte = 10;
+  for(const [h,g] of gewichte){ lauf += g; if(lauf >= summe/2){ mitte = h; break; } }
+
+  const zeilen = buendel.map(z => {
+    const teile = z.sort((p,q) => p.transform[4]-q.transform[4]);
+    // Leerzeichen nur bei echter Lücke einfügen — gesperrte Überschriften
+    // („V A R I A T I O N E N“) bleiben sonst ein Wort
+    let text = "", endeX = null, h = 0;
+    for(const t of teile){
+      h = Math.max(h, Math.abs(t.height || 0));
+      const x = t.transform[4];
+      if(text){
+        const luecke = x - endeX;
+        if(luecke > Math.max(1.2, (t.height || 10) * 0.24)) text += " ";
+      }
+      text += t.str;
+      endeX = x + (t.width || t.str.length * (t.height || 10) * 0.5);
+    }
+    text = text.replace(/\s+/g," ").trim();
+    if(!text) return "";
+    const istUeberschrift = h > mitte * 1.18 && text.length <= 60 && !ZEILEN_MENGE.test(text);
+    return (istUeberschrift ? "## " : "") + text;
+  }).filter(Boolean);
+
+  return zeilen.join("\n");
 }
 
 // Seite als Bild rendern — für eingescannte PDFs ohne Textebene
@@ -1390,6 +1437,7 @@ Antworte ausschließlich mit dem JSON-Objekt, ohne Vorwort und ohne Markdown-Bac
 
 Regeln:
 - Alles auf Deutsch, auch wenn die Vorlage anderssprachig ist.
+- Zeilen, die mit ## beginnen, sind in der Vorlage groß gesetzte Überschriften — meist Rezeptnamen. Das ## gehört nicht zum Namen.
 - "einheit" nur aus: g, ml, Stk, EL, TL, Prise, Zehe, Bund, Dose, Msp., nach Bedarf. Rechne kg in g und l in ml um.
 - "menge" ist immer eine Zahl mit Punkt als Dezimaltrennzeichen. Brüche umrechnen: ½ wird 0.5. Ohne Mengenangabe: "einheit":"nach Bedarf" und "menge":0.
 - "name" ist nur die Zutat, ohne Menge. Zubereitungshinweise wie "fein gehackt" dürfen dranbleiben.
@@ -1512,7 +1560,17 @@ const ZEILEN_MENGE = /^([0-9]+(?:[.,][0-9]+)?(?:\s*[-–]\s*[0-9]+(?:[.,][0-9]+)
 const OHNE_MENGE = /^(etwas|eine prise|prise|nach belieben|nach bedarf|salz|pfeffer)\b/i;
 
 function lokalLesen(text){
-  const roh = text.split(/\r?\n/).map(z => z.replace(/^[-–•*·]\s*/, "").trim());
+  const marken = [];
+  const roh = text.split(/\r?\n/).map(z => {
+    let t = z.trim();
+    const istMarke = /^## /.test(t);
+    t = t.replace(/^#+\s*/, "");
+    // Aufzählungszeichen, auch aus Symbolschriften falsch übersetzte („u Nocken formen …“)
+    t = t.replace(/^[-–—•*·▪♦›»◦]\s+/, "");
+    t = t.replace(/^[uo]\s+(?=[A-ZÄÖÜ0-9])/, "");
+    if(istMarke && t) marken.push(t);
+    return t;
+  });
   const zeilen = roh.filter(Boolean);
   if(zeilen.length === 0) throw new Error("In der Datei steht kein lesbarer Text.");
 
@@ -1522,12 +1580,13 @@ function lokalLesen(text){
   const iZut = zeilen.findIndex(z => /^zutaten\b/i.test(z));
   const iZub = zeilen.findIndex(z => /^(zubereitung|anleitung|arbeitsschritte|schritte|so gehts|so geht.s)\b/i.test(z));
 
-  let name = "";
-  for(const z of zeilen){
+  let name = marken.find(m => !/^(zutaten|zubereitung|rezept|anleitung|tipp|variation)/i.test(m)) || "";
+  if(!name) for(const z of zeilen){
     if(/^(zutaten|zubereitung|rezept|anleitung)\b/i.test(z)) continue;
     if(ZEILEN_MENGE.test(z)) continue;
     if(z.length <= 70){ name = z.replace(/[:.]$/,""); break; }
   }
+  name = name.replace(/[:.]$/,"");
 
   const zutaten = [], schritte = [];
   zeilen.forEach((z, i) => {
@@ -1556,7 +1615,7 @@ function lokalLesen(text){
       zutaten.push({menge:0, einheit:"nach Bedarf", name:z});
       return;
     }
-    if(imZubTeil || z.length > 45){
+    if(imZubTeil || z.length > 45 || (/[.!?]$/.test(z) && z.length > 15)){
       schritte.push(z.replace(/^\d+[.)]\s*/, ""));
     }
   });
@@ -1639,14 +1698,29 @@ function titelZeileVor(zeilen, ab){
 function teileText(text){
   const zeilen = text.split(/\r?\n/).map(z => z.replace(/\f/g,"").trimEnd());
 
-  // Erster Versuch: das Wort „Zutaten“ trennt die Rezepte
+  // Erster Versuch: als Überschrift markierte Zeilen (## aus der PDF-Schriftgröße),
+  // aber nur, wenn danach Mengenzeilen folgen — Seitenköpfe fallen so heraus
   let starts = [];
   zeilen.forEach((z,i) => {
-    const t = z.trim();
-    if(t.length <= 45 && /(^|[\s:•·])zutaten([\s:]|$)/i.test(t)) starts.push(titelZeileVor(zeilen, i));
+    if(!/^## /.test(z.trim())) return;
+    let treffer = 0;
+    for(let j = i+1; j < Math.min(zeilen.length, i+25); j++){
+      if(/^## /.test(zeilen[j].trim())) break;
+      if(ZEILEN_MENGE.test(zeilen[j].trim())) treffer++;
+    }
+    if(treffer >= 2) starts.push(i);
   });
 
-  // Zweiter Versuch: kurze Überschrift, gefolgt von mehreren Mengenzeilen
+  // Zweiter Versuch: das Wort „Zutaten“ trennt die Rezepte
+  if(starts.length < 2){
+    starts = [];
+    zeilen.forEach((z,i) => {
+      const t = z.trim();
+      if(t.length <= 45 && /(^|[\s:•·])zutaten([\s:]|$)/i.test(t)) starts.push(titelZeileVor(zeilen, i));
+    });
+  }
+
+  // Dritter Versuch: kurze Überschrift, gefolgt von mehreren Mengenzeilen
   if(starts.length < 2){
     starts = [];
     for(let i = 0; i < zeilen.length; i++){
@@ -1967,6 +2041,12 @@ function fehlertext(e){
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 5000);
   };
+  $("#btn-leeren").onclick = async () => {
+    if(!confirm(`Wirklich alle ${rezepte.length} Rezepte löschen? Vorher lohnt ein Export als Sicherung.`)) return;
+    rezepte = []; aktivId = null; katFilter = null;
+    await sichern();
+    zeichneFilter(); zeichneListe(); zeichneKarte();
+  };
   const sichWahl = $("#sicherungswahl");
   $("#btn-einlesen").onclick = () => sichWahl.click();
   sichWahl.onchange = async () => {
@@ -1977,8 +2057,14 @@ function fehlertext(e){
       const rein = Array.isArray(obj) ? obj : obj.rezepte;
       if(!Array.isArray(rein)) throw new Error("kein Rezeptformat");
       let neu = 0, ersetzt = 0;
-      for(const r of rein){
-        if(!r || !r.name || !Array.isArray(r.zutaten)) continue;
+      for(const roh of rein){
+        if(!roh || !roh.name || !Array.isArray(roh.zutaten)) continue;
+        // Werte absichern: Zahlen als Zahlen, Einheiten aus dem Raster, Portionen gesetzt
+        const r = normalisiere(roh);
+        r.id = roh.id || ("r" + Date.now() + Math.floor(Math.random()*1e4));
+        r.allergene = Array.isArray(roh.allergene) ? roh.allergene.filter(n => Number.isInteger(n)) : [];
+        if(roh.importiert) r.importiert = true;
+        if(roh.geprueft !== undefined) r.geprueft = !!roh.geprueft;
         const i = rezepte.findIndex(x => x.id === r.id);
         if(i >= 0){ rezepte[i] = r; ersetzt++; }
         else { rezepte.push(r); neu++; }
