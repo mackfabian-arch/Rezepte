@@ -349,6 +349,7 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
       <button class="knopf leise" id="btn-import" style="flex:1">Importieren</button>
     </div>
     <div class="rail-daten">
+      <span style="float:right" title="Version dieser Datei">v9</span>
       Daten:
       <button type="button" id="btn-export">exportieren</button> ·
       <button type="button" id="btn-einlesen">einlesen</button> ·
@@ -426,6 +427,26 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
   <div class="dlg-fuss">
     <button type="button" class="knopf leise" id="imp-abbruch">Abbrechen</button>
     <button type="button" class="knopf haupt" id="imp-start">Rezepte auslesen</button>
+  </div>
+</dialog>
+
+<dialog id="daten">
+  <div class="dlg-kopf">
+    <h2 id="daten-titel">Datensicherung</h2>
+    <button type="button" class="knopf leise klein" id="daten-zu">Schließen</button>
+  </div>
+  <div class="dlg-koerper">
+    <p class="hinweis-klein" id="daten-hinweis" style="margin:0 0 12px"></p>
+    <div id="daten-datei-zeile" style="margin-bottom:12px">
+      <button type="button" class="knopf leise" id="daten-datei">Sicherungsdatei wählen …</button>
+    </div>
+    <textarea id="daten-text" spellcheck="false"
+      style="min-height:240px;font-family:var(--mono);font-size:12px;line-height:1.45"></textarea>
+    <p class="hinweis-klein" id="daten-meldung" style="margin:10px 0 0"></p>
+  </div>
+  <div class="dlg-fuss">
+    <button type="button" class="knopf leise" id="daten-kopieren">In die Zwischenablage kopieren</button>
+    <button type="button" class="knopf haupt" id="daten-ok">Übernehmen</button>
   </div>
 </dialog>
 
@@ -2030,51 +2051,107 @@ function fehlertext(e){
   $("#form").addEventListener("submit", speichere);
   $("#suche").addEventListener("input", zeichneListe);
 
-  // Datensicherung
+  // Datensicherung ---------------------------------------------------
+  const exportJSON = () =>
+    JSON.stringify({format:"kuechenkarte", stand:1, exportiert:new Date().toISOString(), rezepte}, null, 1);
+
+  async function uebernimmSicherung(text){
+    const obj = JSON.parse(text);
+    const rein = Array.isArray(obj) ? obj : obj.rezepte;
+    if(!Array.isArray(rein)) throw new Error("kein Rezeptformat");
+    let neu = 0, ersetzt = 0;
+    for(const roh of rein){
+      if(!roh || !roh.name || !Array.isArray(roh.zutaten)) continue;
+      // Werte absichern: Zahlen als Zahlen, Einheiten aus dem Raster, Portionen gesetzt
+      const r = normalisiere(roh);
+      r.id = roh.id || ("r" + Date.now() + Math.floor(Math.random()*1e4));
+      r.allergene = Array.isArray(roh.allergene) ? roh.allergene.filter(n => Number.isInteger(n)) : [];
+      if(roh.importiert) r.importiert = true;
+      if(roh.geprueft !== undefined) r.geprueft = !!roh.geprueft;
+      const i = rezepte.findIndex(x => x.id === r.id);
+      if(i >= 0){ rezepte[i] = r; ersetzt++; }
+      else { rezepte.push(r); neu++; }
+    }
+    await sichern();
+    katFilter = null; zeichneFilter(); zeichneListe(); zeichneKarte();
+    return {neu, ersetzt};
+  }
+
+  function datenDialog(modus){
+    const exportModus = modus === "export";
+    $("#daten-titel").textContent   = exportModus ? "Rezepte exportieren" : "Sicherung einlesen";
+    $("#daten-hinweis").textContent = exportModus
+      ? "Der direkte Datei-Download ist in diesem Fenster gesperrt. Kopiere stattdessen den Text unten — am anderen Gerät fügst du ihn unter „einlesen“ ein, oder du speicherst ihn dort als kuechenkarte-rezepte.json."
+      : "Sicherungsdatei wählen — oder den beim Export kopierten Text unten einfügen und übernehmen.";
+    $("#daten-datei-zeile").hidden = exportModus;
+    $("#daten-kopieren").hidden    = !exportModus;
+    $("#daten-ok").hidden          = exportModus;
+    const ta = $("#daten-text");
+    ta.value = exportModus ? exportJSON() : "";
+    ta.readOnly = exportModus;
+    $("#daten-meldung").textContent = "";
+    $("#daten").showModal();
+    if(!exportModus) ta.focus();
+  }
+
   $("#btn-export").onclick = () => {
-    const blob = new Blob(
-      [JSON.stringify({format:"kuechenkarte", stand:1, exportiert:new Date().toISOString(), rezepte}, null, 1)],
-      {type:"application/json"});
+    if(hatClaudeSpeicher()){
+      // Im Claude-Fenster blockiert die Sandbox Downloads — Text zum Kopieren anbieten
+      datenDialog("export");
+      return;
+    }
+    const blob = new Blob([exportJSON()], {type:"application/json"});
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = "kuechenkarte-rezepte.json";
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 5000);
   };
+
+  $("#btn-einlesen").onclick = () => datenDialog("einlesen");
+  $("#daten-zu").onclick = () => $("#daten").close();
+
+  $("#daten-kopieren").onclick = async () => {
+    const ta = $("#daten-text");
+    ta.select(); ta.setSelectionRange(0, ta.value.length);
+    let ok = false;
+    try{ await navigator.clipboard.writeText(ta.value); ok = true; }
+    catch(e){ try{ ok = document.execCommand("copy"); }catch(e2){} }
+    $("#daten-meldung").textContent = ok
+      ? `Kopiert — ${rezepte.length} Rezepte in der Zwischenablage.`
+      : "Kopieren wurde blockiert. Der Text ist markiert: mit Strg+C (Mac: Cmd+C) kopieren.";
+  };
+
+  $("#daten-ok").onclick = async () => {
+    const text = $("#daten-text").value.trim();
+    if(!text){ $("#daten-meldung").textContent = "Es ist noch nichts eingefügt."; return; }
+    try{
+      const erg = await uebernimmSicherung(text);
+      $("#daten-meldung").textContent = `Übernommen: ${erg.neu} neu, ${erg.ersetzt} aktualisiert.`;
+      $("#daten-text").value = "";
+    }catch(e){
+      $("#daten-meldung").textContent = "Der Text ließ sich nicht als Rezeptsicherung lesen — er muss der unveränderte Export sein.";
+    }
+  };
+
+  const sichWahl = $("#sicherungswahl");
+  $("#daten-datei").onclick = () => sichWahl.click();
+  sichWahl.onchange = async () => {
+    const f = sichWahl.files[0]; sichWahl.value = "";
+    if(!f) return;
+    try{
+      const erg = await uebernimmSicherung(await f.text());
+      $("#daten-meldung").textContent = `Übernommen: ${erg.neu} neu, ${erg.ersetzt} aktualisiert.`;
+    }catch(e){
+      $("#daten-meldung").textContent = "Die Datei ließ sich nicht als Rezeptsicherung lesen.";
+    }
+  };
+
   $("#btn-leeren").onclick = async () => {
     if(!confirm(`Wirklich alle ${rezepte.length} Rezepte löschen? Vorher lohnt ein Export als Sicherung.`)) return;
     rezepte = []; aktivId = null; katFilter = null;
     await sichern();
     zeichneFilter(); zeichneListe(); zeichneKarte();
-  };
-  const sichWahl = $("#sicherungswahl");
-  $("#btn-einlesen").onclick = () => sichWahl.click();
-  sichWahl.onchange = async () => {
-    const f = sichWahl.files[0]; sichWahl.value = "";
-    if(!f) return;
-    try{
-      const obj = JSON.parse(await f.text());
-      const rein = Array.isArray(obj) ? obj : obj.rezepte;
-      if(!Array.isArray(rein)) throw new Error("kein Rezeptformat");
-      let neu = 0, ersetzt = 0;
-      for(const roh of rein){
-        if(!roh || !roh.name || !Array.isArray(roh.zutaten)) continue;
-        // Werte absichern: Zahlen als Zahlen, Einheiten aus dem Raster, Portionen gesetzt
-        const r = normalisiere(roh);
-        r.id = roh.id || ("r" + Date.now() + Math.floor(Math.random()*1e4));
-        r.allergene = Array.isArray(roh.allergene) ? roh.allergene.filter(n => Number.isInteger(n)) : [];
-        if(roh.importiert) r.importiert = true;
-        if(roh.geprueft !== undefined) r.geprueft = !!roh.geprueft;
-        const i = rezepte.findIndex(x => x.id === r.id);
-        if(i >= 0){ rezepte[i] = r; ersetzt++; }
-        else { rezepte.push(r); neu++; }
-      }
-      await sichern();
-      katFilter = null; zeichneFilter(); zeichneListe(); zeichneKarte();
-      alert(`Sicherung eingelesen: ${neu} neu, ${ersetzt} aktualisiert.`);
-    }catch(e){
-      alert("Die Datei ließ sich nicht als Rezeptsicherung lesen.");
-    }
   };
 
   laden().then(() => { zeichneFilter(); zeichneListe(); zeichneKarte(); });
