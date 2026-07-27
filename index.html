@@ -56,8 +56,10 @@ h1,h2,h3{font-family:var(--display);font-weight:800;margin:0;letter-spacing:-.02
   padding:var(--sp);display:flex;flex-direction:column;gap:14px;
   position:sticky;top:0;height:100vh;overflow:hidden;
 }
-.marke{display:flex;align-items:baseline;gap:8px}
-.marke h1{font-size:23px;color:#fff}
+.marke{display:flex;align-items:center;gap:11px}
+.marke img{width:46px;height:46px;flex:none}
+.marke-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.marke h1{font-size:18px;line-height:1.15;color:#fff}
 .marke span{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--stahl);text-transform:uppercase}
 .suche{position:relative}
 .suche input{
@@ -74,6 +76,8 @@ h1,h2,h3{font-family:var(--display);font-weight:800;margin:0;letter-spacing:-.02
 .filter button:hover{color:var(--emaille);border-color:var(--stahl)}
 .filter button[aria-pressed="true"]{background:var(--kachel);border-color:var(--kachel);color:#fff;font-weight:700}
 .filter button i{font-style:normal;opacity:.65;margin-left:5px}
+.filter .unterfilter{display:flex;flex-wrap:wrap;gap:6px;width:100%;margin-top:2px;padding-left:10px;border-left:2px solid var(--stahl)}
+.filter .unterfilter button{font-size:11.5px;padding:3px 9px;opacity:.92}
 .liste{list-style:none;margin:0;padding:0;overflow-y:auto;flex:1;margin-right:-6px;padding-right:6px}
 .liste li{margin-bottom:2px}
 .liste li.gruppe{
@@ -97,6 +101,7 @@ h1,h2,h3{font-family:var(--display);font-weight:800;margin:0;letter-spacing:-.02
 .rail-daten button{background:none;border:0;padding:0;cursor:pointer;color:#a9d3ca;
   font:inherit;letter-spacing:inherit;text-decoration:underline;text-underline-offset:2px}
 .rail-daten button:hover{color:#fff}
+#daten-hinweis{margin-top:6px;color:#e8c47a;letter-spacing:.02em;line-height:1.5}
 
 /* ---------- Knöpfe ---------- */
 .knopf{
@@ -252,7 +257,8 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
 .rail-fuss{gap:6px}
 .rail .knopf.leise{color:var(--emaille);border-color:#3a4345;background:transparent}
 .rail .knopf.leise:hover{background:#22282a;border-color:var(--stahl)}
-.ablage{
+.versteckt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ablage{display:block;cursor:pointer;
   border:2px dashed var(--linie);border-radius:3px;background:#fff;
   padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .12s ease,background .12s ease;
 }
@@ -336,8 +342,11 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
 <div class="rahmen" id="rahmen">
   <aside class="rail">
     <div class="marke">
-      <h1>Küchenkarte</h1>
-      <span>Rezepte</span>
+      <img src="data:image/png;base64,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" alt="Schulhotel Allgäu Bad Wörishofen">
+      <div class="marke-text">
+        <h1>Schulhotel Allgäu</h1>
+        <span>Rezepte</span>
+      </div>
     </div>
     <div class="suche">
       <input type="search" id="suche" placeholder="Rezept oder Zutat suchen" aria-label="Rezepte durchsuchen">
@@ -349,12 +358,14 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
       <button class="knopf leise" id="btn-import" style="flex:1">Importieren</button>
     </div>
     <div class="rail-daten">
-      <span style="float:right" title="Version dieser Datei">v9</span>
+      <span style="float:right" title="Version dieser Datei">v20</span>
       Daten:
       <button type="button" id="btn-export">exportieren</button> ·
       <button type="button" id="btn-einlesen">einlesen</button> ·
+      <button type="button" id="btn-teilen" title="Erzeugt eine Kopie dieser App-Datei mit allen aktuellen Rezepten fest eingebaut">App&nbsp;teilen</button> ·
       <button type="button" id="btn-leeren">alles löschen</button>
-      <input type="file" id="sicherungswahl" accept=".json,application/json" hidden>
+      <input type="file" id="sicherungswahl" class="versteckt" accept=".json,application/json">
+      <div id="daten-hinweis" hidden></div>
     </div>
   </aside>
 
@@ -373,9 +384,10 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
       <div class="zwei">
         <label class="feld"><span>Name</span><input type="text" id="f-name" required placeholder="z. B. Linsendal"></label>
         <div class="zwei" style="gap:10px">
-          <label class="feld"><span>Kategorie</span>
+          <label class="feld"><span>Rubrik</span>
             <select id="f-kat"></select>
-            <input type="text" id="f-kat-eigen" placeholder="Eigene Kategorie" style="margin-top:5px;display:none" aria-label="Eigene Kategorie">
+            <input type="text" id="f-kat-eigen" placeholder="Eigene Rubrik" style="margin-top:5px;display:none" aria-label="Eigene Rubrik">
+            <select id="f-ukat" style="margin-top:5px" aria-label="Unterrubrik"></select>
           </label>
           <label class="feld"><span>Portionen</span><input type="number" id="f-port" min="1" max="500" step="1" value="4" required></label>
         </div>
@@ -408,12 +420,13 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
   </div>
   <div class="dlg-koerper">
     <div id="imp-eingabe">
-      <div class="ablage" id="ablage" tabindex="0" role="button" aria-label="Dateien auswählen">
-        <span class="gross">Dateien hierher ziehen</span>
-        <span class="klein">oder klicken — auch ganze Sammlungen mit vielen Rezepten</span>
+      <label class="ablage" id="ablage" for="dateiwahl">
+        <span class="gross">Dateien auswählen</span>
+        <span class="klein">antippen oder hierher ziehen — auch ganze Sammlungen mit vielen Rezepten</span>
         <div class="formate"><span>JPG</span><span>PNG</span><span>PDF</span><span>DOCX</span><span>TXT</span></div>
-      </div>
-      <input type="file" id="dateiwahl" multiple accept="image/*,.pdf,.docx,.txt,.md" hidden>
+      </label>
+      <input type="file" id="dateiwahl" class="versteckt" multiple
+        accept="image/*,application/pdf,.pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,text/plain,.txt,text/markdown,.md">
       <ul class="dateien" id="dateien"></ul>
 
       <div class="trenner">oder Text einfügen</div>
@@ -438,7 +451,7 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
   <div class="dlg-koerper">
     <p class="hinweis-klein" id="daten-hinweis" style="margin:0 0 12px"></p>
     <div id="daten-datei-zeile" style="margin-bottom:12px">
-      <button type="button" class="knopf leise" id="daten-datei">Sicherungsdatei wählen …</button>
+      <label class="knopf leise" for="sicherungswahl" style="display:inline-block">Sicherungsdatei wählen …</label>
     </div>
     <textarea id="daten-text" spellcheck="false"
       style="min-height:240px;font-family:var(--mono);font-size:12px;line-height:1.45"></textarea>
@@ -512,12 +525,12 @@ const DB = [
   D("Parmesan",400,33,29,0,[7],["parmesan","grana","pecorino"],{EL:6,TL:2}),
   D("Gouda / Bergkäse",360,25,29,0,[7],["gouda","käse","emmentaler","bergkäse","cheddar"],{}),
   D("Feta",260,14,21,1,[7],["feta","schafskäse","hirtenkäse"],{}),
-  D("Ei",140,13,10,1,[3],["ei","eier","hühnerei"],{Stk:55}),
+  D("Ei",140,13,10,1,[3],["ei","eier","hühnerei","rührei","spiegelei"],{Stk:55}),
   D("Eigelb",320,16,28,1,[3],["eigelb","eidotter"],{Stk:18}),
   D("Eiweiß",50,11,0,1,[3],["eiweiß","eiklar"],{Stk:35}),
 
   // Fleisch, Fisch, Meeresfrüchte
-  D("Hähnchenbrust",105,23,1,0,[],["hähnchen","hühnchen","hähnchenbrust","poulet","pute","putenbrust"],{}),
+  D("Hähnchenbrust",105,23,1,0,[],["hähnchen","hühnchen","hähnchenbrust","poulet","pute","putenbrust","hühn","huhn","geflügel","hendl","hühnerfleisch"],{}),
   D("Rinderhackfleisch",250,19,19,0,[],["hackfleisch","rinderhack","gehacktes","hack"],{}),
   D("Schweinefleisch",150,21,7,0,[],["schwein","schweinefleisch","schnitzel","kotelett"],{}),
   D("Rindfleisch",160,21,8,0,[],["rindfleisch","rind","gulasch","steak"],{}),
@@ -616,41 +629,297 @@ const DB = [
 const EINHEITEN = ["g","ml","Stk","EL","TL","Prise","Zehe","Bund","Dose","Msp.","nach Bedarf"];
 const STANDARD_G = {g:1, ml:1, EL:15, TL:5, Prise:0.5, Zehe:4, Bund:30, Dose:400, Stk:100, "Msp.":0.3};
 
-/* Kategorien — Reihenfolge wie auf einer Speisekarte */
-const KATEGORIEN = ["Frühstück","Vorspeise","Suppe","Salat","Hauptgericht","Beilage","Soße & Dip",
-                    "Snack","Dessert","Kuchen & Torten","Gebäck & Brot","Getränk","Vorrat","Sonstiges"];
+/* Rubriken: Hauptrubrik mit Unterrubriken — nach den Kapiteln der Fachbücher */
+const KATALOG = [
+  ["Frühstück", []],
+  ["Kalte Vorspeisen", ["Aperitifhäppchen","Aufstriche","Löffelfood","Vorspeisencocktails",
+                        "Vorspeisensalate","Terrinen, Pasteten & Mousses","Kalte Gerichte"]],
+  ["Warme Vorspeisen", ["Teige","Regionale Vorspeisen","Nationale Vorspeisen",
+                        "Internationale Vorspeisen","Vegetarische Gerichte"]],
+  ["Grundbrühen & Fonds", ["Helle Fonds","Braune Fonds"]],
+  ["Suppen", ["Klare Suppen","Gebundene Suppen","Regionalsuppen","Nationalsuppen",
+              "Kalte Suppen","Suppeneinlagen"]],
+  ["Salate", ["Rohkostsalate","Gekochte Gemüsesalate"]],
+  ["Fischgerichte", ["Süßwasserfische","Salzwasserfische","Gemischte Fischgerichte & Spieße",
+                     "Krustentiere","Muscheln & Meeresfrüchte"]],
+  ["Fleischgerichte", ["Rind","Kalb","Schwein","Lamm & Hammel","Geflügel","Wild","Innereien"]],
+  ["Hauptgerichte", []],
+  ["Beilagen", ["Kartoffelgerichte","Reisgerichte","Mehlbeilagen","Gemüsebeilagen"]],
+  ["Saucen & Dips", ["Braune Saucen","Weiße Saucen","Buttersaucen","Saucen für warme Vorspeisen",
+                     "Kalte Saucen","Salatsaucen & Dressings"]],
+  ["Snacks", []],
+  ["Süßspeisen & Backwaren", ["Teige","Massen","Dekor & Feingebäck","Kuchen & Torten",
+                              "Cremen & Mousses","Füllungen","Warme Süßspeisen","Puddings & Soufflés",
+                              "Gefrorene Süßspeisen","Dessert","Süße Saucen & Glasuren",
+                              "Kompott & Früchte","Teegebäck & Kekse","Pralinen & Konfekt",
+                              "Gebäck & Brot","Aperitifgebäck"]],
+  ["Getränke", []],
+  ["Vorrat", []],
+  ["Sonstiges", []]
+];
+const KATEGORIEN = KATALOG.map(k => k[0]);
+function unterVon(haupt){
+  const e = KATALOG.find(k => k[0] === haupt);
+  return e ? e[1] : [];
+}
 
+/* Beschriftungen aus Importen und Altbeständen → "Haupt" oder "Haupt|Unter" */
 const KAT_KARTE = {
-  "frühstück":"Frühstück","fruehstueck":"Frühstück","brunch":"Frühstück","müsli":"Frühstück",
-  "vorspeise":"Vorspeise","vorspeisen":"Vorspeise","antipasti":"Vorspeise","appetizer":"Vorspeise","fingerfood":"Snack",
-  "suppe":"Suppe","suppen":"Suppe","eintopf":"Suppe","brühe":"Suppe",
-  "salat":"Salat","salate":"Salat",
-  "hauptgericht":"Hauptgericht","hauptgerichte":"Hauptgericht","hauptspeise":"Hauptgericht","main":"Hauptgericht",
-  "beilage":"Beilage","beilagen":"Beilage","sättigungsbeilage":"Beilage",
-  "soße":"Soße & Dip","sauce":"Soße & Dip","saucen":"Soße & Dip","dip":"Soße & Dip","dressing":"Soße & Dip",
-  "pesto":"Soße & Dip","soße & dip":"Soße & Dip",
-  "snack":"Snack","snacks":"Snack","imbiss":"Snack",
-  "dessert":"Dessert","desserts":"Dessert","nachtisch":"Dessert","süßspeise":"Dessert","eis":"Dessert",
-  "kuchen":"Kuchen & Torten","torte":"Kuchen & Torten","torten":"Kuchen & Torten","backen":"Kuchen & Torten",
-  "kuchen & torten":"Kuchen & Torten","gebäck":"Gebäck & Brot","plätzchen":"Gebäck & Brot","kekse":"Gebäck & Brot",
-  "brot":"Gebäck & Brot","brötchen":"Gebäck & Brot","gebäck & brot":"Gebäck & Brot",
-  "getränk":"Getränk","getränke":"Getränk","drink":"Getränk","cocktail":"Getränk","smoothie":"Getränk",
+  "frühstück":"Frühstück","fruehstueck":"Frühstück","brunch":"Frühstück",
+  // Vorspeisen
+  "vorspeise":"Kalte Vorspeisen","vorspeisen":"Kalte Vorspeisen","antipasti":"Kalte Vorspeisen","appetizer":"Kalte Vorspeisen",
+  "kalte vorspeisen":"Kalte Vorspeisen","warme vorspeisen":"Warme Vorspeisen",
+  "aperitifhäppchen":"Kalte Vorspeisen|Aperitifhäppchen","aufstriche":"Kalte Vorspeisen|Aufstriche",
+  "löffelfood":"Kalte Vorspeisen|Löffelfood","vorspeisencocktails":"Kalte Vorspeisen|Vorspeisencocktails",
+  "vorspeisensalate":"Kalte Vorspeisen|Vorspeisensalate","kalte gerichte":"Kalte Vorspeisen|Kalte Gerichte",
+  "terrinen":"Kalte Vorspeisen|Terrinen, Pasteten & Mousses","pasteten":"Kalte Vorspeisen|Terrinen, Pasteten & Mousses",
+  "regionale vorspeisen":"Warme Vorspeisen|Regionale Vorspeisen","nationale vorspeisen":"Warme Vorspeisen|Nationale Vorspeisen",
+  "internationale vorspeisen":"Warme Vorspeisen|Internationale Vorspeisen",
+  "vegetarische gerichte":"Warme Vorspeisen|Vegetarische Gerichte","vegetarisch":"Warme Vorspeisen|Vegetarische Gerichte",
+  // Brühen und Suppen
+  "grundbrühen":"Grundbrühen & Fonds","fonds":"Grundbrühen & Fonds","fond":"Grundbrühen & Fonds",
+  "grundbrühen/fonds":"Grundbrühen & Fonds","grundbrühen & fonds":"Grundbrühen & Fonds","brühe":"Grundbrühen & Fonds",
+  "helle fonds":"Grundbrühen & Fonds|Helle Fonds","braune fonds":"Grundbrühen & Fonds|Braune Fonds",
+  "suppe":"Suppen","suppen":"Suppen","eintopf":"Suppen",
+  "klare suppen":"Suppen|Klare Suppen","gebundene suppen":"Suppen|Gebundene Suppen",
+  "suppeneinlage":"Suppen|Suppeneinlagen","suppeneinlagen":"Suppen|Suppeneinlagen",
+  "einlage":"Suppen|Suppeneinlagen","einlagen":"Suppen|Suppeneinlagen",
+  // Herzhafte Küche
+  "salat":"Salate","salate":"Salate",
+  "hauptgericht":"Hauptgerichte","hauptgerichte":"Hauptgerichte","hauptspeise":"Hauptgerichte","main":"Hauptgerichte",
+  "beilage":"Beilagen","beilagen":"Beilagen","sättigungsbeilage":"Beilagen",
+  "soße":"Saucen & Dips","sauce":"Saucen & Dips","saucen":"Saucen & Dips","dip":"Saucen & Dips",
+  "dressing":"Saucen & Dips","pesto":"Saucen & Dips","soße & dip":"Saucen & Dips","saucen & dips":"Saucen & Dips",
+  "snack":"Snacks","snacks":"Snacks","imbiss":"Snacks","fingerfood":"Kalte Vorspeisen|Aperitifhäppchen",
+  // Süßspeisen-Systematik (auch für Altbestände aus früheren Fassungen)
+  "süßspeisen":"Süßspeisen & Backwaren","süßspeisen und backwaren":"Süßspeisen & Backwaren","backwaren":"Süßspeisen & Backwaren",
+  "teige":"Süßspeisen & Backwaren|Teige","teig":"Süßspeisen & Backwaren|Teige","ziehteige":"Süßspeisen & Backwaren|Teige",
+  "massen":"Süßspeisen & Backwaren|Massen","masse":"Süßspeisen & Backwaren|Massen",
+  "kuchen & torten":"Süßspeisen & Backwaren|Kuchen & Torten","kuchen, torten und strudel":"Süßspeisen & Backwaren|Kuchen & Torten",
+  "kuchen":"Süßspeisen & Backwaren|Kuchen & Torten","torte":"Süßspeisen & Backwaren|Kuchen & Torten",
+  "torten":"Süßspeisen & Backwaren|Kuchen & Torten","strudel":"Süßspeisen & Backwaren|Kuchen & Torten",
+  "backen":"Süßspeisen & Backwaren|Kuchen & Torten",
+  "cremen & mousses":"Süßspeisen & Backwaren|Cremen & Mousses","cremen":"Süßspeisen & Backwaren|Cremen & Mousses",
+  "mousses":"Süßspeisen & Backwaren|Cremen & Mousses","cremen und mousses":"Süßspeisen & Backwaren|Cremen & Mousses",
+  "cremes":"Süßspeisen & Backwaren|Cremen & Mousses",
+  "füllungen":"Süßspeisen & Backwaren|Füllungen","füllung":"Süßspeisen & Backwaren|Füllungen",
+  "warme süßspeisen":"Süßspeisen & Backwaren|Warme Süßspeisen","warme süssspeisen":"Süßspeisen & Backwaren|Warme Süßspeisen",
+  "gefrorene süßspeisen":"Süßspeisen & Backwaren|Gefrorene Süßspeisen","gefrorene süssspeisen":"Süßspeisen & Backwaren|Gefrorene Süßspeisen",
+  "eisspeisen":"Süßspeisen & Backwaren|Gefrorene Süßspeisen","eis":"Süßspeisen & Backwaren|Gefrorene Süßspeisen",
+  "dessert":"Süßspeisen & Backwaren|Dessert","desserts":"Süßspeisen & Backwaren|Dessert",
+  "nachtisch":"Süßspeisen & Backwaren|Dessert","süßspeise":"Süßspeisen & Backwaren|Dessert",
+  "süße saucen & glasuren":"Süßspeisen & Backwaren|Süße Saucen & Glasuren","süße saucen":"Süßspeisen & Backwaren|Süße Saucen & Glasuren",
+  "süsse saucen":"Süßspeisen & Backwaren|Süße Saucen & Glasuren","glasuren":"Süßspeisen & Backwaren|Süße Saucen & Glasuren",
+  "kompott & früchte":"Süßspeisen & Backwaren|Kompott & Früchte","kompotte":"Süßspeisen & Backwaren|Kompott & Früchte",
+  "kompott":"Süßspeisen & Backwaren|Kompott & Früchte",
+  "teegebäck & kekse":"Süßspeisen & Backwaren|Teegebäck & Kekse","teegebäck":"Süßspeisen & Backwaren|Teegebäck & Kekse",
+  "teegebäck und kekse":"Süßspeisen & Backwaren|Teegebäck & Kekse","plätzchen":"Süßspeisen & Backwaren|Teegebäck & Kekse",
+  "kekse":"Süßspeisen & Backwaren|Teegebäck & Kekse",
+  "pralinen & konfekt":"Süßspeisen & Backwaren|Pralinen & Konfekt","pralinen":"Süßspeisen & Backwaren|Pralinen & Konfekt",
+  "konfekt":"Süßspeisen & Backwaren|Pralinen & Konfekt",
+  "gebäck & brot":"Süßspeisen & Backwaren|Gebäck & Brot","brot und gebäck":"Süßspeisen & Backwaren|Gebäck & Brot",
+  "gebäck":"Süßspeisen & Backwaren|Gebäck & Brot","brot":"Süßspeisen & Backwaren|Gebäck & Brot",
+  "brötchen":"Süßspeisen & Backwaren|Gebäck & Brot",
+  "pikantes gebäck":"Süßspeisen & Backwaren|Aperitifgebäck","pikante kleingebäcke":"Süßspeisen & Backwaren|Aperitifgebäck",
+  "pikantes":"Süßspeisen & Backwaren|Aperitifgebäck","aperitifgebäck":"Süßspeisen & Backwaren|Aperitifgebäck",
+  "dekor und feingebäck":"Süßspeisen & Backwaren|Dekor & Feingebäck","dekor & feingebäck":"Süßspeisen & Backwaren|Dekor & Feingebäck",
+  "feingebäck":"Süßspeisen & Backwaren|Dekor & Feingebäck",
+  "puddings und soufflés":"Süßspeisen & Backwaren|Puddings & Soufflés","puddings & soufflés":"Süßspeisen & Backwaren|Puddings & Soufflés",
+  "puddings":"Süßspeisen & Backwaren|Puddings & Soufflés","soufflés":"Süßspeisen & Backwaren|Puddings & Soufflés",
+  "teige und massen":"Süßspeisen & Backwaren|Teige",
+  "kuchen, torten, schnitten und strudel":"Süßspeisen & Backwaren|Kuchen & Torten",
+  "kekse, kleingebäck und pralinen":"Süßspeisen & Backwaren|Teegebäck & Kekse",
+  // Fisch und Fleisch
+  "fisch":"Fischgerichte","fischgerichte":"Fischgerichte",
+  "süßwasserfische":"Fischgerichte|Süßwasserfische","salzwasserfische":"Fischgerichte|Salzwasserfische",
+  "gemischte fischgerichte":"Fischgerichte|Gemischte Fischgerichte & Spieße",
+  "gemischte fischgerichte und spieße":"Fischgerichte|Gemischte Fischgerichte & Spieße",
+  "krustentiere":"Fischgerichte|Krustentiere","muscheln":"Fischgerichte|Muscheln & Meeresfrüchte",
+  "meeresfrüchte":"Fischgerichte|Muscheln & Meeresfrüchte","muscheln und meeresfrüchte":"Fischgerichte|Muscheln & Meeresfrüchte",
+  "fleisch":"Fleischgerichte","fleischgerichte":"Fleischgerichte",
+  "rind":"Fleischgerichte|Rind","kalb":"Fleischgerichte|Kalb","schwein":"Fleischgerichte|Schwein",
+  "lamm":"Fleischgerichte|Lamm & Hammel","lamm und hammel":"Fleischgerichte|Lamm & Hammel","hammel":"Fleischgerichte|Lamm & Hammel",
+  "geflügel":"Fleischgerichte|Geflügel","wild":"Fleischgerichte|Wild","innereien":"Fleischgerichte|Innereien",
+  // Saucen-Unterrubriken
+  "braune saucen":"Saucen & Dips|Braune Saucen","weiße saucen":"Saucen & Dips|Weiße Saucen",
+  "weisse saucen":"Saucen & Dips|Weiße Saucen","buttersaucen":"Saucen & Dips|Buttersaucen",
+  "saucen für warme vorspeisen":"Saucen & Dips|Saucen für warme Vorspeisen",
+  "kalte saucen":"Saucen & Dips|Kalte Saucen","salatsaucen":"Saucen & Dips|Salatsaucen & Dressings",
+  "salatsaucen und dressings":"Saucen & Dips|Salatsaucen & Dressings","dressings":"Saucen & Dips|Salatsaucen & Dressings",
+  // Suppen-, Beilagen- und Salat-Unterrubriken
+  "regionalsuppen":"Suppen|Regionalsuppen","nationalsuppen":"Suppen|Nationalsuppen","kalte suppen":"Suppen|Kalte Suppen",
+  "sättigungsbeilagen":"Beilagen","kartoffelgerichte":"Beilagen|Kartoffelgerichte",
+  "reisgerichte":"Beilagen|Reisgerichte","mehlbeilagen":"Beilagen|Mehlbeilagen","gemüsebeilagen":"Beilagen|Gemüsebeilagen",
+  "beilagen und salate":"Beilagen",
+  "rohkostsalate":"Salate|Rohkostsalate","gekochte gemüsesalate":"Salate|Gekochte Gemüsesalate",
+  // Übriges
+  "getränk":"Getränke","getränke":"Getränke","drink":"Getränke","smoothie":"Getränke",
   "vorrat":"Vorrat","eingemachtes":"Vorrat","marmelade":"Vorrat","konserve":"Vorrat","einmachen":"Vorrat",
   "sonstiges":"Sonstiges","rezept":"Sonstiges"
 };
 
-// Bekannte Bezeichnung zuordnen, eigene Kategorien bleiben erhalten
-function normKategorie(s){
+/* Beschriftung(en) → {haupt, unter}. Eigene Rubriken bleiben erhalten. */
+function normKategorie(s, unterRoh){
   const roh = String(s || "").trim();
-  if(!roh) return "Sonstiges";
-  return KAT_KARTE[roh.toLowerCase()] || roh;
+  let haupt = "Sonstiges", unter = "";
+  if(roh){
+    const t = KAT_KARTE[roh.toLowerCase()];
+    if(t){
+      const teile = t.split("|");
+      haupt = teile[0]; unter = teile[1] || "";
+    } else if(KATEGORIEN.includes(roh)){
+      haupt = roh;
+    } else {
+      // Vielleicht wurde direkt eine Unterrubrik genannt
+      const heim = KATALOG.find(k => k[1].some(u => u.toLowerCase() === roh.toLowerCase()));
+      if(heim){
+        haupt = heim[0];
+        unter = heim[1].find(u => u.toLowerCase() === roh.toLowerCase());
+      } else {
+        haupt = roh; // eigene Hauptrubrik
+      }
+    }
+  }
+  const u2 = String(unterRoh || "").trim();
+  if(u2){
+    const norm = KAT_KARTE[u2.toLowerCase()];
+    const kandidat = norm && norm.includes("|") ? norm.split("|")[1] : u2;
+    // Wurde nur die Unterrubrik genannt, liefert sie auch die Hauptrubrik
+    if(haupt === "Sonstiges" && norm && norm.includes("|")) haupt = norm.split("|")[0];
+    if(haupt === "Sonstiges"){
+      const heim = KATALOG.find(k => k[1].some(u => u.toLowerCase() === kandidat.toLowerCase()));
+      if(heim) haupt = heim[0];
+    }
+    const treffer = unterVon(haupt).find(x => x.toLowerCase() === kandidat.toLowerCase());
+    if(treffer) unter = treffer;
+    else if(!unter) unter = u2; // eigene Unterrubrik zulassen
+  }
+  return {haupt, unter};
 }
 
-// Alle Kategorien für die Auswahlliste: feste Liste plus eigene aus dem Bestand
+function katVon(r){ return normKategorie(r.kategorie, r.unterkategorie); }
+function katText(r){ const k = katVon(r); return k.haupt + (k.unter ? " · " + k.unter : ""); }
+
+// Alle Hauptrubriken für die Auswahlliste: fester Katalog plus eigene aus dem Bestand
 function alleKategorien(){
-  const eigene = [...new Set(rezepte.map(r => normKategorie(r.kategorie)))]
+  const eigene = [...new Set(rezepte.map(r => katVon(r).haupt))]
     .filter(k => !KATEGORIEN.includes(k)).sort((a,b) => a.localeCompare(b,"de"));
   return [...KATEGORIEN, ...eigene];
+}
+
+/* Rubrik aus dem Gerichtenamen erraten — greift nur, wenn keine brauchbare
+   Rubrik mitgeliefert wurde. Das längste passende Stichwort gewinnt
+   („Sauerteig“ schlägt „Teig“, „Lebkuchen“ schlägt „Kuchen“),
+   bei Gleichstand entscheidet die Reihenfolge.
+   Ziel ist "Haupt" oder "Haupt|Unter". */
+const KAT_RATEN = [
+  ["Suppen",                 ["suppe","eintopf","minestrone"]],
+  ["Suppen|Klare Suppen",    ["consommé","kraftbrühe"]],
+  ["Suppen|Gebundene Suppen",["cremesuppe","rahmsuppe","schaumsuppe"]],
+  ["Suppen|Kalte Suppen",    ["kaltschale","gazpacho"]],
+  ["Suppen|Suppeneinlagen",  ["suppeneinlage","einlage","nockerl","schöberl","frittaten","flädle","backerbsen",
+                              "eierstich","leberknödel","grießklöß","markklöß","milzschnitt","butternocken",
+                              "kaspressknödel","einmach","klößchen","knöderl","einlauf","leberreis","brätstrudel"]],
+  ["Grundbrühen & Fonds",    ["fond","fumet","brühe","bouillon","glace","essenz","fischfond","hummerfond",
+                              "geflügelfond","gemüsefond","kalbsfond","wildfond","lammfond","krebsfond",
+                              "garnelenfond","scampifond","court-bouillon","fischsud"]],
+  ["Kalte Vorspeisen|Aperitifhäppchen",  ["canapé","canapés","crostini","häppchen"]],
+  ["Kalte Vorspeisen|Aufstriche",        ["aufstrich"]],
+  ["Kalte Vorspeisen|Vorspeisencocktails",["cocktail"]],
+  ["Kalte Vorspeisen|Terrinen, Pasteten & Mousses", ["terrine","pastete","galantine","aspik","sülze",
+                              "leberparfait","leber-parfait","thunfischmousse","lachsmousse","räucherlachsmousse",
+                              "schinkenmousse","tomatenmousse","spargelmousse","peperonimousse","artischockenmousse",
+                              "frischkäseterrine"]],
+  ["Kalte Vorspeisen|Kalte Gerichte",    ["carpaccio","tatar","vitello","sushi","maki","gravad","gebeizter lachs"]],
+  ["Warme Vorspeisen",       ["risotto","lasagne","cannelloni","ravioli","tortelloni"]],
+  ["Warme Vorspeisen|Regionale Vorspeisen", ["schlutzkrapfen","kartoffelteigtaschen","tirtlan","erdäpfelblattlen",
+                              "spatzlen","käseknödel","spinatknödel","rohnenknödel","schwarzplentene",
+                              "graukasnocken","käsenocken","topfennocken","pilznocken"]],
+  ["Salate",                 ["salat"]],
+  ["Süßspeisen & Backwaren|Teige",       ["teig","krapfen","waffel","crostoli","knieküchel","polsterzipfel","savarin",
+                                          "palatschinkenteig","crêpes"]],
+  ["Süßspeisen & Backwaren|Massen",      ["masse","biskuit"]],
+  ["Süßspeisen & Backwaren|Dekor & Feingebäck", ["hippen","krokant","tuiles","windgebäck","baumkuchen","dekormasse"]],
+  ["Süßspeisen & Backwaren|Cremen & Mousses", ["creme","crème","mousse","panna cotta","espuma","brûlée","brulee","zabaione"]],
+  ["Süßspeisen & Backwaren|Füllungen",   ["füllung"]],
+  ["Süßspeisen & Backwaren|Gefrorene Süßspeisen", ["eis","sorbet","parfait","gefroren","cassata","eisbombe","eispunsch",
+                                          "eisbiskuit","vanilleeis","fruchteis","rahmeis","mandeleis","gewürzeis",
+                                          "speiseeis","joghurteis"]],
+  ["Süßspeisen & Backwaren|Puddings & Soufflés", ["pudding","soufflé","souffle"]],
+  ["Süßspeisen & Backwaren|Warme Süßspeisen", ["schmarren","schmarrn","buchteln","scheiterhaufen",
+                                          "mohr im hemd","dampfnudel","germknödel","topfenknödel","marillenknödel",
+                                          "zwetschgenknödel","dukaten"]],
+  ["Süßspeisen & Backwaren|Kompott & Früchte", ["kompott","fruchtsalat","obstsalat","röster"]],
+  ["Süßspeisen & Backwaren|Teegebäck & Kekse", ["plätzchen","kekse","keks","makronen","spritzgebäck","lebkuchen",
+                                          "honigkuchen","gipfel","kipferl","taler","heidesand","florentiner"]],
+  ["Süßspeisen & Backwaren|Pralinen & Konfekt", ["pralinen","praline","trüffel","konfekt","canache","cognackugeln"]],
+  ["Süßspeisen & Backwaren|Kuchen & Torten", ["kuchen","torte","gugelhupf","strudel","muffin","brownie","tarte",
+                                          "rehrücken","schnitte"]],
+  ["Süßspeisen & Backwaren|Süße Saucen & Glasuren", ["glasur","aprikotur","läuterzucker","weinschaum","vanilleschaum",
+                                          "vanillesauce","schokoladensauce","karamellsauce","fruchtsauce","marillensauce",
+                                          "mokkasauce","mascarponesauce","erdbeermark","überzug"]],
+  ["Süßspeisen & Backwaren|Dessert",     ["tiramisu","süßspeise","palatschinke","nachspeise"]],
+  ["Fischgerichte|Krustentiere", ["garnelen","scampi","hummer","languste","krevetten"]],
+  ["Fischgerichte|Muscheln & Meeresfrüchte", ["miesmuscheln","venusmuscheln","jakobsmuschel","tintenfisch","calamari","krake"]],
+  ["Fischgerichte",          ["forelle","saibling","lachs","zander","hecht","seezunge","steinbutt","dorade",
+                              "goldbrasse","kabeljau","wolfsbarsch","thunfisch","sardinen","seeteufel"]],
+  ["Fleischgerichte|Geflügel", ["huhn","hähnchen","hendl","pute","truthahn","ente","gans","wachtel","poularde","geflügel"]],
+  ["Fleischgerichte|Wild",   ["hirsch","wildschwein","gams","rehrückenfilet","rehragout","hirschragout"]],
+  ["Fleischgerichte",        ["gulasch","braten","schnitzel","geschnetzeltes","roulade","steak","kotelett","haxe","filet"]],
+  ["Beilagen|Kartoffelgerichte", ["rösti","püree","stampf","kroketten","bratkartoffeln","kartoffelgratin","pommes",
+                              "kartoffelklöße","kartoffelknödel"]],
+  ["Beilagen|Mehlbeilagen",  ["knödel","klöße","kloß","spätzle","nocken","polenta"]],
+  ["Saucen & Dips",          ["soße","sauce","dip","chutney"]],
+  ["Saucen & Dips|Braune Saucen", ["demi-glace","jus","bratensauce"]],
+  ["Saucen & Dips|Weiße Saucen", ["béchamel","bechamel","velouté","rahmsauce"]],
+  ["Saucen & Dips|Buttersaucen", ["hollandaise","béarnaise","bearnaise","buttersauce"]],
+  ["Saucen & Dips|Saucen für warme Vorspeisen", ["tomatensauce","pesto"]],
+  ["Saucen & Dips|Kalte Saucen", ["mayonnaise","remoulade","cocktailsauce","aioli"]],
+  ["Saucen & Dips|Salatsaucen & Dressings", ["dressing","vinaigrette","salatsauce"]],
+  ["Süßspeisen & Backwaren|Gebäck & Brot", ["brot","brötchen","semmel","breze","zopf","stollen","hörnchen","weckerl",
+                                          "laibchen","grissini","focaccia","sauerteig","blini"]],
+  ["Süßspeisen & Backwaren|Aperitifgebäck", ["käsestangen","käsegebäck","piroggen","pastetchen","windbeutel"]],
+  ["Vorrat",                 ["marmelade","konfitüre","eingelegt","sirup","gelee"]],
+  ["Getränke",               ["punsch","bowle","smoothie","likör","limonade","tee"]],
+  ["Hauptgerichte",          ["auflauf","gratin","curry","ragout","pfanne","burger","bratlinge","tofu"]],
+  ["Frühstück",              ["müsli","porridge","granola"]]
+];
+
+function kategorieRaten(name){
+  const n = normal(name).replace(/ß/g,"ss");
+  const leer = {haupt:"Sonstiges", unter:""};
+  if(!n) return leer;
+  // Alles mit „…suppe“ ist eine Suppe, egal welche Einlage im Namen steckt
+  if((n.includes("suppe") || n.includes("eintopf")) && !n.includes("einlage")){
+    if(/cremesuppe|rahmsuppe|schaumsuppe|püreesuppe|pureesuppe/.test(n)) return {haupt:"Suppen", unter:"Gebundene Suppen"};
+    if(/kraftbrühe|klare/.test(n)) return {haupt:"Suppen", unter:"Klare Suppen"};
+    if(/kalte |kaltschale/.test(n)) return {haupt:"Suppen", unter:"Kalte Suppen"};
+    return {haupt:"Suppen", unter:""};
+  }
+  // Ebenso „…salat“ — mit Ausnahme der süßen Früchtesalate
+  if(n.includes("salat") && !/fruchtsalat|obstsalat/.test(n)){
+    return {haupt:"Salate", unter:""};
+  }
+  // Und „…cocktail“: ein Krevettencocktail ist eine Vorspeise, kein Fischgericht
+  if(n.includes("cocktail")) return {haupt:"Kalte Vorspeisen", unter:"Vorspeisencocktails"};
+  // „Entenbrust mit Orangensauce“: entschieden wird nach dem Teil vor dem „mit“
+  const kern = n.split(/ mit | auf | an /)[0].trim() || n;
+  const woerter = kern.split(/[\s\-–]+/);
+  let beste = null, laenge = 0;
+  for(const [ziel, ws] of KAT_RATEN){
+    for(const roh of ws){
+      const w = roh.replace(/ß/g,"ss");
+      // Kurzwörter: als ganzes Wort, oder als Wortendung („Kräuterdip“) —
+      // außer „eis“, das sonst in „Reis“ steckte
+      const passt = w.length >= 4
+        ? kern.includes(w)
+        : woerter.some(x => x === w || (w !== "eis" && x.endsWith(w)));
+      if(passt && w.length > laenge){ beste = ziel; laenge = w.length; }
+    }
+  }
+  if(!beste) return leer;
+  const teile = beste.split("|");
+  return {haupt: teile[0], unter: teile[1] || ""};
 }
 
 function katRang(k){
@@ -666,10 +935,14 @@ function normal(s){return (s||"").toLowerCase().replace(/[.,()]/g," ").replace(/
 function finde(name){
   const n = normal(name);
   if(!n) return null;
+  const woerter = n.split(/[\s\-–]+/);
   let treffer = null, laenge = 0;
   for(const e of DB){
     for(const s of e.syn){
-      if(n.includes(s) && s.length > laenge){ treffer = e; laenge = s.length; }
+      // Kurze Suchwörter wie „ei“ oder „öl“ nur als ganzes Wort werten —
+      // sonst wird aus „Hühnerfleisch“ ein Ei samt Allergen
+      const passt = s.length >= 4 ? n.includes(s) : woerter.includes(s);
+      if(passt && s.length > laenge){ treffer = e; laenge = s.length; }
     }
   }
   return treffer;
@@ -755,11 +1028,16 @@ let rezepte = [];
 let aktivId = null;
 let portionen = 4;
 let katFilter = null;
+let untFilter = null;
 let speicherOk = true;
 
 function hatClaudeSpeicher(){
   return typeof window.storage !== "undefined" && window.storage && typeof window.storage.get === "function";
 }
+
+/* Fest eingebaute Rezepte einer geteilten App-Kopie.
+   Die Marken davor und dahinter dienen „App teilen“ als Fundstelle. */
+const STARTBESTAND = /*STARTBESTAND-ANFANG*/[]/*STARTBESTAND-ENDE*/;
 
 async function laden(){
   try{
@@ -771,7 +1049,9 @@ async function laden(){
       if(v) rezepte = JSON.parse(v);
     }
   }catch(e){ rezepte = []; }
-  if(!Array.isArray(rezepte) || rezepte.length === 0) rezepte = beispiele();
+  if(!Array.isArray(rezepte) || rezepte.length === 0){
+    rezepte = (Array.isArray(STARTBESTAND) && STARTBESTAND.length) ? STARTBESTAND : beispiele();
+  }
   rezepte = rezepte.map(roh => {
     const r = normalisiere(roh);
     r.id = roh.id || ("r" + Date.now() + Math.floor(Math.random()*1e4));
@@ -854,7 +1134,7 @@ function zeichneFilter(){
   w.innerHTML = "";
   const zaehler = new Map();
   for(const r of rezepte){
-    const k = normKategorie(r.kategorie);
+    const k = katVon(r).haupt;
     zaehler.set(k, (zaehler.get(k) || 0) + 1);
   }
   if(rezepte.length === 0) return;
@@ -864,21 +1144,53 @@ function zeichneFilter(){
     b.append(document.createTextNode(beschriftung));
     b.append(el("i",null,String(anzahl)));
     b.setAttribute("aria-pressed", katFilter === wert ? "true" : "false");
-    b.onclick = () => {katFilter = (katFilter === wert) ? null : wert; zeichneFilter(); zeichneListe();};
+    b.onclick = () => {
+      katFilter = (katFilter === wert) ? null : wert;
+      untFilter = null;
+      zeichneFilter(); zeichneListe();
+    };
     return b;
   };
   w.append(chip("Alle", null, rezepte.length));
   [...zaehler.keys()]
     .sort((a,b) => katRang(a) - katRang(b) || a.localeCompare(b,"de"))
     .forEach(k => w.append(chip(k, k, zaehler.get(k))));
+
+  // Zweite Reihe: Unterrubriken der gewählten Hauptrubrik
+  if(!katFilter) return;
+  const uZaehler = new Map();
+  for(const r of rezepte){
+    const kv = katVon(r);
+    if(kv.haupt !== katFilter || !kv.unter) continue;
+    uZaehler.set(kv.unter, (uZaehler.get(kv.unter) || 0) + 1);
+  }
+  if(uZaehler.size === 0) return;
+  const reihe = el("div","unterfilter");
+  const uChip = (beschriftung, wert, anzahl) => {
+    const b = el("button");
+    b.append(document.createTextNode(beschriftung));
+    b.append(el("i",null,String(anzahl)));
+    b.setAttribute("aria-pressed", untFilter === wert ? "true" : "false");
+    b.onclick = () => {untFilter = (untFilter === wert) ? null : wert; zeichneFilter(); zeichneListe();};
+    return b;
+  };
+  const rang = unterVon(katFilter);
+  const uRang = u => { const i = rang.indexOf(u); return i < 0 ? rang.length : i; };
+  [...uZaehler.keys()]
+    .sort((a,b) => uRang(a) - uRang(b) || a.localeCompare(b,"de"))
+    .forEach(u => reihe.append(uChip(u, u, uZaehler.get(u))));
+  w.append(reihe);
 }
 
 function zeichneListe(){
   const q = normal($("#suche").value);
   const treffer = rezepte.filter(r => {
-    if(katFilter && normKategorie(r.kategorie) !== katFilter) return false;
+    const kv = katVon(r);
+    if(katFilter && kv.haupt !== katFilter) return false;
+    if(katFilter && untFilter && kv.unter !== untFilter) return false;
     if(!q) return true;
-    return normal(r.name).includes(q) || normal(r.kategorie).includes(q)
+    return normal(r.name).includes(q) || normal(kv.haupt).includes(q)
+        || normal(kv.unter).includes(q)
         || r.zutaten.some(z => normal(z.name).includes(q));
   });
   const ul = $("#liste");
@@ -902,19 +1214,28 @@ function zeichneListe(){
     return li;
   };
 
-  // Bei aktivem Filter reicht die flache Liste, sonst nach Kategorie gruppieren
-  if(katFilter){
+  // Mit Haupt- und Unterfilter reicht die flache Liste. Mit Hauptfilter
+  // wird nach Unterrubrik gruppiert, ohne Filter nach Hauptrubrik.
+  if(katFilter && untFilter){
     treffer.forEach(r => ul.append(eintrag(r)));
     return;
   }
   const gruppen = new Map();
   for(const r of treffer){
-    const k = normKategorie(r.kategorie);
+    const kv = katVon(r);
+    const k = katFilter ? (kv.unter || "Ohne Unterrubrik") : kv.haupt;
     if(!gruppen.has(k)) gruppen.set(k, []);
     gruppen.get(k).push(r);
   }
+  let rang;
+  if(katFilter){
+    const u = unterVon(katFilter);
+    rang = k => { const i = u.indexOf(k); return i < 0 ? u.length + (k === "Ohne Unterrubrik" ? 1 : 0) : i; };
+  } else {
+    rang = katRang;
+  }
   [...gruppen.keys()]
-    .sort((a,b) => katRang(a) - katRang(b) || a.localeCompare(b,"de"))
+    .sort((a,b) => rang(a) - rang(b) || a.localeCompare(b,"de"))
     .forEach(k => {
       const kopf = el("li","gruppe");
       kopf.append(el("span",null,k), el("span",null,String(gruppen.get(k).length)));
@@ -954,7 +1275,7 @@ function zeichneKarte(){
 
   // Kopf
   const kopf = el("header","kopf");
-  kopf.append(el("div","kat", normKategorie(r.kategorie)));
+  kopf.append(el("div","kat", katText(r)));
   kopf.append(el("h2",null,r.name));
   const wz = el("div","werkzeuge");
   const mk = (t,cls,fn) => {const b = el("button","knopf "+cls,t); b.onclick = fn; return b;};
@@ -965,11 +1286,12 @@ function zeichneKarte(){
     rezepte.unshift(kopie); await sichern(); zeichneFilter(); oeffne(kopie.id);
   }));
   wz.append(mk("Drucken","leise klein", () => window.print()));
-  wz.append(mk("Löschen","gefahr klein", async () => {
-    if(!confirm(`„${r.name}“ wirklich löschen?`)) return;
+  const loeschKnopf = el("button","knopf gefahr klein","Löschen");
+  zweiSchritt(loeschKnopf, "Wirklich löschen?", async () => {
     rezepte = rezepte.filter(x => x.id !== r.id);
     aktivId = null; await sichern(); zeichneFilter(); zeichneListe(); zeichneKarte();
-  }));
+  });
+  wz.append(loeschKnopf);
   kopf.append(wz);
   k.append(kopf);
 
@@ -1125,6 +1447,24 @@ function zeichneKarte(){
   k.append(sp);
 }
 
+/* Browser-Rückfragen (confirm) sind im Claude-Fenster gesperrt.
+   Stattdessen: erster Klick schärft den Knopf, zweiter Klick führt aus,
+   nach vier Sekunden ohne zweiten Klick entschärft er sich wieder. */
+function zweiSchritt(knopf, frage, aktion){
+  const urtext = knopf.textContent;
+  let uhr = null;
+  knopf.onclick = () => {
+    if(uhr){
+      clearTimeout(uhr); uhr = null;
+      knopf.textContent = urtext;
+      aktion();
+    } else {
+      knopf.textContent = typeof frage === "function" ? frage() : frage;
+      uhr = setTimeout(() => {uhr = null; knopf.textContent = urtext;}, 4000);
+    }
+  };
+}
+
 function flash(){
   document.querySelectorAll(".menge").forEach(n => {
     n.classList.add("wechsel");
@@ -1186,26 +1526,46 @@ function markiereAuto(){
 }
 
 // Auswahlliste mit festen und eigenen Kategorien bestücken
-function fuelleKategorien(gewaehlt){
-  const sel = $("#f-kat"), eigen = $("#f-kat-eigen");
-  sel.innerHTML = "";
-  const k = normKategorie(gewaehlt);
-  const werte = alleKategorien();
-  if(gewaehlt && !werte.includes(k)) werte.push(k);
+function fuelleUnter(haupt, gewaehlt){
+  const usel = $("#f-ukat");
+  usel.innerHTML = "";
+  const liste = unterVon(haupt);
+  const o0 = document.createElement("option");
+  o0.value = ""; o0.textContent = "— keine Unterrubrik —";
+  usel.append(o0);
+  const werte = [...liste];
+  if(gewaehlt && !werte.includes(gewaehlt)) werte.push(gewaehlt);
   for(const w of werte){
     const o = document.createElement("option");
     o.value = w; o.textContent = w;
-    if(w === k) o.selected = true;
+    if(w === gewaehlt) o.selected = true;
+    usel.append(o);
+  }
+  usel.style.display = werte.length ? "block" : "none";
+}
+
+function fuelleKategorien(gewaehltKat, gewaehltUnter){
+  const sel = $("#f-kat"), eigen = $("#f-kat-eigen");
+  sel.innerHTML = "";
+  const k = normKategorie(gewaehltKat, gewaehltUnter);
+  const werte = alleKategorien();
+  if(gewaehltKat && !werte.includes(k.haupt)) werte.push(k.haupt);
+  for(const w of werte){
+    const o = document.createElement("option");
+    o.value = w; o.textContent = w;
+    if(w === k.haupt) o.selected = true;
     sel.append(o);
   }
   const neu = document.createElement("option");
-  neu.value = "__eigen"; neu.textContent = "Eigene Kategorie …";
+  neu.value = "__eigen"; neu.textContent = "Eigene Rubrik …";
   sel.append(neu);
-  if(!gewaehlt) sel.value = "Hauptgericht";
+  if(!gewaehltKat) sel.value = "Hauptgerichte";
   eigen.value = ""; eigen.style.display = "none";
+  fuelleUnter(sel.value, gewaehltKat ? k.unter : "");
   sel.onchange = () => {
     const ist = sel.value === "__eigen";
     eigen.style.display = ist ? "block" : "none";
+    fuelleUnter(ist ? "" : sel.value, "");
     if(ist) eigen.focus();
   };
 }
@@ -1214,7 +1574,7 @@ function editor(r, titel){
   bearbeitetId = (r && r.id) ? r.id : null;
   $("#dlg-titel").textContent = titel || (bearbeitetId ? "Rezept bearbeiten" : "Rezept anlegen");
   $("#f-name").value = r ? r.name : "";
-  fuelleKategorien(r ? r.kategorie : "");
+  fuelleKategorien(r ? r.kategorie : "", r ? r.unterkategorie : "");
   $("#f-port").value = r ? r.portionen : 4;
   $("#f-schritte").value = r ? (r.schritte||[]).join("\n") : "";
   const z = $("#zeilen"); z.innerHTML = "";
@@ -1231,7 +1591,10 @@ function editor(r, titel){
 function leseKategorie(){
   const sel = $("#f-kat").value;
   if(sel !== "__eigen") return sel;
-  return normKategorie($("#f-kat-eigen").value) || "Sonstiges";
+  return normKategorie($("#f-kat-eigen").value).haupt || "Sonstiges";
+}
+function leseUnter(){
+  return $("#f-ukat") ? $("#f-ukat").value : "";
 }
 
 async function speichere(ev){
@@ -1245,6 +1608,7 @@ async function speichere(ev){
     id: bearbeitetId || ("r"+Date.now()),
     name,
     kategorie: leseKategorie(),
+    unterkategorie: leseUnter(),
     portionen: Math.max(1, parseInt($("#f-port").value) || 1),
     zutaten,
     schritte: $("#f-schritte").value.split("\n").map(s => s.trim()).filter(Boolean),
@@ -1253,7 +1617,7 @@ async function speichere(ev){
   };
   const i = rezepte.findIndex(x => x.id === daten.id);
   if(i >= 0) rezepte[i] = daten; else rezepte.unshift(daten);
-  if(katFilter && normKategorie(daten.kategorie) !== katFilter) katFilter = null;
+  if(katFilter && katVon(daten).haupt !== katFilter){ katFilter = null; untFilter = null; }
   await sichern();
   $("#editor").close();
   zeichneFilter();
@@ -1454,7 +1818,7 @@ async function wordText(f){
 const ANWEISUNG = `Lies alle vollständigen Kochrezepte aus dem beigefügten Material und gib sie als JSON zurück.
 
 Antworte ausschließlich mit dem JSON-Objekt, ohne Vorwort und ohne Markdown-Backticks:
-{"rezepte":[{"name":"","kategorie":"","portionen":4,"zutaten":[{"menge":200,"einheit":"g","name":"Weizenmehl"}],"schritte":[""]}]}
+{"rezepte":[{"name":"","kategorie":"","unterkategorie":"","portionen":4,"zutaten":[{"menge":200,"einheit":"g","name":"Weizenmehl"}],"schritte":[""]}]}
 
 Regeln:
 - Alles auf Deutsch, auch wenn die Vorlage anderssprachig ist.
@@ -1463,7 +1827,8 @@ Regeln:
 - "menge" ist immer eine Zahl mit Punkt als Dezimaltrennzeichen. Brüche umrechnen: ½ wird 0.5. Ohne Mengenangabe: "einheit":"nach Bedarf" und "menge":0.
 - "name" ist nur die Zutat, ohne Menge. Zubereitungshinweise wie "fein gehackt" dürfen dranbleiben.
 - "portionen" ist die Portionszahl der Vorlage, im Zweifel 4.
-- "kategorie" genau eine aus dieser Liste: Frühstück, Vorspeise, Suppe, Salat, Hauptgericht, Beilage, Soße & Dip, Snack, Dessert, Kuchen & Torten, Gebäck & Brot, Getränk, Vorrat. Passt nichts: Sonstiges.
+- "kategorie" ist die Hauptrubrik, "unterkategorie" wenn passend die Unterrubrik (sonst leer). Erlaubt sind: Frühstück · Kalte Vorspeisen (Aperitifhäppchen, Aufstriche, Löffelfood, Vorspeisencocktails, Vorspeisensalate, Terrinen, Pasteten & Mousses, Kalte Gerichte) · Warme Vorspeisen (Teige, Regionale Vorspeisen, Nationale Vorspeisen, Internationale Vorspeisen, Vegetarische Gerichte) · Grundbrühen & Fonds (Helle Fonds, Braune Fonds) · Suppen (Klare Suppen, Gebundene Suppen, Regionalsuppen, Nationalsuppen, Kalte Suppen, Suppeneinlagen) · Salate (Rohkostsalate, Gekochte Gemüsesalate) · Fischgerichte (Süßwasserfische, Salzwasserfische, Gemischte Fischgerichte & Spieße, Krustentiere, Muscheln & Meeresfrüchte) · Fleischgerichte (Rind, Kalb, Schwein, Lamm & Hammel, Geflügel, Wild, Innereien) · Hauptgerichte · Beilagen (Kartoffelgerichte, Reisgerichte, Mehlbeilagen, Gemüsebeilagen) · Saucen & Dips (Braune Saucen, Weiße Saucen, Buttersaucen, Saucen für warme Vorspeisen, Kalte Saucen, Salatsaucen & Dressings) · Snacks · Süßspeisen & Backwaren (Teige, Massen, Dekor & Feingebäck, Kuchen & Torten, Cremen & Mousses, Füllungen, Warme Süßspeisen, Puddings & Soufflés, Gefrorene Süßspeisen, Dessert, Süße Saucen & Glasuren, Kompott & Früchte, Teegebäck & Kekse, Pralinen & Konfekt, Gebäck & Brot, Aperitifgebäck) · Getränke · Vorrat. Passt nichts: Sonstiges. Die Unterrubrik muss zur Hauptrubrik gehören.
+- Steht über einer Rezeptgruppe eine Rubrik wie TEIGE, MASSEN oder CREMEN (oft als ##-Zeile), gilt sie als Kategorie für die folgenden Rezepte. Nockerl, Schöberln, Frittaten, Backerbsen, Klößchen, Eierstich und Einlauf sind Suppeneinlagen — nicht Hauptgericht.
 - "schritte" sind knappe, vollständige Sätze, ein Arbeitsschritt je Eintrag.
 - Erfasse ALLE Rezepte im Material, nicht nur das erste.
 - Antworte mit kompaktem JSON in einer Zeile, ohne unnötige Leerzeichen.
@@ -1565,9 +1930,17 @@ function normalisiere(obj){
     return {menge: isFinite(menge) ? Math.round(menge*100)/100 : 0, einheit, name: String(z.name || "").trim()};
   }).filter(z => z.name);
 
+  const name = String(obj.name || "").trim() || "Importiertes Rezept";
+  let {haupt, unter} = normKategorie(obj.kategorie, obj.unterkategorie);
+  if(haupt === "Sonstiges"){
+    const geraten = kategorieRaten(name);
+    haupt = geraten.haupt;
+    if(!unter) unter = geraten.unter;
+  }
   return {
-    name: String(obj.name || "").trim() || "Importiertes Rezept",
-    kategorie: normKategorie(obj.kategorie),
+    name,
+    kategorie: haupt,
+    unterkategorie: unter,
     portionen: Math.max(1, parseInt(obj.portionen) || 4),
     zutaten,
     schritte: (obj.schritte || []).map(s => String(s).trim()).filter(Boolean),
@@ -1642,7 +2015,9 @@ function lokalLesen(text){
   });
 
   if(zutaten.length === 0) throw new Error("Aus dem Text ließ sich keine Zutatenliste herauslesen. Trage das Rezept bitte von Hand ein.");
-  return {name: name || "Importiertes Rezept", kategorie:"Sonstiges", portionen, zutaten, schritte, allergene:[]};
+  const endName = name || "Importiertes Rezept";
+  const geraten = kategorieRaten(endName);
+  return {name: endName, kategorie: geraten.haupt, unterkategorie: geraten.unter, portionen, zutaten, schritte, allergene:[]};
 }
 
 function melde(text, art){
@@ -1959,7 +2334,7 @@ function zeigeFunde(info){
     txt.append(el("b",null,r.name));
     const duenn = r.zutaten.length < 3 || r.schritte.length === 0;
     const s = el("small", duenn ? "warn" : null);
-    s.textContent = `${normKategorie(r.kategorie)} · ${r.portionen} P · ${r.zutaten.length} Zutaten · `
+    s.textContent = `${katText(r)} · ${r.portionen} P · ${r.zutaten.length} Zutaten · `
       + (r.schritte.length ? `${r.schritte.length} Schritte` : "keine Zubereitung erkannt");
     txt.append(s);
     li.append(cb, txt);
@@ -2037,8 +2412,8 @@ function fehlertext(e){
   $("#imp-schliessen").onclick = () => $("#import").close();
   importZustand("eingabe");
   const ablage = $("#ablage"), wahl = $("#dateiwahl");
-  ablage.onclick = () => wahl.click();
-  ablage.onkeydown = e => {if(e.key === "Enter" || e.key === " "){e.preventDefault(); wahl.click();}};
+  // Das Öffnen des Dateiwählers übernimmt der Browser über die Label-Bindung —
+  // programmatisches wahl.click() scheitert auf manchen Handys
   wahl.onchange = () => {nimmDateien([...wahl.files]); wahl.value = "";};
   ablage.addEventListener("dragover", e => {e.preventDefault(); ablage.classList.add("drueber");});
   ablage.addEventListener("dragleave", () => ablage.classList.remove("drueber"));
@@ -2109,6 +2484,57 @@ function fehlertext(e){
   };
 
   $("#btn-einlesen").onclick = () => datenDialog("einlesen");
+
+  /* App mit eingebauten Rezepten teilen: holt den eigenen Quelltext,
+     setzt den aktuellen Bestand in den STARTBESTAND-Slot und gibt die
+     Datei zum Speichern oder Teilen weiter. Funktioniert in der
+     gehosteten Fassung (z. B. GitHub Pages). */
+  const datenHinweis = text => {
+    const w = $("#daten-hinweis");
+    w.textContent = text;
+    w.hidden = false;
+    clearTimeout(datenHinweis.t);
+    datenHinweis.t = setTimeout(() => { w.hidden = true; }, 8000);
+  };
+
+  $("#btn-teilen").onclick = async () => {
+    const knopf = $("#btn-teilen");
+    if(hatClaudeSpeicher()){
+      datenHinweis("„App teilen“ funktioniert in der gehosteten Fassung (GitHub-Version), nicht im Claude-Fenster.");
+      return;
+    }
+    try{
+      knopf.disabled = true;
+      const antwort = await fetch(location.href, {cache:"no-store"});
+      if(!antwort.ok) throw new Error("Quelltext nicht erreichbar");
+      let quelle = await antwort.text();
+      // Marken zusammensetzen, damit diese Funktion sich nicht selbst findet
+      const mA = "/*STARTBESTAND-" + "ANFANG*/";
+      const mE = "/*STARTBESTAND-" + "ENDE*/";
+      const a = quelle.indexOf(mA), b = quelle.indexOf(mE);
+      if(a < 0 || b < a) throw new Error("Marken nicht gefunden");
+      // "*/" darf im JSON nicht vorkommen — in Zeichenketten ist \/ gleichwertig
+      const json = JSON.stringify(rezepte).replace(/\*\//g, "*\\/");
+      quelle = quelle.slice(0, a + mA.length) + json + quelle.slice(b);
+      const blob = new Blob([quelle], {type:"text/html"});
+      const datei = new File([blob], "rezepte-app.html", {type:"text/html"});
+      if(navigator.canShare && navigator.canShare({files:[datei]})){
+        try{
+          await navigator.share({files:[datei], title:"Schulhotel Allgäu — Rezepte"});
+          return;
+        }catch(e){ /* abgebrochen → herunterladen */ }
+      }
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "rezepte-app.html";
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(link.href), 5000);
+    }catch(e){
+      datenHinweis("Teilen fehlgeschlagen: " + e.message);
+    }finally{
+      knopf.disabled = false;
+    }
+  };
   $("#daten-zu").onclick = () => $("#daten").close();
 
   $("#daten-kopieren").onclick = async () => {
@@ -2135,7 +2561,6 @@ function fehlertext(e){
   };
 
   const sichWahl = $("#sicherungswahl");
-  $("#daten-datei").onclick = () => sichWahl.click();
   sichWahl.onchange = async () => {
     const f = sichWahl.files[0]; sichWahl.value = "";
     if(!f) return;
@@ -2147,12 +2572,11 @@ function fehlertext(e){
     }
   };
 
-  $("#btn-leeren").onclick = async () => {
-    if(!confirm(`Wirklich alle ${rezepte.length} Rezepte löschen? Vorher lohnt ein Export als Sicherung.`)) return;
+  zweiSchritt($("#btn-leeren"), () => `wirklich alle ${rezepte.length} löschen?`, async () => {
     rezepte = []; aktivId = null; katFilter = null;
     await sichern();
     zeichneFilter(); zeichneListe(); zeichneKarte();
-  };
+  });
 
   laden().then(() => { zeichneFilter(); zeichneListe(); zeichneKarte(); });
 })();
